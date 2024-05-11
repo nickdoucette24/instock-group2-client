@@ -1,0 +1,23 @@
+@use "./variables" as *;
+
+// Media Query Mixins
+@mixin tablet {
+  @media (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: $pc-breakpoint) {
+    @content;
+  }
+}
+
+// Font Mixins
+@mixin regular {
+  font-family: "Titillium Regular";
+}
+
+@mixin semiBold {
+  font-family: "Titillium Semi Bold";
+}
