@@ -21,3 +21,11 @@
 @mixin semiBold {
   font-family: "Titillium Semi Bold";
 }
+
+// Button Mixin
+@mixin btn {
+  height: 36px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 20px;
+}
