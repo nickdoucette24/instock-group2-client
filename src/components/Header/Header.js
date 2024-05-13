@@ -1,8 +1,5 @@
 import axios from "axios";
-import Header from "./Header.scss";
-import "./styles/partials/variables";
-import "./styles/partials/mixins";
-import "./styles/partials/fonts";
+import "./Header.scss";
 
 const Header = () => {
   return <div className="header__wrapper">
