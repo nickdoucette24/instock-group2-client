@@ -21,36 +21,38 @@ const HomePage = () => {
   }, []);
 
   return <>
-    <section>
-      <h1>Warehouses</h1>
-      <input type="text" placeholder="Search..." src={searchIcon}/>
-      <button>+ Add New Warehouse</button>
-    </section>
-    {warehouses.map((warehouse) => {
-      <section>
-      <div>
-        <h4>WAREHOUSE</h4>
-        <span>
-        <h3>{warehouse.warehouse_name}</h3>
-        <img src={chevron} alt="" />
-        </span>
-      </div>
-        <div>
-          <h4>CONTACT NAME</h4>
-          <p>{warehouse.contact_name}</p>
-        </div>
-        <div>
-          <h4>ADDRESS</h4>
-          <p>{warehouse.address}</p>
-        </div>
+    <main>
+      <div className="floaty-container">
+        <h1>Warehouses</h1>
+        <input className="search" type="text" placeholder="Search..." src={searchIcon}/>
+        <button className="btn__add">+ Add New Warehouse</button>
+      {warehouses.map((warehouse) => {
+        <section>
         <div>
           <h4>WAREHOUSE</h4>
-          <h4>CONTACT INFORMATION</h4>
-          <p>{warehouse.contact_phone}</p>
-          <p>{warehouse.contact_email}</p>
+          <span>
+          <h3>{warehouse.warehouse_name}</h3>
+          <img src={chevron} alt="" />
+          </span>
         </div>
-      </section>
-    })}
+          <div>
+            <h4>CONTACT NAME</h4>
+            <p>{warehouse.contact_name}</p>
+          </div>
+          <div>
+            <h4>ADDRESS</h4>
+            <p>{warehouse.address}</p>
+          </div>
+          <div>
+            <h4>WAREHOUSE</h4>
+            <h4>CONTACT INFORMATION</h4>
+            <p>{warehouse.contact_phone}</p>
+            <p>{warehouse.contact_email}</p>
+          </div>
+        </section>
+      })}
+      </div>
+    </main>
   </>;
 };
 

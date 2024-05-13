@@ -1,0 +1,39 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/fonts" as *;
+
+main {
+    background-color: $light-grey;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.floaty-container {
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    margin: -6.25rem 0;
+    z-index: 1;
+    display: flex;
+    width: calc(100% - 10rem);
+    padding: 1.25rem;
+}
+
+.search {
+    @include interactive-components;
+    width: calc(100% - 2rem);
+    margin-bottom: 16px;
+}
+
+.btn__add {
+    @include btn;
+    width: 100%;
+    background-color: $instock-indigo;
+    color: $white;
+}

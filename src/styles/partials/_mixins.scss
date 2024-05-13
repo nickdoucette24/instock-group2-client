@@ -22,10 +22,18 @@
   font-family: "Titillium Semi Bold";
 }
 
-// Button Mixin
-@mixin btn {
+// General shape of buttons and search bars
+@mixin interactive-components {
   height: 36px;
   padding-left: 16px;
   padding-right: 16px;
   border-radius: 20px;
+  display: flex;
+  align-items: center;
+}
+
+// Button Mixin
+@mixin btn {
+  @include interactive-components;
+  justify-content: center;
 }
