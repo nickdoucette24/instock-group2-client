@@ -1,5 +1,5 @@
-@import "../src/styles/partials/mixins";
-@import "../src/styles/partials/fonts";
-@import "../src/styles/partials/variables";
-@import "../src/components/Footer/Footer.scss";
-@import "../src/components/Header/Header.scss";
+@use "../src/styles/partials/mixins" as *;
+@use "../src/styles/partials/fonts" as *;
+@use "../src/styles/partials/variables" as *;
+@use "../src/components/Footer/Footer.scss" as *;
+@use "../src/components/Header/Header.scss" as *;
