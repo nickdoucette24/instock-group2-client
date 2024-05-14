@@ -2,6 +2,12 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/fonts" as *;
 
+// Appear in mobile mode
+.mobile {
+    display: inline;
+    @media (min-width: $tablet-breakpoint) { display: none; }
+}
+
 main {
     background-color: $light-grey;
     position: relative;
@@ -25,14 +31,41 @@ main {
     padding: 1.25rem;
 }
 
+.sorty-selectors {
+    display: none;
+    @media (min-width: $tablet-breakpoint) { display: flex }
+    background-color: $slate;
+    justify-content: space-around;
+
+    &__item {
+        display: flex;
+    }
+}
+
 .warehouse-container {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
+    @media (min-width: $tablet-breakpoint) { justify-content: space-around; }
 
     &__item {
         width: 50%;
         margin-top: 1rem;
+        @media (min-width: $tablet-breakpoint) { max-width: 150px; }
+    }
+
+    &__options {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        @media (min-width: $tablet-breakpoint) { 
+            justify-content: center; 
+            width: auto;
+        }
+    
+        & img {
+            width: 25px;
+        }
     }
 
     & span {
@@ -50,12 +83,6 @@ main {
     height: 1px;
     background-color: $cloud;
     margin-top: 1rem;
-}
-
-.options {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
 }
 
 .search {
