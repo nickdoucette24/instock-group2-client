@@ -1,9 +1,12 @@
 @use "./variables" as *;
+@use "./fonts" as *;
 
 // Media Query Mixins
+@include mobile;
 @mixin tablet {
   @media (min-width: $tablet-breakpoint) {
     @content;
+    @include pc;
   }
 }
 
