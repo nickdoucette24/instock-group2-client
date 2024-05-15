@@ -3,3 +3,7 @@
 @use "../src/styles/partials/variables" as *;
 @use "../src/components/Footer/Footer.scss" as *;
 @use "../src/components/Header/Header.scss" as *;
+
+* {
+	font-family: "Titillium";
+}
