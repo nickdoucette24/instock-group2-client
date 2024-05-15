@@ -1,0 +1,11 @@
+@use "../../styles/partials/variables" as *;
+
+.edit-button {
+	background-color: $instock-indigo;
+	color: $white;
+
+	&__icon {
+		// This is ridiculous
+		filter: brightness(0) saturate(100%) invert(100%);
+	}
+}
