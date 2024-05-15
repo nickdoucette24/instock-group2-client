@@ -28,9 +28,13 @@ const HomePage = () => {
   <>
     <main>
       <div className="floaty-container">
-        <h1>Warehouses</h1>
-        <input className="search" type="text" placeholder="Search..." src={searchIcon}/>
-        <button className="btn__add">+ Add New Warehouse</button>
+        <div className="floaty-container__top">
+          <h1>Warehouses</h1>
+          <span className="floaty-container__inputs">
+            <input className="search" type="text" placeholder="Search..." src={searchIcon}/>
+            <button className="btn__add">+ Add New Warehouse</button>
+          </span>
+        </div>
         <div className="sorty-selectors">
           <span className="sorty-selectors__item">
           <h4>WAREHOUSE</h4>
@@ -48,38 +52,41 @@ const HomePage = () => {
           <h4>CONTACT INFORMATION</h4>
             <img src={sortBtn} alt="sort" />
           </span>
+          <span className="sorty-selectors__item actions">
+          <h4>ACTIONS</h4>
+          </span>
         </div>
       {warehouses.map(warehouse => {
         return(
           <section className="warehouse-container">
-          <div class="warehouse-container__item">
-            <h4 className="mobile">WAREHOUSE</h4>
-            <span>
-              <Link to={`/warehouses/${warehouse.id}`}>
-                <h3>{warehouse.warehouse_name}</h3>
-              </Link>
-              <img src={chevron} alt="" />
-            </span>
-          </div>
             <div class="warehouse-container__item">
-              <h4 className="mobile">CONTACT NAME</h4>
-              <p className="p2">{warehouse.contact_name}</p>
+              <h4 className="mobile">WAREHOUSE</h4>
+              <span>
+                <Link to={`/warehouses/${warehouse.id}`}>
+                  <h3>{warehouse.warehouse_name}</h3>
+                </Link>
+                <img src={chevron} alt="" />
+              </span>
             </div>
-            <div class="warehouse-container__item">
-              <h4 className="mobile">ADDRESS</h4>
-              <p className="p2">{warehouse.address}</p>
-            </div>
-            <div class="warehouse-container__item">
-              <h4 className="mobile">CONTACT INFORMATION</h4>
-              <p className="p2">{warehouse.contact_phone}</p>
-              <p className="p2">{warehouse.contact_email}</p>
-            </div>
-            <div className="warehouse-container__options">
-              <img src={edit} alt="Edit" />
-              <img src={del} alt="Delete" />
-            </div>
-            <span className="divider"></span>
-          </section>
+              <div class="warehouse-container__item">
+                <h4 className="mobile">CONTACT NAME</h4>
+                <p className="p2">{warehouse.contact_name}</p>
+              </div>
+              <div class="warehouse-container__item">
+                <h4 className="mobile">ADDRESS</h4>
+                <p className="p2">{warehouse.address}</p>
+              </div>
+              <div class="warehouse-container__item">
+                <h4 className="mobile">CONTACT INFORMATION</h4>
+                <p className="p2">{warehouse.contact_phone}</p>
+                <p className="p2">{warehouse.contact_email}</p>
+              </div>
+              <div className="warehouse-container__item actions">
+                <img src={edit} alt="Edit" />
+                <img src={del} alt="Delete" />
+              </div>
+              <span className="divider"></span>
+            </section>
         )
       })}
       </div>

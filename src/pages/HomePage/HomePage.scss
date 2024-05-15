@@ -29,6 +29,25 @@ main {
     display: flex;
     width: calc(100% - 10rem);
     padding: 1.25rem;
+
+    &__top {
+        display: block;
+
+        @media (min-width: $tablet-breakpoint) {
+            display: flex;
+            justify-content: space-between;
+
+            & button, & input {
+                margin: 0 0 0 1rem;
+                width: 185px;
+            }
+        }
+    }
+
+    &__inputs {
+        display: flex;
+        align-items: center;
+    }
 }
 
 .sorty-selectors {
@@ -36,9 +55,27 @@ main {
     @media (min-width: $tablet-breakpoint) { display: flex }
     background-color: $slate;
     justify-content: space-around;
+    align-items: center;
 
     &__item {
         display: flex;
+        justify-content: space-between;
+        width: 10.875rem;
+
+        & img {
+            width: 25px;
+        }
+    }
+}
+
+.actions {
+    display: flex;
+    @media (min-width: $tablet-breakpoint) { 
+        justify-content: center; 
+    }
+
+    & img {
+        width: 25px;
     }
 }
 
@@ -51,21 +88,7 @@ main {
     &__item {
         width: 50%;
         margin-top: 1rem;
-        @media (min-width: $tablet-breakpoint) { max-width: 150px; }
-    }
-
-    &__options {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        @media (min-width: $tablet-breakpoint) { 
-            justify-content: center; 
-            width: auto;
-        }
-    
-        & img {
-            width: 25px;
-        }
+        @media (min-width: $tablet-breakpoint) { width: 10.875rem; }
     }
 
     & span {
@@ -96,4 +119,5 @@ main {
     width: 100%;
     background-color: $instock-indigo;
     color: $white;
+    margin-bottom: 16px;
 }
