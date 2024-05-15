@@ -3,6 +3,8 @@ import "./WarehouseDetailsPage.scss";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+import EditButton from "../../components/EditButton/EditButton";
+
 const WarehouseDetailsPage = () => {
 	return (
 		<div>
@@ -10,10 +12,7 @@ const WarehouseDetailsPage = () => {
 				<div className="main-header">
 					<button className="back-btn"></button>
 					<h1 className="warehouse-name"></h1>
-					<button className="edit-btn">
-						<img />
-						Edit
-					</button>
+					<EditButton />
 				</div>
 				<div className="warehouse-info">
 					<div className="warehouse-info__address"></div>
