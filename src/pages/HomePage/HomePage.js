@@ -30,7 +30,7 @@ const HomePage = () => {
       <div className="floaty-container">
         <div className="floaty-container__top">
           <h1>Warehouses</h1>
-          <span className="floaty-container__inputs">
+          <span className="floaty-container__top--inputs">
             <input className="search" type="text" placeholder="Search..." src={searchIcon}/>
             <button className="btn__add">+ Add New Warehouse</button>
           </span>
@@ -52,7 +52,7 @@ const HomePage = () => {
           <h4>CONTACT INFORMATION</h4>
             <img src={sortBtn} alt="sort" />
           </span>
-          <span className="sorty-selectors__item actions">
+          <span className="sorty-selectors__item col5">
           <h4>ACTIONS</h4>
           </span>
         </div>
@@ -74,16 +74,18 @@ const HomePage = () => {
               </div>
               <div class="warehouse-container__item">
                 <h4 className="mobile">ADDRESS</h4>
-                <p className="p2">{warehouse.address}</p>
+                <p className="p2">
+                  {warehouse.address}, {warehouse.city}, {warehouse.country}
+                </p>
               </div>
               <div class="warehouse-container__item">
                 <h4 className="mobile">CONTACT INFORMATION</h4>
                 <p className="p2">{warehouse.contact_phone}</p>
                 <p className="p2">{warehouse.contact_email}</p>
               </div>
-              <div className="warehouse-container__item actions">
-                <img src={edit} alt="Edit" />
+              <div className="warehouse-container__item--col5">
                 <img src={del} alt="Delete" />
+                <img src={edit} alt="Edit" />
               </div>
               <span className="divider"></span>
             </section>

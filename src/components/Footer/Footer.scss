@@ -9,6 +9,9 @@
     height: 9.375rem;
     flex-basis: 100%;
     background-color: $cloud;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 3rem;
 
     @mixin tablet {
         @media (min-width: $tablet-breakpoint) {

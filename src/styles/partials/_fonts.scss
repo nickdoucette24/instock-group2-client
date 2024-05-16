@@ -10,6 +10,10 @@
   src: url("../../assets/fonts/TitilliumWeb-SemiBold.ttf") format("truetype");
 }
 
+* {
+    font-family: "Titillium Regular";
+}
+
 // Type kit
 @mixin mobile {
     h1 { // page header

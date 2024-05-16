@@ -8,8 +8,10 @@
     @media (min-width: $tablet-breakpoint) { display: none; }
 }
 
+a { text-decoration: none; }
+
 main {
-    background-color: $light-grey;
+    background-color: $cloud;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -24,10 +26,10 @@ main {
     flex-direction: column;
     justify-content: center;
     position: relative;
-    margin: -6.25rem 0;
+    margin-top: -6rem;
     z-index: 1;
     display: flex;
-    width: calc(100% - 10rem);
+    width: calc(100% - 20%);
     padding: 1.25rem;
 
     &__top {
@@ -37,16 +39,21 @@ main {
             display: flex;
             justify-content: space-between;
 
-            & button, & input {
+            & button {
                 margin: 0 0 0 1rem;
-                width: 185px;
+                width: 10.5rem;
+            }
+
+            & input {
+                margin: 0;
+                width: 9.3rem;
+            }
+
+            &--inputs {
+                display: flex;
+                align-items: center;
             }
         }
-    }
-
-    &__inputs {
-        display: flex;
-        align-items: center;
     }
 }
 
@@ -54,41 +61,54 @@ main {
     display: none;
     @media (min-width: $tablet-breakpoint) { display: flex }
     background-color: $slate;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 
     &__item {
         display: flex;
-        justify-content: space-between;
-        width: 10.875rem;
-
-        & img {
-            width: 25px;
-        }
+        justify-content: flex-start;
+        width: 7rem;
+        &:nth-child(4) { width: 10rem }
+        & img { width: 25px; }
+        @media (min-width: $pc-breakpoint) { width: 10.75rem; }
     }
 }
 
-.actions {
+// Make the Actions column small
+@mixin col5 {
     display: flex;
-    @media (min-width: $tablet-breakpoint) { 
-        justify-content: center; 
-    }
+    justify-content: space-between; 
+    width: 100%;
 
-    & img {
-        width: 25px;
-    }
+    @media ( min-width: $tablet-breakpoint) { 
+        width: 3rem;
+        justify-content: flex-start; 
+    } 
+
+    & img { width: 25px; }
 }
+        
+.col5 { @include col5; }
 
 .warehouse-container {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     flex-wrap: wrap;
-    @media (min-width: $tablet-breakpoint) { justify-content: space-around; }
+    @media (min-width: $tablet-breakpoint) { justify-content: space-between; }
 
     &__item {
         width: 50%;
-        margin-top: 1rem;
-        @media (min-width: $tablet-breakpoint) { width: 10.875rem; }
+        margin-top: 1rem; 
+        word-wrap: break-word;
+        &--col5 { @include col5; }
+
+        @media (min-width: $tablet-breakpoint) { 
+            width: 7rem; 
+            &:nth-child(4) { width: 10rem }
+        }
+
+        @media (min-width: $pc-breakpoint) { width: 10.75rem; }
     }
 
     & span {
