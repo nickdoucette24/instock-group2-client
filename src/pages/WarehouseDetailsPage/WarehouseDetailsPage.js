@@ -2,10 +2,24 @@ import "./WarehouseDetailsPage.scss";
 
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 import EditButton from "../../components/EditButton/EditButton";
 
 const WarehouseDetailsPage = () => {
+	const [warehouseDetails, setwarehouseDetails] = useState({});
+
+	const { id } = useParams();
+
+	useEffect(() => {
+		axios
+			.get(`http://localhost:8080/api/warehouses/${id}`)
+			.then((response) => setwarehouseDetails(response.data))
+			.catch((err) => console.error(err));
+	}, []);
+
+	console.log(warehouseDetails);
+
 	return (
 		<div>
 			<main>
