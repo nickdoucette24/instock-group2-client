@@ -10,7 +10,7 @@ const EditButton = () => {
 				src={editIcon}
 				alt="edit button icon"
 			/>
-			Edit
+			<h3 className="edit-button__content">Edit</h3>
 		</button>
 	);
 };

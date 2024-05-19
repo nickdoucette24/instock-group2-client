@@ -1,11 +1,32 @@
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
 
 .edit-button {
 	background-color: $instock-indigo;
 	color: $white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	height: 36px;
+	width: 36px;
+
+	@include tablet {
+		height: 38px;
+		width: 81px;
+	}
 
 	&__icon {
-		// This is ridiculous
-		filter: brightness(0) saturate(100%) invert(100%);
+		filter: brightness(0) invert(100%);
+	}
+
+	&__content {
+		display: none;
+
+		@include tablet {
+			@include labels-links-buttons;
+			display: inline;
+			padding-left: 0.5em;
+		}
 	}
 }

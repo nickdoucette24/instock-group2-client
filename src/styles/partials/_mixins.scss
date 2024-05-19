@@ -2,30 +2,41 @@
 
 // Media Query Mixins
 @mixin tablet {
-  @media (min-width: $tablet-breakpoint) {
-    @content;
-  }
+	@media (min-width: $tablet-breakpoint) {
+		@content;
+	}
 }
 
 @mixin laptop {
-  @media (min-width: $pc-breakpoint) {
-    @content;
-  }
+	@media (min-width: $pc-breakpoint) {
+		@content;
+	}
 }
 
 // Font Mixins
 @mixin regular {
-  font-family: "Titillium Regular";
+	font-family: "Titillium Regular";
 }
 
 @mixin semiBold {
-  font-family: "Titillium Semi Bold";
+	font-family: "Titillium Semi Bold";
 }
 
 // Button Mixin
 @mixin btn {
-  height: 36px;
-  padding-left: 16px;
-  padding-right: 16px;
-  border-radius: 20px;
+	height: 36px;
+	padding-left: 16px;
+	padding-right: 16px;
+	border-radius: 20px;
+}
+
+// Type Kit
+@mixin labels-links-buttons {
+	font-size: 13px;
+	line-height: 20px;
+
+	@include tablet() {
+		font-size: 14px;
+		line-height: 22px;
+	}
 }
