@@ -1,0 +1,156 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/fonts" as *;
+
+// Appear in mobile mode
+.mobile {
+    display: inline;
+    @media (min-width: $tablet-breakpoint) { display: none; }
+}
+
+a { text-decoration: none; }
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    background-color: $cloud;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.floaty-container {
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    margin-top: -5.875rem;
+    z-index: 1;
+    display: flex;
+    width: calc(100% - 20%);
+    margin-bottom: -1rem;
+
+    &__top {
+        display: block;
+        padding: 1.25rem;
+
+        @media (min-width: $tablet-breakpoint) {
+            display: flex;
+            justify-content: space-between;
+
+            & button {
+                margin: 0 0 0 1rem;
+                width: 10.5rem;
+            }
+
+            & input {
+                margin: 0;
+                width: 9.3rem;
+            }
+
+            // Positioning for search box and add button
+            &--controls {
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+}
+
+// Top of the table with the sorting buttons
+.sorty-selectors {
+    display: none;
+    @media (min-width: $tablet-breakpoint) { display: flex }
+    padding: 0 1.25rem;
+    background-color: $slate;
+    justify-content: space-around;
+    align-items: center;
+
+    &__item {
+        display: flex;
+        justify-content: flex-start;
+        width: 7rem;
+        &:nth-child(4) { width: 10rem }
+        & img { width: 25px; }
+        @media (min-width: $pc-breakpoint) { width: 10.75rem; }
+    }
+}
+
+// Make the Actions column small
+@mixin col5 {
+    display: flex;
+    justify-content: space-between; 
+    width: 100%;
+
+    @media ( min-width: $tablet-breakpoint) { 
+        width: 3rem;
+        justify-content: flex-start; 
+    } 
+
+    & img { width: 25px; }
+}
+        
+// For the Actions header
+.col5 { @include col5; }
+
+.warehouse-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 1.25rem;
+    @media (min-width: $tablet-breakpoint) { justify-content: space-around; }
+
+    &__item {
+        width: 50%;
+        margin-top: 1rem; 
+        word-wrap: break-word;
+        // For the divs with the Actions buttons
+        &--col5 { @include col5; }
+
+        @media (min-width: $tablet-breakpoint) { 
+            width: 7rem; 
+            &:nth-child(4) { width: 10rem }
+        }
+
+        @media (min-width: $pc-breakpoint) { width: 10.75rem; }
+    }
+
+    & span {
+        display: flex;
+    }
+
+    & h3, h4, p {
+        margin: 0;
+        margin-top: .25rem;
+    }
+}
+
+.divider {
+    width: 100vw;
+    height: 1px;
+    background-color: $cloud;
+    margin-top: 1rem;
+}
+
+.search {
+    @include interactive-components;
+    background-image: url('../../assets/Icons/search-24px.svg');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    width: calc(100% - 2rem);
+    margin-bottom: 16px;
+}
+
+.btn__add {
+    @include btn;
+    width: 100%;
+    background-color: $instock-indigo;
+    color: $white;
+    margin-bottom: 16px;
+}
