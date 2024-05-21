@@ -22,7 +22,7 @@
 
 	&__content {
 		@include labels-links-buttons;
-		padding-left: 0.5em;
+		padding-left: 10px;
 		display: none;
 
 		@include tablet {
