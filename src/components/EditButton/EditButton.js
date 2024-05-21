@@ -1,6 +1,6 @@
 import "./EditButton.scss";
 
-import editIcon from "../../assets/icons/edit-24px.svg";
+import editIcon from "../../assets/Icons/edit-24px.svg";
 
 const EditButton = () => {
 	return (

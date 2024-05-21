@@ -1,8 +1,8 @@
 import "./HomePage.scss";
-import chevron from "../../assets/icons/chevron_right-24px.svg";
-import edit from "../../assets/icons/edit-24px.svg";
-import del from "../../assets/icons/delete_outline-24px.svg";
-import sortBtn from "../../assets/icons/sort-24px.svg";
+import chevron from "../../assets/Icons/chevron_right-24px.svg";
+import edit from "../../assets/Icons/edit-24px.svg";
+import del from "../../assets/Icons/delete_outline-24px.svg";
+import sortBtn from "../../assets/Icons/sort-24px.svg";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";

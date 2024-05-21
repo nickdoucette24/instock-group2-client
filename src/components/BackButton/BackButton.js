@@ -1,6 +1,6 @@
 import "./BackButton.scss";
 
-import backIcon from "../../assets/icons/arrow_back-24px.svg";
+import backIcon from "../../assets/Icons/arrow_back-24px.svg";
 
 const BackButton = () => {
 	return (
