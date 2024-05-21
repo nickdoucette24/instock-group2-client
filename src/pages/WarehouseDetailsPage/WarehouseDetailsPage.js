@@ -28,27 +28,37 @@ const WarehouseDetailsPage = () => {
 					<Link to={"/"}>
 						<BackButton />
 					</Link>
-					<h1 className="warehouse-name">city</h1>
+					<h1 className="warehouse-name">{warehouseDetails.warehouse_name}</h1>
 					<EditButton />
 				</div>
 				<div className="warehouse-info">
 					<div className="warehouse-info__address">
 						<h4 className="table-header">warehouse address:</h4>
 						<div className="warehouse-info__address-content">
-							<p>street</p>
-							<p>state</p>
+							<p>{warehouseDetails.address},</p>
+							<p>
+								{warehouseDetails.city}, {warehouseDetails.country}
+							</p>
 						</div>
 					</div>
 					<div className="warehouse-info__contact">
 						<div className="contact-name">
 							<h4 className="table-header">contact name:</h4>
-							<p className="contact-name__name">name</p>
-							<p className="contact-name__position">position</p>
+							<p className="contact-name__name">
+								{warehouseDetails.contact_name}
+							</p>
+							<p className="contact-name__position">
+								{warehouseDetails.contact_position}
+							</p>
 						</div>
 						<div className="contact-info">
 							<h4 className="table-header">contact information:</h4>
-							<p className="contact-info__phone">phone</p>
-							<p className="contact-info__email">email</p>
+							<p className="contact-info__phone">
+								{warehouseDetails.contact_phone}
+							</p>
+							<p className="contact-info__email">
+								{warehouseDetails.contact_email}
+							</p>
 						</div>
 					</div>
 				</div>

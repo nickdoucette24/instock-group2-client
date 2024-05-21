@@ -1,0 +1,27 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.main-header {
+	display: flex;
+	justify-content: center;
+}
+
+.warehouse-info {
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
+}
+
+.table-header {
+	@include table-header;
+}
+
+.warehouse-info__address-content {
+	display: flex;
+	gap: 0.5ch;
+}
+
+.warehouse-info__contact {
+	display: flex;
+	gap: 1rem;
+}
