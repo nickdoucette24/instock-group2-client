@@ -4,39 +4,49 @@
 // Media Query Mixins
 @include mobile;
 @mixin tablet {
-  @media (min-width: $tablet-breakpoint) {
-    @content;
-    @include pc;
-  }
+	@media (min-width: $tablet-breakpoint) {
+		@content;
+	}
 }
 
 @mixin laptop {
-  @media (min-width: $pc-breakpoint) {
-    @content;
-  }
+	@media (min-width: $pc-breakpoint) {
+		@content;
+	}
 }
 
 // Font Mixins
 @mixin regular {
-  font-family: "Titillium Regular";
+	font-family: "Titillium Regular";
 }
 
 @mixin semiBold {
-  font-family: "Titillium Semi Bold";
+	font-family: "Titillium Semi Bold";
 }
 
 // General shape of buttons and search bars
 @mixin interactive-components {
-  height: 2.25rem;
-  padding-left: 16px;
-  padding-right: 16px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
+	height: 2.25rem;
+	padding-left: 16px;
+	padding-right: 16px;
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
 }
 
 // Button Mixin
 @mixin btn {
-  @include interactive-components;
-  justify-content: center;
+	@include interactive-components;
+	justify-content: center;
+}
+
+// Type Kit
+@mixin labels-links-buttons {
+	font-size: 13px;
+	line-height: 20px;
+
+	@include tablet() {
+		font-size: 14px;
+		line-height: 22px;
+	}
 }
