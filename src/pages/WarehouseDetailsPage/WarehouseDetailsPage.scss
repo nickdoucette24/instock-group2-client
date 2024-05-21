@@ -3,7 +3,17 @@
 
 .main-header {
 	display: flex;
-	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.back-button-container {
+	display: flex;
+	align-items: center;
+}
+
+.warehouse-name {
+	flex-grow: 1;
 }
 
 .warehouse-info {

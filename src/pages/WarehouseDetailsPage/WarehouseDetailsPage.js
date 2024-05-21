@@ -22,10 +22,10 @@ const WarehouseDetailsPage = () => {
 	console.log(warehouseDetails);
 
 	return (
-		<div>
-			<main>
+		<main>
+			<div className="floaty-container">
 				<div className="main-header">
-					<Link to={"/"}>
+					<Link to={"/"} className="back-button-container">
 						<BackButton />
 					</Link>
 					<h1 className="warehouse-name">{warehouseDetails.warehouse_name}</h1>
@@ -63,8 +63,8 @@ const WarehouseDetailsPage = () => {
 					</div>
 				</div>
 				{/* <div>inventory list</div> */}
-			</main>
-		</div>
+			</div>
+		</main>
 	);
 };
 
