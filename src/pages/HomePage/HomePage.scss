@@ -20,7 +20,7 @@ body {
 }
 
 main {
-	background-color: $cloud;
+	background-color: $light-grey;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -37,7 +37,6 @@ main {
 	z-index: 1;
 	display: flex;
 	width: calc(100% - 2rem);
-	margin-bottom: -1rem;
 	@include tablet {
 		margin-top: -5.2rem;
 	}
