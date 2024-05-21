@@ -7,15 +7,15 @@ const Header = () => {
   const [selectedPage, setSelectedPage] = useState('warehouses');
 
   return (
-    <section className='header'>
+    <header className='header'>
       <div className='header__wrapper'>
         <img className='header__logo' src={logo} alt='instock logo' />
-        <div className='header__nav'>
+        <nav className='header__nav'>
           <button className={`header__nav-btn ${selectedPage === 'warehouses' ? 'selected-button' : ''}`} onClick={() => setSelectedPage('warehouses')}>Warehouses</button>
           <button className={`header__nav-btn ${selectedPage === 'inventory' ? 'selected-button' : ''}`} onClick={() => setSelectedPage('inventory')}>Inventory</button>
-        </div>
+        </nav>
       </div>
-    </section>
+    </header>
   )
 };
 
