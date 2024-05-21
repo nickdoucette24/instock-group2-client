@@ -9,38 +9,88 @@
     padding: 0 1rem;
     height: 12.5rem;
 
+    @include tablet {
+        padding: 0 2rem;
+        flex-direction: row;
+        height: 11.625rem;
+    }
+
+    @include laptop {
+        padding: 0;
+    }
+
     &__wrapper {
         @include flexCenter;
+        width: 100%;
         flex-direction: column;
         padding: 1.5rem 0;
+
+        @include tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0;
+        }
+
+        @include laptop {
+            width: 63.75rem;
+        }
+
     }
 
     &__logo {
         width: 8.036875rem;
         height: 1.75rem;
-        padding-bottom: 1.5rem
+        padding-bottom: 1.5rem;
+
+        @include tablet {
+            padding-bottom: 0;
+            margin: 2rem 0;
+            height: 2.375rem;
+        }
     }
 
     &__nav {
         @include flexCenter;
+        gap: 1rem;
+        width: 100%;
+        justify-content: space-between;
+
+        @include tablet {
+            width: auto;
+        }
     }
 
     &__nav-btn {
+        @include labels-links-buttons;
         height: 2.25rem;
-        width: 10.25rem;
+        width: 100%;
+        min-width: 6rem;
         border-radius: 20px;
-        background: none;
+        background-color: $graphite;
         border: none;
         color: $white;
-        @include regular;
         font-size: 0.8125rem;
         line-height: 20px;
         margin-bottom: 1.5rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        padding: 0;
+
+        @include tablet {
+            margin-bottom: 0;
+            padding: 0 1rem;
+            width: auto;
+        }
+
+        &:hover {
+            background-color: $instock-black;
+        }
     }
 }
 
 .selected-button {
     background-color: $instock-black;
+    transition: background-color 0.3s ease;
 }
 
 
