@@ -11,9 +11,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-
-{/* <div className="footer__wrapper">
-    <div className="copyright__wrapper"></div>
-    <p copyright__details>© InStock Inc. All Rights Reserved.</p>
-  </div> */}
