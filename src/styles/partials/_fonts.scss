@@ -14,83 +14,91 @@
 	font-style: normal;
 }
 
-* {
-    font-family: "Titillium Regular";
-}
-
 // Type kit
 @mixin mobile {
-    h1 { // page header
-        font-size: 28px;
-        line-height: 36px;
-    }
+	h1 {
+		// page header
+		font-size: 28px;
+		line-height: 36px;
+	}
 
+	h2 {
+		// subheader
+		font-size: 20px;
+		line-height: 28px;
+	}
 
-    h2 { // subheader
-        font-size: 20px;
-        line-height: 28px; 
-    }
+	h3 {
+		// labels, links and buttons
+		font-size: 13px;
+		line-height: 20px;
+	}
 
-    h3 { // labels, links and buttons
-        font-size: 13px;
-        line-height: 20px;
-    }
+	h4 {
+		// table header
+		font-size: 11px;
+		line-height: 16px;
+	}
 
-    h4 { // table header
-        font-size: 11px;
-        line-height: 16px;
-    }
+	.p1 {
+		// Body large
+		font-size: 15px;
+		line-height: 26px;
+	}
 
-    .p1 { // Body large
-        font-size: 15px;
-        line-height: 26px;
-    }
+	.p2 {
+		// Body large
+		font-size: 13px;
+		line-height: 20px;
+	}
 
-    .p2 { // Body large
-        font-size: 13px;
-        line-height: 20px;
-    }
-
-    .p3 { // Body large
-        font-size: 11px;
-        line-height: 16px;
-    }
+	.p3 {
+		// Body large
+		font-size: 11px;
+		line-height: 16px;
+	}
 }
 
 @mixin pc {
-    h1 { // page header
-        font-size: 32px;
-        line-height: 40px;
-    }
+	h1 {
+		// page header
+		font-size: 32px;
+		line-height: 40px;
+	}
 
+	h2 {
+		// subheader
+		font-size: 24px;
+		line-height: 32px;
+	}
 
-    h2 { // subheader
-        font-size: 24px;
-        line-height: 32px; 
-    }
+	h3 {
+		// labels, links and buttons
+		font-size: 14px;
+		line-height: 22px;
+	}
 
-    h3 { // labels, links and buttons
-        font-size: 14px;
-        line-height: 22px;
-    }
+	h4 {
+		// table header
+		font-size: 14px;
+		line-height: 20px;
+	}
 
-    h4 { // table header
-        font-size: 14px;
-        line-height: 20px;
-    }
+	.p1 {
+		// Body large
+		font-size: 16px;
+		line-height: 28px;
+	}
 
-    .p1 { // Body large
-        font-size: 16px;
-        line-height: 28px;
-    }
+	.p2 {
+		// Body large
+		font-size: 14px;
+		line-height: 22px;
+	}
 
-    .p2 { // Body large
-        font-size: 14px;
-        line-height: 22px;
-    }
-
-    .p3 { // Body large
-        font-size: 12px;
-        line-height: 18px;
-    }
+	.p3 {
+		// Body large
+		font-size: 12px;
+		line-height: 18px;
+	}
 }
