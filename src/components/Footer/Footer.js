@@ -1,4 +1,3 @@
-import axios from "axios";
 import "./Footer.scss";
 
 const Footer = () => {

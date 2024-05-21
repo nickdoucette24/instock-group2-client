@@ -16,11 +16,13 @@
 
 // Font Mixins
 @mixin regular {
-	font-family: "Titillium Regular";
+	font-family: "Titillium";
+	font-weight: 400;
 }
 
 @mixin semiBold {
-	font-family: "Titillium Semi Bold";
+	font-family: "Titillium";
+	font-weight: 600;
 }
 
 // General shape of buttons and search bars
@@ -37,6 +39,13 @@
 @mixin btn {
 	@include interactive-components;
 	justify-content: center;
+}
+
+// Flexbox Mixins
+@mixin flexCenter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 // Type Kit
@@ -63,6 +72,7 @@
 }
 
 @mixin labels-links-buttons {
+	@include semiBold();
 	font-size: 13px;
 	line-height: 20px;
 	font-weight: 600;

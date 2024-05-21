@@ -21,6 +21,7 @@ const HomePage = () => {
 				return warehouses;
 			})
 			.catch((err) => console.error(err));
+		// eslint-disable-next-line
 	}, []);
 
 	// TODO: Add sorting functionality
