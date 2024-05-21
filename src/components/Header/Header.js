@@ -1,17 +1,22 @@
-import axios from "axios";
+import { useState } from 'react';
+
+import logo from '../../assets/Logo/InStock-Logo.svg'
 import "./Header.scss";
 
 const Header = () => {
-  return <div className="header__wrapper">
-    <div className="logo__wrapper">
-      <img url="" alt=""></img>
-      <a href="" className="header__logo">instock</a>
-    </div>
-    <div className="tab__wrapper">
-      <button className="btn" placeholder="Warehouses"></button>
-      <button className="btn" placeholder="Inventory"></button>
-    </div>
-  </div>;
+  const [selectedPage, setSelectedPage] = useState('warehouses');
+
+  return (
+    <header className='header'>
+      <div className='header__wrapper'>
+        <img className='header__logo' src={logo} alt='instock logo' />
+        <nav className='header__nav'>
+          <button className={`header__nav-btn ${selectedPage === 'warehouses' ? 'selected-button' : ''}`} onClick={() => setSelectedPage('warehouses')}>Warehouses</button>
+          <button className={`header__nav-btn ${selectedPage === 'inventory' ? 'selected-button' : ''}`} onClick={() => setSelectedPage('inventory')}>Inventory</button>
+        </nav>
+      </div>
+    </header>
+  )
 };
 
 export default Header;
