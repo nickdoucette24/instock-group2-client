@@ -2,7 +2,6 @@
 @use "./fonts" as *;
 
 // Media Query Mixins
-@include mobile;
 @mixin tablet {
 	@media (min-width: $tablet-breakpoint) {
 		@content;
@@ -41,12 +40,80 @@
 }
 
 // Type Kit
+@mixin page-header {
+	font-size: 28px;
+	line-height: 36px;
+	font-weight: 600;
+
+	@include tablet() {
+		font-size: 32px;
+		line-height: 40px;
+	}
+}
+
+@mixin subheader {
+	font-size: 20px;
+	line-height: 28px;
+	font-weight: 600;
+
+	@include tablet() {
+		font-size: 24px;
+		line-height: 32px;
+	}
+}
+
 @mixin labels-links-buttons {
 	font-size: 13px;
 	line-height: 20px;
+	font-weight: 600;
 
 	@include tablet() {
 		font-size: 14px;
 		line-height: 22px;
+	}
+}
+
+@mixin table-header {
+	text-transform: uppercase;
+	font-size: 11px;
+	line-height: 16px;
+	font-weight: 400;
+
+	@include tablet() {
+		font-size: 12px;
+		line-height: 18px;
+	}
+}
+
+@mixin body-large {
+	font-size: 15px;
+	line-height: 26px;
+	font-weight: 400;
+
+	@include tablet() {
+		font-size: 16px;
+		line-height: 28px;
+	}
+}
+
+@mixin body-medium {
+	font-size: 13px;
+	line-height: 20px;
+	font-weight: 400;
+
+	@include tablet() {
+		font-size: 14px;
+		line-height: 22px;
+	}
+}
+
+@mixin body-small {
+	font-size: 11px;
+	line-height: 16px;
+	font-weight: 400;
+
+	@include tablet() {
+		font-size: 12px;
+		line-height: 18px;
 	}
 }
