@@ -21,12 +21,12 @@
 	}
 
 	&__content {
+		@include labels-links-buttons;
+		padding-left: 0.5em;
 		display: none;
 
 		@include tablet {
-			@include labels-links-buttons;
 			display: inline;
-			padding-left: 0.5em;
 		}
 	}
 }
