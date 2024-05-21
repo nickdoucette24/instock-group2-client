@@ -40,3 +40,10 @@
   @include interactive-components;
   justify-content: center;
 }
+
+// Flexbox Mixins
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
