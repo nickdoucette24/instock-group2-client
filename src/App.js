@@ -1,13 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
-import HomePage from './pages/HomePage/HomePage';
-import WarehouseDetailsPage from './pages/WarehouseDetailsPage/WarehouseDetailsPage';
-import AddEditWarehousePage from './pages/AddEditWarehousePage/AddEditWarehousePage';
+import WarehousesPage from './pages/WarehousesPage/WarehousesPage';
 import InventoryPage from './pages/InventoryPage/InventoryPage';
-import InventoryDetailsPage from './pages/InventoryDetailsPage/InventoryDetailsPage';
-import AddEditInventoryPage from './pages/AddEditInventoryPage/AddEditInventoryPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+
+
 import "./App.scss";
 
 function App() {
@@ -15,17 +13,17 @@ function App() {
     <BrowserRouter>
     <Header/>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/warehouses/:id" element={<WarehouseDetailsPage />} />
-        <Route path="/warehouses/:id/edit" element={<AddEditWarehousePage />} />
-        <Route path="/warehouses/add" element={<AddEditWarehousePage />} />
+        <Route path="/" element={<WarehousesPage />} />
+        <Route path="/warehouses/:id" element={<WarehousesPage />} />
+        <Route path="/warehouses/:id/edit" element={<WarehousesPage />} />
+        <Route path="/warehouses/add" element={<WarehousesPage />} />
         <Route path="/inventories" element={<InventoryPage />} />
-        <Route path="/inventories/:id" element={<InventoryDetailsPage />} />
+        <Route path="/inventories/:id" element={<InventoryPage />} />
         <Route
           path="/inventories/:id/edit"
-          element={<AddEditInventoryPage />}
+          element={<InventoryPage />}
         />
-        <Route path="/inventories/add" element={<AddEditInventoryPage />} />
+        <Route path="/inventories/add" element={<InventoryPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer/>
