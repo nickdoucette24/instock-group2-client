@@ -37,8 +37,11 @@ main {
 	z-index: 1;
 	display: flex;
 	width: calc(100% - 2rem);
+	border-radius: 2px;
+
 	@include tablet {
 		margin-top: -5.2rem;
+		max-width: 63.75rem;
 	}
 
 	&__top {

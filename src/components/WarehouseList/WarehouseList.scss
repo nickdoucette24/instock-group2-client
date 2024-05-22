@@ -5,13 +5,14 @@
 // Top of the table with the sorting buttons
 .sorty-selectors {
 	display: none;
+	padding: 0 1.25rem;
+	background-color: $light-grey;
+	justify-content: space-around;
+	align-items: center;
+
 	@include tablet {
 		display: flex;
 	}
-	padding: 0 1.25rem;
-	background-color: $slate;
-	justify-content: space-around;
-	align-items: center;
 
 	&__item {
 		display: flex;
