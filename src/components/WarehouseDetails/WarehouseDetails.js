@@ -29,7 +29,9 @@ const WarehouseDetails = () => {
 					<BackButton />
 				</Link>
 				<h1 className="warehouse-name">{warehouseDetails.warehouse_name}</h1>
-				<EditButton />
+				<Link to={`/warehouses/${warehouseDetails.id}/edit`}>
+					<EditButton />
+				</Link>
 			</div>
 			<div className="warehouse-info">
 				<div className="warehouse-info__address">
