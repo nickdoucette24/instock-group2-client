@@ -5,13 +5,33 @@ import EditWarehouse from "../../components/EditWarehouse/EditWarehouse";
 
 import "./WarehousesPage.scss";
 
+import { useLocation } from "react-router-dom";
 
 const WarehousesPage = () => {
+	const location = useLocation();
+	console.log(location);
+
+	// const renderWarehouseDetails = () => {
+	// 	return <WarehouseDetails />;
+	// };
+
+	// const renderComponents = () => {
+	// 	switch (urlParams) {
+	// 		case urlParams:
+	// 			return renderWarehouseDetails();
+
+	// 		default:
+	// 			return <WarehouseList />;
+	// 	}
+	// };
+
 	return (
 		<>
 			<main>
 				<div className="floaty-container">
-					<WarehouseList />
+					{/* {renderComponents()} */}
+					{/* <WarehouseDetails /> */}
+					{/* <WarehouseList /> */}
 				</div>
 			</main>
 		</>
