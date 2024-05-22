@@ -41,6 +41,7 @@ main {
 
 	@include tablet {
 		margin-top: -5.2rem;
+		max-width: 63.75rem;
 	}
 
 	&__top {

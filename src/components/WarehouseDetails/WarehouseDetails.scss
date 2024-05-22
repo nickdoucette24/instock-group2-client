@@ -11,6 +11,10 @@
 	@include tablet {
 		padding: 2rem;
 	}
+
+	@include laptop {
+		padding: 2rem 2.5rem;
+	}
 }
 
 .back-button-container {
@@ -36,6 +40,10 @@
 		padding: 1.5rem 2rem;
 	}
 
+	@include laptop {
+		padding: 1.5rem 2.5rem;
+	}
+
 	& * {
 		margin: 0;
 		padding: 0;
@@ -43,7 +51,7 @@
 
 	&__address {
 		@include tablet {
-			width: 33%;
+			width: 40%;
 			border-right: 1px solid $cloud;
 		}
 	}
@@ -73,7 +81,8 @@
 
 		.contact-name {
 			@include tablet {
-				width: 50%;
+				width: 40%;
+				max-width: 13.5625rem;
 			}
 		}
 
