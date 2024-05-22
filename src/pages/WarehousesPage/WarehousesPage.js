@@ -9,30 +9,18 @@ import { useLocation } from "react-router-dom";
 
 const WarehousesPage = () => {
 	const location = useLocation();
-	console.log(location);
 
-	// const renderWarehouseDetails = () => {
-	// 	return <WarehouseDetails />;
-	// };
-
-	// const renderComponents = () => {
-	// 	switch (urlParams) {
-	// 		case urlParams:
-	// 			return renderWarehouseDetails();
-
-	// 		default:
-	// 			return <WarehouseList />;
-	// 	}
-	// };
+	const renderComponents = () => {
+		if (location.pathname.includes("/edit")) return <EditWarehouse />;
+		if (location.pathname.includes("/add")) return <AddWarehouse />;
+		if (location.pathname.includes("/warehouses")) return <WarehouseDetails />;
+		if (location.pathname === "/") return <WarehouseList />;
+	};
 
 	return (
 		<>
 			<main>
-				<div className="floaty-container">
-					{/* {renderComponents()} */}
-					{/* <WarehouseDetails /> */}
-					{/* <WarehouseList /> */}
-				</div>
+				<div className="floaty-container">{renderComponents()}</div>
 			</main>
 		</>
 	);
