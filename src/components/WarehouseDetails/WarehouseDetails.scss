@@ -7,6 +7,10 @@
 	gap: 0.5rem;
 	padding: 2rem 1.5rem 1.5rem;
 	border-bottom: 1px solid $cloud;
+
+	@include tablet {
+		padding: 2rem;
+	}
 }
 
 .back-button-container {
@@ -27,29 +31,59 @@
 	gap: 2.25rem;
 	border-bottom: 1px solid $cloud;
 
+	@include tablet {
+		flex-direction: row;
+		padding: 1.5rem 2rem;
+	}
+
 	& * {
 		margin: 0;
 		padding: 0;
+	}
+
+	&__address {
+		@include tablet {
+			width: 33%;
+			border-right: 1px solid $cloud;
+		}
+	}
+
+	&__address-content {
+		@include body-medium;
+		display: flex;
+		gap: 0.5ch;
+
+		@include tablet {
+			flex-direction: column;
+			gap: 0;
+		}
+	}
+
+	&__contact {
+		@include body-medium;
+		display: flex;
+		justify-content: space-between;
+
+		@include tablet {
+			gap: 1.5rem;
+			width: 50%;
+			justify-content: flex-start;
+			flex-grow: 1;
+		}
+
+		.contact-name {
+			@include tablet {
+				width: 50%;
+			}
+		}
+
+		.contact-info {
+			padding-right: 1rem;
+		}
 	}
 }
 
 .table-header {
 	@include table-header;
 	padding-bottom: 0.25rem;
-}
-
-.warehouse-info__address-content {
-	@include body-medium;
-	display: flex;
-	gap: 0.5ch;
-}
-
-.warehouse-info__contact {
-	@include body-medium;
-	display: flex;
-	justify-content: space-between;
-
-	.contact-info {
-		padding-right: 1rem;
-	}
 }
