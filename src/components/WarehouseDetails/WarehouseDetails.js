@@ -99,7 +99,7 @@ const WarehouseDetails = () => {
 					<h4 className="table-header">actions</h4>
 				</div>
 			</div>
-			{/* <div>inventory list</div> */}
+			{/* inventory list */}
 		</>
 	);
 };
