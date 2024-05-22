@@ -63,7 +63,7 @@
 }
 
 // Type Kit
-@mixin page-header {
+@mixin page-header { // h1
 	font-size: 28px;
 	line-height: 36px;
 	font-weight: 600;
@@ -74,7 +74,7 @@
 	}
 }
 
-@mixin subheader {
+@mixin subheader { // h2
 	font-size: 20px;
 	line-height: 28px;
 	font-weight: 600;
@@ -85,7 +85,7 @@
 	}
 }
 
-@mixin labels-links-buttons {
+@mixin labels-links-buttons { // h3
 	@include semiBold();
 	font-size: 13px;
 	line-height: 20px;
@@ -97,7 +97,7 @@
 	}
 }
 
-@mixin table-header {
+@mixin table-header { // h4
 	text-transform: uppercase;
 	color: $slate;
 	font-size: 11px;
@@ -110,7 +110,7 @@
 	}
 }
 
-@mixin body-large {
+@mixin body-large { // .p1
 	font-size: 15px;
 	line-height: 26px;
 	font-weight: 400;
@@ -121,7 +121,7 @@
 	}
 }
 
-@mixin body-medium {
+@mixin body-medium { // .p2
 	font-size: 13px;
 	line-height: 20px;
 	font-weight: 400;
@@ -132,7 +132,7 @@
 	}
 }
 
-@mixin body-small {
+@mixin body-small { // .p3
 	font-size: 11px;
 	line-height: 16px;
 	font-weight: 400;
@@ -142,3 +142,14 @@
 		line-height: 18px;
 	}
 }
+
+// Set fonts
+h1 { @include page-header; }
+h2 { @include subheader; }
+h3 { @include labels-links-buttons; }
+h4 { @include table-header; }
+
+// Paragraph classes
+.p1 { @include body-large; }
+.p2 { @include body-medium; }
+.p3 { @include body-small; }
