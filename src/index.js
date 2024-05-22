@@ -1,6 +1,3 @@
-import "./styles/partials/_fonts.scss";
-import "./styles/partials/_reset.scss";
-
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
