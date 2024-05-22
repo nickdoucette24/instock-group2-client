@@ -1,13 +1,13 @@
-import "./WarehouseDetailsPage.scss";
+import "./WarehouseDetails.scss";
 
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
-import EditButton from "../../components/EditButton/EditButton";
-import BackButton from "../../components/BackButton/BackButton";
+import EditButton from "./EditButton/EditButton";
+import BackButton from "./BackButton/BackButton";
 
-const WarehouseDetailsPage = () => {
+const WarehouseDetails = () => {
 	const [warehouseDetails, setwarehouseDetails] = useState({});
 
 	const { id } = useParams();
@@ -68,4 +68,4 @@ const WarehouseDetailsPage = () => {
 	);
 };
 
-export default WarehouseDetailsPage;
+export default WarehouseDetails;
