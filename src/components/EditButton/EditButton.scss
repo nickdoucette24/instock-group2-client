@@ -2,6 +2,8 @@
 @use "../../styles/partials/mixins" as *;
 
 .edit-button {
+	cursor: pointer;
+	border: none;
 	background-color: $instock-indigo;
 	color: $white;
 	display: flex;

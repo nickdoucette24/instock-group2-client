@@ -99,9 +99,10 @@
 
 @mixin table-header {
 	text-transform: uppercase;
+	color: $slate;
 	font-size: 11px;
 	line-height: 16px;
-	font-weight: 400;
+	font-weight: 600;
 
 	@include tablet() {
 		font-size: 12px;
