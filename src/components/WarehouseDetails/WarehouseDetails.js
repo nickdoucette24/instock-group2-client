@@ -6,6 +6,7 @@ import axios from "axios";
 
 import EditButton from "../EditButton/EditButton";
 import BackButton from "../BackButton/BackButton";
+import sortButton from "../../assets/Icons/sort-24px.svg";
 
 const WarehouseDetails = () => {
 	const [warehouseDetails, setwarehouseDetails] = useState({});
@@ -32,7 +33,7 @@ const WarehouseDetails = () => {
 			</div>
 			<div className="warehouse-info">
 				<div className="warehouse-info__address">
-					<h4 className="table-header">warehouse address:</h4>
+					<h4 className="info-header">warehouse address:</h4>
 					<div className="warehouse-info__address-content">
 						<p>{warehouseDetails.address},</p>
 						<p>
@@ -42,7 +43,7 @@ const WarehouseDetails = () => {
 				</div>
 				<div className="warehouse-info__contact">
 					<div className="contact-name">
-						<h4 className="table-header">contact name:</h4>
+						<h4 className="info-header">contact name:</h4>
 						<p className="contact-name__name">
 							{warehouseDetails.contact_name}
 						</p>
@@ -51,7 +52,7 @@ const WarehouseDetails = () => {
 						</p>
 					</div>
 					<div className="contact-info">
-						<h4 className="table-header">contact information:</h4>
+						<h4 className="info-header">contact information:</h4>
 						<p className="contact-info__phone">
 							{warehouseDetails.contact_phone}
 						</p>
@@ -59,6 +60,43 @@ const WarehouseDetails = () => {
 							{warehouseDetails.contact_email}
 						</p>
 					</div>
+				</div>
+			</div>
+			<div className="warehouse-sort-bar">
+				<div className="warehouse-sort-bar__column">
+					<h4 className="table-header">inventory item</h4>
+					<img
+						className="sort-button"
+						src={sortButton}
+						alt="sort button icon"
+					/>
+				</div>
+				<div className="warehouse-sort-bar__column">
+					<h4 className="table-header">category</h4>
+					<img
+						className="sort-button"
+						src={sortButton}
+						alt="sort button icon"
+					/>
+				</div>
+				<div className="warehouse-sort-bar__column warehouse-sort-bar__column--status">
+					<h4 className="table-header">status</h4>
+					<img
+						className="sort-button"
+						src={sortButton}
+						alt="sort button icon"
+					/>
+				</div>
+				<div className="warehouse-sort-bar__column">
+					<h4 className="table-header">quantity</h4>
+					<img
+						className="sort-button"
+						src={sortButton}
+						alt="sort button icon"
+					/>
+				</div>
+				<div className="warehouse-sort-bar__column">
+					<h4 className="table-header">actions</h4>
 				</div>
 			</div>
 			{/* <div>inventory list</div> */}

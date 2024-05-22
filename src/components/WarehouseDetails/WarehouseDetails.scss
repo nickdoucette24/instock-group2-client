@@ -38,6 +38,7 @@
 	@include tablet {
 		flex-direction: row;
 		padding: 1.5rem 2rem;
+		border-bottom: none;
 	}
 
 	@include laptop {
@@ -92,7 +93,29 @@
 	}
 }
 
-.table-header {
+.info-header {
 	@include table-header;
 	padding-bottom: 0.25rem;
+}
+
+.table-header {
+	@include table-header;
+	margin: 0;
+}
+
+.warehouse-sort-bar {
+	display: none;
+	background-color: $light-grey;
+
+	@include tablet {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0.6875rem 2rem;
+	}
+
+	&__column {
+		display: flex;
+		align-items: center;
+	}
 }
