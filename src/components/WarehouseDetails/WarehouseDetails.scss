@@ -1,0 +1,40 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.main-header {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 1.5rem 1rem;
+	border-bottom: 1px solid $cloud;
+}
+
+.back-button-container {
+	display: flex;
+	align-items: center;
+}
+
+.warehouse-name {
+	flex-grow: 1;
+}
+
+.warehouse-info {
+	display: flex;
+	flex-direction: column;
+	gap: 3rem;
+	border-bottom: 1px solid $cloud;
+}
+
+.table-header {
+	@include table-header;
+}
+
+.warehouse-info__address-content {
+	display: flex;
+	gap: 0.5ch;
+}
+
+.warehouse-info__contact {
+	display: flex;
+	gap: 1rem;
+}

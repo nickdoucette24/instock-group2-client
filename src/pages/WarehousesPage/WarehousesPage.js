@@ -5,14 +5,22 @@ import EditWarehouse from "../../components/EditWarehouse/EditWarehouse";
 
 import "./WarehousesPage.scss";
 
+import { useLocation } from "react-router-dom";
 
 const WarehousesPage = () => {
+	const location = useLocation();
+
+	const renderComponents = () => {
+		if (location.pathname.includes("/edit")) return <EditWarehouse />;
+		if (location.pathname.includes("/add")) return <AddWarehouse />;
+		if (location.pathname.includes("/warehouses")) return <WarehouseDetails />;
+		if (location.pathname === "/") return <WarehouseList />;
+	};
+
 	return (
 		<>
 			<main>
-				<div className="floaty-container">
-					<WarehouseList />
-				</div>
+				<div className="floaty-container">{renderComponents()}</div>
 			</main>
 		</>
 	);
