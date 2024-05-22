@@ -10,7 +10,7 @@ import sortButton from "../../assets/Icons/sort-24px.svg";
 
 const WarehouseDetails = () => {
 	const [warehouseDetails, setwarehouseDetails] = useState({});
-	const [warehouseInventory, setWarehouseInventory] = useState({});
+	const [warehouseInventory, setWarehouseInventory] = useState([]);
 
 	const { id } = useParams();
 
@@ -31,7 +31,7 @@ const WarehouseDetails = () => {
 	}, []);
 
 	// console.log(warehouseDetails);
-	// console.log(warehouseInventory);
+	console.log(warehouseInventory);
 
 	return (
 		<>
