@@ -3,7 +3,7 @@ import "./App.scss";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import HomePage from "./pages/HomePage/HomePage";
-import WarehouseDetailsPage from "./components/WarehouseDetailsPage/WarehouseDetailsPage";
+// import WarehouseDetailsPage from "./components/WarehouseDetailsPage/WarehouseDetailsPage";
 import AddEditWarehousePage from "./pages/AddEditWarehousePage/AddEditWarehousePage";
 import InventoryPage from "./pages/InventoryPage/InventoryPage";
 import InventoryDetailsPage from "./pages/InventoryDetailsPage/InventoryDetailsPage";
