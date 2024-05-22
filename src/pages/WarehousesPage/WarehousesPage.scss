@@ -1,0 +1,69 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/fonts" as *;
+
+// Appear in mobile mode
+.mobile {
+	display: inline;
+	@media (min-width: $tablet-breakpoint) {
+		display: none;
+	}
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+main {
+	background-color: $light-grey;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.floaty-container {
+	background-color: $white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: relative;
+	margin-top: -4rem;
+	z-index: 1;
+	display: flex;
+	width: calc(100% - 2rem);
+	@include tablet {
+		margin-top: -5.2rem;
+	}
+
+	&__top {
+		display: block;
+		padding: 1.25rem;
+
+		@media (min-width: $tablet-breakpoint) {
+			display: flex;
+			justify-content: space-between;
+
+			& button {
+				margin: 0 0 0 1rem;
+				width: 10.5rem;
+			}
+
+			& input {
+				margin: 0;
+				width: 9.3rem;
+			}
+
+			// Positioning for search box and add button
+			&--controls {
+				display: flex;
+				align-items: center;
+			}
+		}
+	}
+}
