@@ -10,17 +10,28 @@ import sortButton from "../../assets/Icons/sort-24px.svg";
 
 const WarehouseDetails = () => {
 	const [warehouseDetails, setwarehouseDetails] = useState({});
+	const [warehouseInventory, setWarehouseInventory] = useState({});
 
 	const { id } = useParams();
 
 	useEffect(() => {
 		axios
 			.get(`http://localhost:8080/api/warehouses/${id}`)
-			.then((response) => setwarehouseDetails(response.data))
+			.then((response) => {
+				setwarehouseDetails(response.data);
+				// let warehouseId = response.data.id;
+				// return warehouseId;
+			})
+			.then(() => {
+				axios
+					.get(`http://localhost:8080/api/warehouses/${id}/inventories`)
+					.then((response) => setWarehouseInventory(response.data));
+			})
 			.catch((err) => console.error(err));
 	}, []);
 
-	console.log(warehouseDetails);
+	// console.log(warehouseDetails);
+	// console.log(warehouseInventory);
 
 	return (
 		<>
