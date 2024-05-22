@@ -5,7 +5,7 @@
 // Top of the table with the sorting buttons
 .sorty-selectors {
 	display: none;
-	@media (min-width: $tablet-breakpoint) {
+	@include tablet {
 		display: flex;
 	}
 	padding: 0 1.25rem;
