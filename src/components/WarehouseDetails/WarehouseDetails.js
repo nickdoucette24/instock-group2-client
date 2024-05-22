@@ -19,8 +19,6 @@ const WarehouseDetails = () => {
 			.get(`http://localhost:8080/api/warehouses/${id}`)
 			.then((response) => {
 				setwarehouseDetails(response.data);
-				// let warehouseId = response.data.id;
-				// return warehouseId;
 			})
 			.then(() => {
 				axios
@@ -30,7 +28,6 @@ const WarehouseDetails = () => {
 			.catch((err) => console.error(err));
 	}, []);
 
-	// console.log(warehouseDetails);
 	console.log(warehouseInventory);
 
 	return (
