@@ -2,6 +2,7 @@ import "./AddWarehouse.scss";
 
 import { Link } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
+import CancelButton from "../CancelButton/CancelButton";
 
 const AddWarehouse = () => {
 	return (
@@ -69,7 +70,9 @@ const AddWarehouse = () => {
 						</div>
 					</section>
 				</section>
-				<section className="buttons"></section>
+				<section className="buttons">
+					<CancelButton />
+				</section>
 			</form>
 		</>
 	);

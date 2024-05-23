@@ -1,0 +1,13 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.cancel-button {
+	@include btn;
+  background-color: $white;
+  border: 1px solid $cloud;
+  width: 50%;
+
+  @include tablet {
+   width: fit-content; 
+  }
+}
