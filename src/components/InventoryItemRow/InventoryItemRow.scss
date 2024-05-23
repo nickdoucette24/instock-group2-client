@@ -61,6 +61,11 @@
         color: $instock-black;
         margin: 0;
         @include body-medium;
+
+
+        @include tablet {
+            display: none;
+        }
     }
 }
 
@@ -102,6 +107,10 @@
         margin: 0;
         color: $instock-black;
         @include body-medium;
+
+        @include tablet {
+            display: none;
+        }
     }
 
     &__location {
@@ -117,7 +126,54 @@
         color: $instock-black;
         margin: 0;
         @include body-medium;
+
+        @include tablet {
+            display: none;            
+        }
     }
+}
+
+.long-row {
+    display: none;
+
+    @include tablet {
+        display: block;
+        color: $instock-black;
+        margin: 0;
+        @include body-medium;
+    }
+}
+
+.inventory-mod {
+    @include tablet {
+        width: 6.89125rem;
+    }
+    
+}
+
+.category-mod {
+    @include tablet {
+        width: 4.69125rem;
+    }
+}
+
+.status-mod {
+    @include tablet {
+        width: 3.72875rem;
+    }
+}
+
+.quantity-mod {
+    @include tablet {
+        width: 4.59125rem;
+    }
+}
+
+.warehouse-mod {
+    @include tablet {
+        width: 5.555rem;
+    }
+
 }
 
 .item-links {

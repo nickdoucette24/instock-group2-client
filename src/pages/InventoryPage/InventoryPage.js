@@ -60,17 +60,19 @@ const InventoryPage = () => {
               <p className='sorter-info__header'>STATUS</p>
               <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
             </div>
-            <div className='sorter-info__group'>
-              <p className='sorter-info__header'>QUANTITY</p>
-              <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
+            <div className='sorter-info__stockGroup'>
+              <div className='sorter-info__group'>
+                <p className='sorter-info__header'>QUANTITY</p>
+                <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
+              </div>
+              <div className='sorter-info__group'>
+                <p className='sorter-info__header'>WAREHOUSE</p>
+                <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
+              </div>
             </div>
-            <div className='sorter-info__group'>
-              <p className='sorter-info__header'>WAREHOUSE</p>
-              <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
-            </div>
-            <div className='sorter-actions'>
-              <p className='sorter-actions__header'>ACTIONS</p>
-            </div>
+              <div className='sorter-actions'>
+                <p className='sorter-actions__header'>ACTIONS</p>
+              </div>
           </div>
           {loading ? (
             <p className='list-loading'>Loading...</p>

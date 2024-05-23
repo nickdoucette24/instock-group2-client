@@ -27,6 +27,11 @@
         gap: 0.25rem;
     }
 
+    &__stockGroup {
+        @extend .sorter-info__group;
+        gap: 1.25rem;
+    }
+
     &__header {
         @include table-header;
     }
