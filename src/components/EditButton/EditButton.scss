@@ -12,6 +12,15 @@
 	border-radius: 20px;
 	height: 36px;
 	width: 36px;
+	transition: background-color 0.1s;
+
+	&:hover {
+		background-color: $graphite;
+	}
+
+	&:active {
+		transform: translateY(2px);
+	}
 
 	@include tablet {
 		height: 38px;
