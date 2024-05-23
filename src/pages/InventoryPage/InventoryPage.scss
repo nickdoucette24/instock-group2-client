@@ -1,8 +1,68 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
 
+.inventory-list {
+        &__sorter {
+            display: none;
+    
+            @include tablet {
+                display: flex;
+                justify-content: space-between;
+                background-color: $light-grey;
+                height: 2.5rem;
+                padding: 0 2rem;
+            }
+        }
+}
+
+.sorter-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2rem;
+
+    &__group {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    &__header {
+        @include table-header;
+    }
+}
+
+.sorter-details {
+    @extend .sorter-info;
+
+    &__group {
+        @extend .sorter-info__group;
+    }
+
+    &__header {
+        @include table-header;
+    }
+}
+
+.sorter-actions {
+    @include flexCenter;
+
+    &__header {
+        @include table-header;
+    }
+}
+
+.sort-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
 .content-wrapper {
     padding: 0 1rem;
+
+    @include tablet {
+        padding: 0 2rem;
+    }
 }
 
 .content-container {
@@ -11,6 +71,10 @@
     border-radius: 3px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     width: 100%;
+
+    @include tablet {
+        margin-top: -5.86rem;
+    }
 }
 
 .inventory-heading {
@@ -19,14 +83,32 @@
     flex-direction: column;
     padding: 0 1.5rem;
 
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        padding: 0 2rem;
+    }
+
     &__title {
         @include page-header;
         margin: 2rem 0 1rem 0;
+
+        @include tablet {
+            margin-bottom: 1.375rem;
+        }
     }
 
     &__item-container {
         @include flexCenter;
         flex-direction: column;
+
+        @include tablet {
+            flex-direction: row;
+            width: 50%;
+            margin: 2rem 0 1.5rem 0;
+        }
 
         &--search {
             width: 100%;
@@ -37,6 +119,10 @@
             transition: border-color 0.3s ease;
             color: $slate;
             @include body-medium;
+
+            @include tablet {
+                height: 2.375rem;
+            }
 
             &:focus {
                 border-color: $instock-indigo;
@@ -49,10 +135,32 @@
             @include addButton;
             margin: 1rem 0 1.5rem 0;
             padding: 0;
+            transition: background-color 0.2s ease;
+
+            @include tablet {
+                padding: 0 1rem;
+                width: auto;
+                text-wrap: nowrap;
+                margin: 0;
+            }
+
+            &:hover {
+                background-color: darken($instock-indigo, 10%);
+                transition: 0.2s ease;
+            }
 
             &:active {
-                background-color: $instock-black;
+                background-color: darken($instock-indigo, 30%);
+                transition: 0.2s ease;
             }
         }
+    }
+}
+
+.search-container {
+    width: 100%;
+
+    @include tablet {
+        margin-right: 1rem;
     }
 }

@@ -6,6 +6,7 @@ import axios from 'axios';
 // import InventoryDetails from "../../components/InventoryDetails/InventoryDetails";
 // import AddInventoryItem from "../../components/AddInventoryItem/AddInventoryItem";
 // import EditInventoryItem from "../../components/EditInventoryItem/EditInventoryItem";
+import sortIcon from '../../assets/Icons/sort-24px.svg';
 import InventoryItemRow from "../../components/InventoryItemRow/InventoryItemRow";
 
 import "./InventoryPage.scss";
@@ -39,19 +40,43 @@ const InventoryPage = () => {
         <div className="inventory-heading">
           <h1 className="inventory-heading__title">Inventory</h1>
           <div className="inventory-heading__item-container">
-            <input type="search" name="search" id="search" className="inventory-heading__item-container--search" placeholder='Search...' />
+            <div className='search-container'>
+              <input type="search" name="search" id="search" className="inventory-heading__item-container--search" placeholder='Search...' />
+            </div>
             <Link to='/inventories/add' className="inventory-heading__item-container--addItem">+ Add New Item</Link>
-          </div>
-          <div className="inventory-heading__sorter">
-
           </div>
         </div>
         <div className="inventory-list">
+          <div className="inventory-list__sorter">
+            <div className='sorter-info__group'>
+              <p className='sorter-info__header'>INVENTORY ITEM</p>
+              <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
+            </div>
+            <div className='sorter-info__group'>
+            <p className='sorter-info__header'>CATEGORY</p>
+              <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
+            </div>
+            <div className='sorter-info__group'>
+              <p className='sorter-info__header'>STATUS</p>
+              <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
+            </div>
+            <div className='sorter-info__group'>
+              <p className='sorter-info__header'>QUANTITY</p>
+              <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
+            </div>
+            <div className='sorter-info__group'>
+              <p className='sorter-info__header'>WAREHOUSE</p>
+              <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
+            </div>
+            <div className='sorter-actions'>
+              <p className='sorter-actions__header'>ACTIONS</p>
+            </div>
+          </div>
           {loading ? (
             <p className='list-loading'>Loading...</p>
           ) : (
-            inventoryItems.map(inventoryItem => (
-              <InventoryItemRow key={inventoryItem.id} inventoryItem={inventoryItem} />
+            inventoryItems.map((inventoryItem, index) => (
+              <InventoryItemRow key={inventoryItem.id} inventoryItem={inventoryItem} isFirst={index === 0} />
             ))
           )
         }
