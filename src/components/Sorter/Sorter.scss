@@ -1,0 +1,40 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.sorter-container {
+    display: none;
+
+    @include tablet {
+        display: flex;
+        height: 2.5rem;
+        padding: 0 2rem;
+        background-color: $light-grey;
+    }
+
+    @include laptop {
+        padding: 0 2.5rem;
+    }
+}
+
+.sorter-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &__field {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    &__header {
+        @include table-header;
+        margin: 0;
+        text-wrap: nowrap;
+    }
+}
+
+.sort-icon {
+    width: 1rem;
+    height: 1rem;
+}

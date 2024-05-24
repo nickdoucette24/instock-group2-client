@@ -1,4 +1,4 @@
-import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import logo from '../../assets/Logo/InStock-Logo.svg'
 import "./Header.scss";
