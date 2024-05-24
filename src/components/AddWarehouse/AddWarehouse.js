@@ -6,42 +6,63 @@ import axios from "axios";
 
 import BackButton from "../BackButton/BackButton";
 import CancelButton from "../CancelButton/CancelButton";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import InvalidErrorMessage from "../InvalidErrorMessage/InvalidErrorMessage";
 
 const AddWarehouse = () => {
-	const [warehouseName, setWarehouseName] = useState("");
-	const [streetAddress, setStreetAddress] = useState("");
-	const [city, setCity] = useState("");
-	const [country, setCountry] = useState("");
-	const [contactName, setContactName] = useState("");
-	const [position, setPosition] = useState("");
-	const [phone, setPhone] = useState("");
-	const [email, setEmail] = useState("");
+	const [errors, setErrors] = useState({});
+	const [formValues, setFormValues] = useState({
+		warehouse_name: "",
+		address: "",
+		city: "",
+		country: "",
+		contact_name: "",
+		contact_position: "",
+		contact_phone: "",
+		contact_email: ""
+	});
 
 	let navigate = useNavigate();
 
-	const handleChangeState = (event, setState) => {
-		let newState = event.target.value;
-		setState(newState);
+	const handleChangeState = (event) => {
+		const { name, value } = event.target;
+		setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+    setErrors({
+      ...errors,
+      [name]: '',
+    });
 	}
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
-		let newWarehouseData = {
-			warehouse_name: warehouseName,
-			address: streetAddress,
-			city,
-			country,
-			contact_name: contactName,
-			contact_position: position,
-			contact_phone: phone,
-			contact_email: email
-		}
+		const phoneRegex = /^(\+1[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/;
+		const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-		axios.post("http://localhost:8080/api/warehouses", newWarehouseData).then((response) => console.log(response.data)).catch((err) => console.log(err));
+		let formErrors = {};
+		if (!formValues.warehouse_name) formErrors.warehouse_name = true;
+		if (!formValues.address) formErrors.address = true;
+		if (!formValues.city) formErrors.city = true;
+		if (!formValues.country) formErrors.country = true;
+		if (!formValues.contact_name) formErrors.contact_name = true;
+		if (!formValues.contact_position) formErrors.contact_position = true;
+		if (!formValues.contact_phone) formErrors.contact_phone = true;
+		if (!phoneRegex.test(formValues.contact_phone)) formErrors.invalid_phone = true;
+		if (!formValues.contact_email) formErrors.contact_email = true;
+		if (!emailRegex.test(formValues.contact_email)) formErrors.invalid_email = true;
+		setErrors(formErrors);
 
-		// only navigate away if post successful ***********
-		navigate("/");
+
+
+
+		if (Object.keys(formErrors).length === 0) {
+      // No errors, form is valid
+			axios.post("http://localhost:8080/api/warehouses", formValues).then((response) => console.log(response.data)).catch((err) => console.log(err));
+			navigate("/");
+    }
 	}
 
 	return (
@@ -63,11 +84,12 @@ const AddWarehouse = () => {
 									<input 
 										className="form-input" 
 										type="text" 
-										name="warehouse-name" 
+										name="warehouse_name" 
 										placeholder="Warehouse Name"
-										onChange={(event) => handleChangeState(event, setWarehouseName)}
-										value={warehouseName}
+										onChange={handleChangeState}
+										value={formValues.warehouse_name}
 									/>
+									{errors.warehouse_name && <ErrorMessage />}
 								</label>
 							</div>
 							<div className="warehouse-details__street">
@@ -76,11 +98,12 @@ const AddWarehouse = () => {
 									<input 
 										className="form-input" 
 										type="text" 
-										name="street-address" 
+										name="address" 
 										placeholder="Street Address" 
-										onChange={(event) => handleChangeState(event, setStreetAddress)}
-										value={streetAddress}
+										onChange={handleChangeState}
+										value={formValues.address}
 									/>
+									{errors.address && <ErrorMessage />}
 								</label>
 							</div>
 							<div className="warehouse-details__city">
@@ -91,9 +114,10 @@ const AddWarehouse = () => {
 										type="text" 
 										name="city" 
 										placeholder="City" 
-										onChange={(event) => handleChangeState(event, setCity)}
-										value={city}
+										onChange={handleChangeState}
+										value={formValues.city}
 									/>
+									{errors.city && <ErrorMessage />}
 								</label>
 							</div>
 							<div className="warehouse-details__country">
@@ -104,9 +128,10 @@ const AddWarehouse = () => {
 										type="text" 
 										name="country" 
 										placeholder="Country" 
-										onChange={(event) => handleChangeState(event, setCountry)}
-										value={country}
+										onChange={handleChangeState}
+										value={formValues.country}
 									/>
+									{errors.country && <ErrorMessage />}
 								</label>
 							</div>
 						</div>
@@ -120,11 +145,12 @@ const AddWarehouse = () => {
 									<input 
 										className="form-input" 
 										type="text" 
-										name="contact-name" 
+										name="contact_name" 
 										placeholder="Contact Name" 
-										onChange={(event) => handleChangeState(event, setContactName)}
-										value={contactName}
+										onChange={handleChangeState}
+										value={formValues.contact_name}
 									/>
+									{errors.contact_name && <ErrorMessage />}
 								</label>
 							</div>
 							<div className="contact-details__position">
@@ -133,11 +159,12 @@ const AddWarehouse = () => {
 									<input 
 										className="form-input" 
 										type="text" 
-										name="position" 
+										name="contact_position" 
 										placeholder="Position" 
-										onChange={(event) => handleChangeState(event, setPosition)}
-										value={position}
+										onChange={handleChangeState}
+										value={formValues.contact_position}
 									/>
+									{errors.contact_position && <ErrorMessage />}
 								</label>
 							</div>
 							<div className="contact-details__phone">
@@ -146,11 +173,13 @@ const AddWarehouse = () => {
 									<input 
 										className="form-input" 
 										type="text" 
-										name="phone" 
+										name="contact_phone" 
 										placeholder="Phone Number" 
-										onChange={(event) => handleChangeState(event, setPhone)}
-										value={phone}
+										onChange={handleChangeState}
+										value={formValues.contact_phone}
 									/>
+									{errors.contact_phone && <ErrorMessage />}
+									{(!errors.contact_phone && errors.invalid_phone) && <InvalidErrorMessage field={"phone number"} />}
 								</label>
 							</div>
 							<div className="contact-details__email">
@@ -159,11 +188,13 @@ const AddWarehouse = () => {
 									<input 
 										className="form-input" 
 										type="text" 
-										name="email" 
+										name="contact_email" 
 										placeholder="Email" 
-										onChange={(event) => handleChangeState(event, setEmail)}
-										value={email}
+										onChange={handleChangeState}
+										value={formValues.contact_email}
 									/>
+									{errors.contact_email && <ErrorMessage />}
+									{(!errors.contact_email && errors.invalid_email) && <InvalidErrorMessage field={"email address"} />}
 								</label>
 							</div>
 						</div>
