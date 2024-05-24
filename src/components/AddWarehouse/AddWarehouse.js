@@ -2,6 +2,7 @@ import "./AddWarehouse.scss";
 
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 
 import BackButton from "../BackButton/BackButton";
 import CancelButton from "../CancelButton/CancelButton";
@@ -50,6 +51,23 @@ const AddWarehouse = () => {
 		setEmail(newEmail);
 	};
 
+	const handleSubmit = (event) => {
+		event.preventDefault();
+
+		let newWarehouseData = {
+			warehouse_name: warehouseName,
+			address: streetAddress,
+			city,
+			country,
+			contact_name: contactName,
+			contact_position: position,
+			contact_phone: phone,
+			contact_email: email
+		}
+
+		axios.post("http://localhost:8080/api/warehouses", newWarehouseData).then((response) => console.log(response.data));
+	}
+
 	return (
 		<>
 			<section className="main-header main-header--form">
@@ -58,7 +76,7 @@ const AddWarehouse = () => {
 				</Link>
 				<h1>Add New Warehouse</h1>
 			</section>
-			<form className="form-wrapper">
+			<form className="form-wrapper" onSubmit={handleSubmit}>
 				<section className="form-fields">
 					<section className="form-section form-section--warehouse">
 						<h2 className="form-section__header">Warehouse Details</h2>
@@ -177,7 +195,7 @@ const AddWarehouse = () => {
 				</section>
 				<section className="buttons">
 					<CancelButton />
-					<button className="btn__add btn__add--form">+ Add Warehouse</button>
+					<button className="btn__add btn__add--form" type="submit">+ Add Warehouse</button>
 				</section>
 			</form>
 		</>

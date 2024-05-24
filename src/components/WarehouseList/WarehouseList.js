@@ -69,7 +69,7 @@ const WarehouseList = () => {
 					return (
 						<>
 							<section className="warehouse-container">
-								<div class="warehouse-container__item">
+								<div className="warehouse-container__item">
 									<h4 className="mobile">WAREHOUSE</h4>
 									<span>
 										<Link to={`/warehouses/${warehouse.id}`}>
@@ -78,17 +78,17 @@ const WarehouseList = () => {
 										<img src={chevron} alt="" />
 									</span>
 								</div>
-								<div class="warehouse-container__item">
+								<div className="warehouse-container__item">
 									<h4 className="mobile">CONTACT NAME</h4>
 									<p className="p2">{warehouse.contact_name}</p>
 								</div>
-								<div class="warehouse-container__item">
+								<div className="warehouse-container__item">
 									<h4 className="mobile">ADDRESS</h4>
 									<p className="p2">
 										{warehouse.address}, {warehouse.city}, {warehouse.country}
 									</p>
 								</div>
-								<div class="warehouse-container__item">
+								<div className="warehouse-container__item">
 									<h4 className="mobile">CONTACT INFORMATION</h4>
 									<p className="p2">{warehouse.contact_phone}</p>
 									<p className="p2">{warehouse.contact_email}</p>
