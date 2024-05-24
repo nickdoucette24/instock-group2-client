@@ -1,0 +1,46 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.in-stock {
+    margin-top: 0.25rem;
+    border-radius: 1.25rem;
+    background-color: rgba($green, 7%);
+    color: $green;
+
+    @include tablet {
+        margin: 0
+    }
+
+    &__text {
+        @include table-header;
+        color: $green;
+        margin: 0;
+        padding: 0.25rem 0.5rem;
+
+        @include tablet {
+            text-wrap: nowrap;
+        }
+    }
+}
+
+.out-stock {
+    margin-top: 0.25rem;
+    border-radius: 1.25rem;
+    background-color: rgba($red, 7%);
+    color: $red;
+
+    @include tablet {
+        margin: 0;
+    }
+
+    &__text {
+        @include table-header;
+        color: $red;
+        margin: 0;
+        padding: 0.25rem 0.5rem;
+
+        @include tablet {
+            text-wrap: nowrap;
+        }
+    }
+}

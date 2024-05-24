@@ -7,6 +7,7 @@ import axios from 'axios';
 // import AddInventoryItem from "../../components/AddInventoryItem/AddInventoryItem";
 // import EditInventoryItem from "../../components/EditInventoryItem/EditInventoryItem";
 import InventoryItemRow from "../../components/InventoryItemRow/InventoryItemRow";
+import Sorter from '../../components/Sorter/Sorter';
 
 import "./InventoryPage.scss";
 
@@ -39,19 +40,19 @@ const InventoryPage = () => {
         <div className="inventory-heading">
           <h1 className="inventory-heading__title">Inventory</h1>
           <div className="inventory-heading__item-container">
-            <input type="search" name="search" id="search" className="inventory-heading__item-container--search" placeholder='Search...' />
+            <div className='search-container'>
+              <input type="search" name="search" id="search" className="inventory-heading__item-container--search" placeholder='Search...' />
+            </div>
             <Link to='/inventories/add' className="inventory-heading__item-container--addItem">+ Add New Item</Link>
-          </div>
-          <div className="inventory-heading__sorter">
-
           </div>
         </div>
         <div className="inventory-list">
+          <Sorter />
           {loading ? (
             <p className='list-loading'>Loading...</p>
           ) : (
-            inventoryItems.map(inventoryItem => (
-              <InventoryItemRow key={inventoryItem.id} inventoryItem={inventoryItem} />
+            inventoryItems.map((inventoryItem, index) => (
+              <InventoryItemRow key={inventoryItem.id} inventoryItem={inventoryItem} isFirst={index === 0} />
             ))
           )
         }

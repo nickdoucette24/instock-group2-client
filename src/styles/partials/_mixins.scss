@@ -53,6 +53,10 @@
 	background-color: $instock-indigo;
 	color: $white;
 	@include labels-links-buttons();
+
+	@include tablet() {
+		height: 2.375rem;
+	}
 }
 
 // Flexbox Mixins
@@ -86,7 +90,6 @@
 }
 
 @mixin labels-links-buttons { // h3
-	@include semiBold();
 	font-size: 13px;
 	line-height: 20px;
 	font-weight: 600;
