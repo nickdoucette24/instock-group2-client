@@ -90,6 +90,11 @@
   @include interactive-components;
   border: 1px solid $cloud;
   width: fill;
+
+  &:focus {
+    border: 1px solid $instock-indigo;
+    outline: none;
+  }
 }
 
 .buttons {

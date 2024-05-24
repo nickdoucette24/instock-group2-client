@@ -1,6 +1,6 @@
 import "./AddWarehouse.scss";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
@@ -17,39 +17,12 @@ const AddWarehouse = () => {
 	const [phone, setPhone] = useState("");
 	const [email, setEmail] = useState("");
 
-	// Sucks to brute force it like this but I don't think I have time to find a better way
-	const handleChangeWarehouseName = (event) => {
-		let newWarehouseName = event.target.value;
-		setWarehouseName(newWarehouseName);
-	};
-	const handleChangeStreetAddress = (event) => {
-		let newStreetAddress = event.target.value;
-		setStreetAddress(newStreetAddress);
-	};
-	const handleChangeCity = (event) => {
-		let newCity = event.target.value;
-		setCity(newCity);
-	};
-	const handleChangeCountry = (event) => {
-		let newCountry = event.target.value;
-		setCountry(newCountry);
-	};
-	const handleChangeContactName = (event) => {
-		let newContactName = event.target.value;
-		setContactName(newContactName);
-	};
-	const handleChangePosition = (event) => {
-		let newPosition = event.target.value;
-		setPosition(newPosition);
-	};
-	const handleChangePhone = (event) => {
-		let newPhone = event.target.value;
-		setPhone(newPhone);
-	};
-	const handleChangeEmail = (event) => {
-		let newEmail = event.target.value;
-		setEmail(newEmail);
-	};
+	let navigate = useNavigate();
+
+	const handleChangeState = (event, setState) => {
+		let newState = event.target.value;
+		setState(newState);
+	}
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -65,7 +38,10 @@ const AddWarehouse = () => {
 			contact_email: email
 		}
 
-		axios.post("http://localhost:8080/api/warehouses", newWarehouseData).then((response) => console.log(response.data));
+		axios.post("http://localhost:8080/api/warehouses", newWarehouseData).then((response) => console.log(response.data)).catch((err) => console.log(err));
+
+		// only navigate away if post successful ***********
+		navigate("/");
 	}
 
 	return (
@@ -89,7 +65,7 @@ const AddWarehouse = () => {
 										type="text" 
 										name="warehouse-name" 
 										placeholder="Warehouse Name"
-										onChange={handleChangeWarehouseName}
+										onChange={(event) => handleChangeState(event, setWarehouseName)}
 										value={warehouseName}
 									/>
 								</label>
@@ -102,7 +78,7 @@ const AddWarehouse = () => {
 										type="text" 
 										name="street-address" 
 										placeholder="Street Address" 
-										onChange={handleChangeStreetAddress}
+										onChange={(event) => handleChangeState(event, setStreetAddress)}
 										value={streetAddress}
 									/>
 								</label>
@@ -115,7 +91,7 @@ const AddWarehouse = () => {
 										type="text" 
 										name="city" 
 										placeholder="City" 
-										onChange={handleChangeCity}
+										onChange={(event) => handleChangeState(event, setCity)}
 										value={city}
 									/>
 								</label>
@@ -128,7 +104,7 @@ const AddWarehouse = () => {
 										type="text" 
 										name="country" 
 										placeholder="Country" 
-										onChange={handleChangeCountry}
+										onChange={(event) => handleChangeState(event, setCountry)}
 										value={country}
 									/>
 								</label>
@@ -146,7 +122,7 @@ const AddWarehouse = () => {
 										type="text" 
 										name="contact-name" 
 										placeholder="Contact Name" 
-										onChange={handleChangeContactName}
+										onChange={(event) => handleChangeState(event, setContactName)}
 										value={contactName}
 									/>
 								</label>
@@ -159,7 +135,7 @@ const AddWarehouse = () => {
 										type="text" 
 										name="position" 
 										placeholder="Position" 
-										onChange={handleChangePosition}
+										onChange={(event) => handleChangeState(event, setPosition)}
 										value={position}
 									/>
 								</label>
@@ -172,7 +148,7 @@ const AddWarehouse = () => {
 										type="text" 
 										name="phone" 
 										placeholder="Phone Number" 
-										onChange={handleChangePhone}
+										onChange={(event) => handleChangeState(event, setPhone)}
 										value={phone}
 									/>
 								</label>
@@ -185,7 +161,7 @@ const AddWarehouse = () => {
 										type="text" 
 										name="email" 
 										placeholder="Email" 
-										onChange={handleChangeEmail}
+										onChange={(event) => handleChangeState(event, setEmail)}
 										value={email}
 									/>
 								</label>
