@@ -13,7 +13,7 @@ const AddWarehouse = () => {
 				</Link>
 				<h1>Add New Warehouse</h1>
 			</section>
-			<form>
+			<form className="form-wrapper">
 				<section className="form-fields">
 					<section className="warehouse-details">
 						<h2>Warehouse Details</h2>
