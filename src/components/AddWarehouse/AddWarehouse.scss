@@ -1,9 +1,20 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
-.form-wrapper {
-  // padding: 0 1.5rem;
+.main-header {
+  & * {
+    margin: 0;
+    padding: 0;
+  }
 
+  &--form {
+    @include tablet {
+      padding-bottom: 1.25rem;
+    }
+  }
+}
+
+.form-wrapper {
   & * {
     margin: 0;
     padding: 0;
@@ -12,15 +23,29 @@
 
 .form-fields {
   @include tablet {
-    flex-direction: row;
+    display: flex;
+    padding: 1.5rem 2rem 2rem;
   }
 }
 
 .form-section {
   padding: 1rem 1.5rem 1.5rem;
 
+  @include tablet {
+    width: 50%;
+    padding: 0;
+    padding-left: 2rem;
+  }
+
   &--warehouse {
     border-bottom: 1px solid $cloud;
+
+    @include tablet {
+      border-bottom: none;
+      border-right: 1px solid $cloud;
+      padding-right: 2rem;
+      padding-left: 0;
+    }
   }
 
   &__input-wrapper {
@@ -52,7 +77,16 @@
   display: flex;
   gap: 1rem;
 
+  @include tablet {
+    justify-content: flex-end;
+    padding: 1rem 2.5rem;
+  }
+
   .btn__add--form {
     width: 50%;
+
+    @include tablet {
+      width: 8.625rem;
+    }
   }
 }

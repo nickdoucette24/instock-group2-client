@@ -7,7 +7,7 @@ import CancelButton from "../CancelButton/CancelButton";
 const AddWarehouse = () => {
 	return (
 		<>
-			<section className="main-header">
+			<section className="main-header main-header--form">
 				<Link to={"/"} className="back-button-container">
 					<BackButton />
 				</Link>
