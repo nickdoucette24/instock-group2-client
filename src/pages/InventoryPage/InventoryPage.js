@@ -6,8 +6,8 @@ import axios from 'axios';
 // import InventoryDetails from "../../components/InventoryDetails/InventoryDetails";
 // import AddInventoryItem from "../../components/AddInventoryItem/AddInventoryItem";
 // import EditInventoryItem from "../../components/EditInventoryItem/EditInventoryItem";
-import sortIcon from '../../assets/Icons/sort-24px.svg';
 import InventoryItemRow from "../../components/InventoryItemRow/InventoryItemRow";
+import Sorter from '../../components/Sorter/Sorter';
 
 import "./InventoryPage.scss";
 
@@ -47,33 +47,7 @@ const InventoryPage = () => {
           </div>
         </div>
         <div className="inventory-list">
-          <div className="inventory-list__sorter">
-            <div className='sorter-info__group'>
-              <p className='sorter-info__header'>INVENTORY ITEM</p>
-              <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
-            </div>
-            <div className='sorter-info__group'>
-            <p className='sorter-info__header'>CATEGORY</p>
-              <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
-            </div>
-            <div className='sorter-info__group'>
-              <p className='sorter-info__header'>STATUS</p>
-              <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
-            </div>
-            <div className='sorter-info__stockGroup'>
-              <div className='sorter-info__group'>
-                <p className='sorter-info__header'>QUANTITY</p>
-                <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
-              </div>
-              <div className='sorter-info__group'>
-                <p className='sorter-info__header'>WAREHOUSE</p>
-                <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
-              </div>
-            </div>
-              <div className='sorter-actions'>
-                <p className='sorter-actions__header'>ACTIONS</p>
-              </div>
-          </div>
+          <Sorter />
           {loading ? (
             <p className='list-loading'>Loading...</p>
           ) : (

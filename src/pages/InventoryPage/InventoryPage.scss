@@ -1,67 +1,6 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
 
-.inventory-list {
-        &__sorter {
-            display: none;
-    
-            @include tablet {
-                display: flex;
-                justify-content: space-between;
-                background-color: $light-grey;
-                height: 2.5rem;
-                padding: 0 2rem;
-            }
-        }
-}
-
-.sorter-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 2rem;
-
-    &__group {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-    }
-
-    &__stockGroup {
-        @extend .sorter-info__group;
-        gap: 1.25rem;
-    }
-
-    &__header {
-        @include table-header;
-    }
-}
-
-.sorter-details {
-    @extend .sorter-info;
-
-    &__group {
-        @extend .sorter-info__group;
-    }
-
-    &__header {
-        @include table-header;
-    }
-}
-
-.sorter-actions {
-    @include flexCenter;
-
-    &__header {
-        @include table-header;
-    }
-}
-
-.sort-icon {
-    width: 1rem;
-    height: 1rem;
-}
-
 .content-wrapper {
     padding: 0 1rem;
 
@@ -79,6 +18,7 @@
 
     @include tablet {
         margin-top: -5.86rem;
+        max-width: 63.75rem;
     }
 }
 
@@ -94,6 +34,10 @@
         align-items: flex-end;
         flex-wrap: wrap;
         padding: 0 2rem;
+    }
+
+    @include laptop {
+        padding: 0 2.5rem;
     }
 
     &__title {

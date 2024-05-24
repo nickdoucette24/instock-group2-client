@@ -35,26 +35,26 @@ const InventoryItemRow = ({ inventoryItem, isFirst }) => {
         <div className='details-container'>
             <div className='itemInfo-container'>
                 <h4 className='itemInfo-container__label'>INVENTORY ITEM</h4>
-                <div className='item-links inventory-mod' onClick={() => handleNavToDetails()}>
+                <div className='item-links' onClick={() => handleNavToDetails()}>
                     <h3 className='item-links__name'>{item}</h3>
                     <img className='item-links__chevron' src={chevronIcon} alt='chevron-icon' />
                 </div>
                 <h4 className='itemInfo-container__heading'>CATEGORY</h4>
                 <p className='itemInfo-container__category'>{category}</p>
             </div>
-            <p className='long-row category-mod'>{category}</p>
+            <p className='long-row spacing-mod'>{category}</p>
             <div className='itemDetails-container'>
                 <h4 className='itemDetails-container__status'>STATUS</h4>
-                <div className='itemDetails-container__stock status-mod'>
+                <div className='itemDetails-container__stock spacing-mod'>
                     <StockTag status={status} />
                 </div>
                 <h4 className='itemDetails-container__heading'>QUANTITY</h4>
-                <p className='itemDetails-container__quantity quantity-mod'>{quantity}</p>
+                <p className='itemDetails-container__quantity'>{quantity}</p>
                 <h4 className='itemDetails-container__location'>WAREHOUSE</h4>
-                <p className='itemDetails-container__warehouse warehouse-mod'>{warehouse}</p>
+                <p className='itemDetails-container__warehouse'>{warehouse}</p>
             </div>
-            <p className='long-row'>{quantity}</p>
-            <p className='long-row'>{warehouse}</p>
+            <p className='long-row spacing-mod'>{quantity}</p>
+            <p className='long-row spacing-mod'>{warehouse}</p>
             <div className='icon-container'>
                 <img className='icon-container__delete' src={deleteIcon} alt='delete icon for deleting an item' />
                 <img className='icon-container__edit' src={editIcon} onClick={() => handleNavToEdit()} alt='pencil icon for editing an item' />
