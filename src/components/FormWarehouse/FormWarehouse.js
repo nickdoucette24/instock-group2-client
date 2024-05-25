@@ -9,7 +9,7 @@ import CancelButton from "../CancelButton/CancelButton";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import InvalidErrorMessage from "../InvalidErrorMessage/InvalidErrorMessage";
 
-const FormWarehouse = () => {
+const FormWarehouse = ({ submitButton }) => {
 	const [errors, setErrors] = useState({});
 	const [formValues, setFormValues] = useState({
 		warehouse_name: "",
@@ -203,7 +203,7 @@ const FormWarehouse = () => {
 				</section>
 				<section className="buttons">
 					<CancelButton />
-					<button className="btn__add btn__add--form" type="submit">+ Add Warehouse</button>
+					<button className="btn__add btn__add--form" type="submit">{submitButton}</button>
 				</section>
 			</form>
   );

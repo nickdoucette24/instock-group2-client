@@ -15,7 +15,7 @@ const AddWarehouse = () => {
 				</Link>
 				<h1>Add New Warehouse</h1>
 			</section>
-			<FormWarehouse />
+			<FormWarehouse submitButton={"+ Add Warehouse"}/>
 		</>
 	);
 };
