@@ -1,0 +1,67 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.form-textArea {
+    @include interactive-components;
+    border: 1px solid $cloud;
+    height: 7.5rem;
+    resize: none;
+    padding: 0.5rem 1rem;
+  
+    &:focus {
+      border: 1px solid $instock-indigo;
+      outline: none;
+    }
+  
+    &--error {
+      @extend .form-textArea;
+      border: 1px solid $red;
+    }
+}
+
+.section-border {
+border: none;
+}
+
+.form-select {
+    background: transparent;
+    background-image: url('../../assets/Icons/arrow_drop_down-24px.svg');
+    background-repeat: no-repeat;
+    border: 1px solid $cloud;
+    border-radius: 1.25rem;
+    padding: 0.5rem 1rem;
+    background-position: calc(100% - 1rem);
+    appearance: none;
+    outline: none;
+    color: $slate;
+    line-height: 1.25rem;
+
+    &:focus {
+        border-color: $instock-indigo;
+    }
+}
+
+.radio-selectors {
+    display: flex;
+
+    &__item {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        width: 50%;
+    }
+}
+
+.radio-text {
+    color: $slate;
+}
+
+.radio {
+    border: 0px;
+    width: 1rem;
+    height: 1rem;
+}
+
+.selected {
+    color: $instock-black;
+}
