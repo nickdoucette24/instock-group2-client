@@ -1,0 +1,16 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.main-header {
+  & * {
+    margin: 0;
+    padding: 0;
+  }
+
+  &--form {
+    @include tablet {
+      padding-bottom: 1.25rem;
+    }
+  }
+}
+
