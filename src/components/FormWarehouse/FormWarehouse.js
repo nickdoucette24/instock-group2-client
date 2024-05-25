@@ -1,7 +1,7 @@
 import './FormWarehouse.scss';
 
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -26,11 +26,33 @@ const FormWarehouse = ({ submitButton }) => {
   const location = useLocation();
   const { id } = useParams();
 
-  if (location.pathname.includes("/edit")) {
-      axios.get(`http://localhost:8080/api/warehouses/${id}}`).then((response) => {
-        setFormValues(response.data);
-      })
-  }
+	useEffect(() => {
+		if (location.pathname.includes("/edit")) {
+				axios.get(`http://localhost:8080/api/warehouses/${id}}`).then((response) => {
+					const {
+						address, 
+						city, 
+						contact_email, 
+						contact_name, 
+						contact_phone, 
+						contact_position, 
+						country, 
+						warehouse_name
+					} = response.data;
+					const warehouseData = {
+						address, 
+						city, 
+						contact_email, 
+						contact_name, 
+						contact_phone, 
+						contact_position, 
+						country, 
+						warehouse_name
+					};
+					setFormValues(warehouseData);
+				})
+		}
+	}, [])
 
 	const handleChangeState = (event) => {
 		const { name, value } = event.target;
@@ -66,9 +88,15 @@ const FormWarehouse = ({ submitButton }) => {
 
 
 
-		if (Object.keys(formErrors).length === 0) {
+		if (Object.keys(formErrors).length === 0 && location.pathname.includes("/add")) {
       // No errors, form is valid
 			axios.post("http://localhost:8080/api/warehouses", formValues).then((response) => console.log(response.data)).catch((err) => console.log(err));
+			navigate("/");
+    }
+
+		if (Object.keys(formErrors).length === 0 && location.pathname.includes("/edit")) {
+      // No errors, form is valid
+			axios.put(`http://localhost:8080/api/warehouses/${id}`, formValues).then((response) => console.log(response.data)).catch((err) => console.log(err));
 			navigate("/");
     }
 	}
