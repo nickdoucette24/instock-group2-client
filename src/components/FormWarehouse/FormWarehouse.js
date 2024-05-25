@@ -1,7 +1,7 @@
 import './FormWarehouse.scss';
 
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import axios from "axios";
 
@@ -26,11 +26,13 @@ const FormWarehouse = ({ submitButton }) => {
   const location = useLocation();
   const { id } = useParams();
 
-  if (location.pathname.includes("/edit")) {
-      axios.get(`http://localhost:8080/api/warehouses/${id}}`).then((response) => {
-        setFormValues(response.data);
-      })
-  }
+	useEffect(() => {
+		if (location.pathname.includes("/edit")) {
+				axios.get(`http://localhost:8080/api/warehouses/${id}}`).then((response) => {
+					setFormValues(response.data);
+				})
+		}
+	}, [])
 
 	const handleChangeState = (event) => {
 		const { name, value } = event.target;
