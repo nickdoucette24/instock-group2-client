@@ -1,13 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-
-// import InventoryList from "../../components/InventoryList/InventoryList";
+import InventoryList from "../../components/InventoryList/InventoryList";
 import InventoryDetails from "../../components/InventoryDetails/InventoryDetails";
-// import AddInventoryItem from "../../components/AddInventoryItem/AddInventoryItem";
-// import EditInventoryItem from "../../components/EditInventoryItem/EditInventoryItem";
-import InventoryItemRow from "../../components/InventoryItemRow/InventoryItemRow";
-import Sorter from '../../components/Sorter/Sorter';
+import AddInventoryItem from "../../components/AddInventoryItem/AddInventoryItem";
+import EditInventoryItem from "../../components/EditInventoryItem/EditInventoryItem";
 
 import "./InventoryPage.scss";
 
@@ -28,41 +25,20 @@ const InventoryPage = () => {
       } catch (error) {
         console.error("Error retrieving inventory items:", error);
         console.log(error);
-        setLoading(false)
+        setLoading(false);
       }
     }
 
     getInventoryItems();
   }, []);
 
-  if (location.pathname.includes("inventories/")) return <InventoryDetails />;
-
-  if (location.pathname.endsWith("inventories")) return (
-    <main className='content-wrapper'>
-      <section className="content-container">
-        <div className="inventory-heading">
-          <h1 className="inventory-heading__title">Inventory</h1>
-          <div className="inventory-heading__item-container">
-            <div className='search-container'>
-              <input type="search" name="search" id="search" className="inventory-heading__item-container--search" placeholder='Search...' />
-            </div>
-            <Link to='/inventories/add' className="inventory-heading__item-container--addItem">+ Add New Item</Link>
-          </div>
-        </div>
-        <div className="inventory-list">
-          <Sorter />
-          {loading ? (
-            <p className='list-loading'>Loading...</p>
-          ) : (
-            inventoryItems.map((inventoryItem, index) => (
-              <InventoryItemRow key={inventoryItem.id} inventoryItem={inventoryItem} isFirst={index === 0} />
-            ))
-          )
-        }
-        </div>
-      </section>
-    </main>
-  );
+  if (location.pathname.endsWith("inventories")) return <InventoryList 
+    loading={loading}
+    inventoryItems={inventoryItems}
+  />;
+  if (location.pathname.includes('inventories/')) return <InventoryDetails />;
+  if (location.pathname.includes("add")) return <AddInventoryItem />;
+  if (location.pathname.includes("edit")) return <EditInventoryItem />;
 };
 
 export default InventoryPage;
