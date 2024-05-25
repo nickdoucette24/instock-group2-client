@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 // import InventoryList from "../../components/InventoryList/InventoryList";
-// import InventoryDetails from "../../components/InventoryDetails/InventoryDetails";
+import InventoryDetails from "../../components/InventoryDetails/InventoryDetails";
 // import AddInventoryItem from "../../components/AddInventoryItem/AddInventoryItem";
 // import EditInventoryItem from "../../components/EditInventoryItem/EditInventoryItem";
 import InventoryItemRow from "../../components/InventoryItemRow/InventoryItemRow";
@@ -16,7 +16,8 @@ const url = "http://localhost:8080"
 
 const InventoryPage = () => {
   const [inventoryItems, setInventoryItems] = useState([]);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     const getInventoryItems = async () => {
@@ -34,7 +35,9 @@ const InventoryPage = () => {
     getInventoryItems();
   }, []);
 
-  return (
+  if (location.pathname.includes("inventories/")) return <InventoryDetails />;
+
+  if (location.pathname.endsWith("inventories")) return (
     <main className='content-wrapper'>
       <section className="content-container">
         <div className="inventory-heading">

@@ -1,0 +1,103 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/fonts" as *;
+
+@mixin status {
+    display: flex;
+    justify-content: center;
+    border-radius: 1rem;
+    text-align: center;
+    padding: 0.25rem;
+    position: relative;
+    z-index: 0;
+
+    h4 { 
+        position: relative;
+        z-index: 1; 
+        opacity: 100%;
+        margin: 0;
+    }
+}
+
+.divider {
+    margin: 0;
+}
+
+.btn-container {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    background-color: $instock-indigo;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+    margin-top: 1rem;
+
+    & img {
+        filter: saturate(0%) brightness(200%);
+    }
+}
+
+.details {
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem;
+    }
+
+    &__name {
+        display: flex;
+        & a { margin-top: 1.5rem; }
+
+        & h1 {
+            margin-top: 1rem;
+            margin-bottom: 0;
+        }
+    }
+    
+    &__main {
+        @include tablet { display: flex; }
+        padding: 2rem;
+        margin-bottom: .5rem;
+    }
+
+    &__wall {
+        width: 1px;
+        border: 1px solid $cloud;
+        margin: 0 3rem;
+        display: none;
+        @include tablet { display: inline; }
+    }
+
+    &__subsection {
+        @include tablet { width: calc(100% - 3rem); }
+    }
+
+    &__div, &__in-stock {
+        margin-bottom: 1rem;
+        & * { margin: 0; }
+        & h4 { margin-bottom: .25rem; }
+    }
+
+    &__in-stock {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        & div { width: 50%; }
+    }
+}
+
+.in-stock {
+    @include status;
+    width: 3rem;
+    background-color: $in-stock;
+    color: $green;
+}
+
+.out-of-stock {
+    @include status;
+    width: 5rem;
+    background-color: $out-of-stock;
+    color: $red;
+}
