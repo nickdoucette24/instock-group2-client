@@ -90,7 +90,7 @@
 
 .in-stock {
     @include status;
-    width: 3rem;
+    width: 4rem;
     background-color: $in-stock;
     color: $green;
 }

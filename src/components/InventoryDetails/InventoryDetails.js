@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import axios from "axios";
+import EditInventoryItem from "../EditInventoryItem/EditInventoryItem";
 import "./InventoryDetails.scss";
 import "../../pages/WarehousesPage/WarehousesPage.scss";
 import backArrow from "../../assets/Icons/arrow_back-24px.svg"
@@ -14,12 +15,14 @@ const InventoryDetails = () => {
   const { itemId } = useParams();
   const defaultId = 1;
   const id = defaultId || itemId;
+  const location = useLocation();
 
   // Get the item
   useEffect(() => {
     setLoading(true);
     axios.get(`http://localhost:8080/api/inventories/${id}`)
     .then(response => {
+      // Set the in-stock status of the item
       setItem(response.data[0]);
       if (item.quantity > 0) {
         setStockStyle('in-stock');
@@ -32,6 +35,10 @@ const InventoryDetails = () => {
       setLoading(false);
     })
   }, []);
+
+  if (location.pathname.includes('edit')) {
+    return <EditInventoryItem />;
+  }
 
   if (!loading) return <main>
     <div className="floaty-container">
