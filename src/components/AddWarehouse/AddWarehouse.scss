@@ -89,11 +89,15 @@
 .form-input {
   @include interactive-components;
   border: 1px solid $cloud;
-  width: fill;
 
   &:focus {
     border: 1px solid $instock-indigo;
     outline: none;
+  }
+
+  &--error {
+    @extend .form-input;
+    border: 1px solid $red;
   }
 }
 

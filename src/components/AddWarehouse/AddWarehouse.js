@@ -82,7 +82,7 @@ const AddWarehouse = () => {
 								<label className="form-label">
 									Warehouse Name
 									<input 
-										className="form-input" 
+										className={errors.warehouse_name ? "form-input--error" : "form-input"}
 										type="text" 
 										name="warehouse_name" 
 										placeholder="Warehouse Name"
@@ -96,7 +96,7 @@ const AddWarehouse = () => {
 								<label className="form-label">
 									Street Address
 									<input 
-										className="form-input" 
+										className={errors.warehouse_name ? "form-input--error" : "form-input"}
 										type="text" 
 										name="address" 
 										placeholder="Street Address" 
@@ -110,7 +110,7 @@ const AddWarehouse = () => {
 								<label className="form-label">
 									City
 									<input 
-										className="form-input" 
+										className={errors.warehouse_name ? "form-input--error" : "form-input"}
 										type="text" 
 										name="city" 
 										placeholder="City" 
@@ -124,7 +124,7 @@ const AddWarehouse = () => {
 								<label className="form-label">
 									Country
 									<input 
-										className="form-input" 
+										className={errors.warehouse_name ? "form-input--error" : "form-input"}
 										type="text" 
 										name="country" 
 										placeholder="Country" 
@@ -143,7 +143,7 @@ const AddWarehouse = () => {
 								<label className="form-label">
 									Contact Name
 									<input 
-										className="form-input" 
+										className={errors.warehouse_name ? "form-input--error" : "form-input"}
 										type="text" 
 										name="contact_name" 
 										placeholder="Contact Name" 
@@ -157,7 +157,7 @@ const AddWarehouse = () => {
 								<label className="form-label">
 									Position
 									<input 
-										className="form-input" 
+										className={errors.warehouse_name ? "form-input--error" : "form-input"}
 										type="text" 
 										name="contact_position" 
 										placeholder="Position" 
@@ -171,7 +171,7 @@ const AddWarehouse = () => {
 								<label className="form-label">
 									Phone Number
 									<input 
-										className="form-input" 
+										className={errors.warehouse_name ? "form-input--error" : "form-input"}
 										type="text" 
 										name="contact_phone" 
 										placeholder="Phone Number" 
@@ -186,7 +186,7 @@ const AddWarehouse = () => {
 								<label className="form-label">
 									Email
 									<input 
-										className="form-input" 
+										className={errors.warehouse_name ? "form-input--error" : "form-input"}
 										type="text" 
 										name="contact_email" 
 										placeholder="Email" 
