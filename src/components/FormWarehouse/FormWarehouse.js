@@ -54,8 +54,6 @@ const FormWarehouse = ({ submitButton }) => {
 		}
 	}, [])
 
-	console.log(formValues)
-
 	const handleChangeState = (event) => {
 		const { name, value } = event.target;
 		setFormValues({
