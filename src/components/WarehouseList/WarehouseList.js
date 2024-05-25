@@ -97,7 +97,7 @@ const WarehouseList = () => {
 									<Link to="/warehouses/delete/:id">
 										<img src={del} alt="Delete" />
 									</Link>
-									<Link to="/warehouses/edit/:id">
+									<Link to={`/warehouses/${warehouse.id}/edit`}>
 										<img src={edit} alt="Edit" />
 									</Link>
 								</div>
