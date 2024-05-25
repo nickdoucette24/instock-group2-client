@@ -1,0 +1,19 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.cancel-button {
+	@include btn;
+  background-color: $white;
+  border: 1px solid $cloud;
+  width: 50%;
+
+  &:hover {
+    border: 1px solid $instock-indigo;
+    background-color: $white;
+    color: $instock-indigo;
+  }
+
+  @include tablet {
+   width: fit-content; 
+  }
+}

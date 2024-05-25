@@ -34,7 +34,7 @@ const WarehouseDetails = () => {
 		<>
 			{warehouseDetails ? (
 				<>
-					<div className="main-header">
+					<section className="main-header">
 						<Link to={"/"} className="back-button-container">
 							<BackButton />
 						</Link>
@@ -44,7 +44,7 @@ const WarehouseDetails = () => {
 						<Link to={`/warehouses/${warehouseDetails.id}/edit`}>
 							<EditButton />
 						</Link>
-					</div>
+					</section>
 					<div className="warehouse-info">
 						<div className="warehouse-info__address">
 							<h4 className="info-header">warehouse address:</h4>
