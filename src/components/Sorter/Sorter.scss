@@ -29,12 +29,14 @@
 
     &__header {
         @include table-header;
+        cursor: default;
         margin: 0;
         text-wrap: nowrap;
     }
 }
 
 .sort-icon {
+    cursor: pointer;
     width: 1rem;
     height: 1rem;
 }

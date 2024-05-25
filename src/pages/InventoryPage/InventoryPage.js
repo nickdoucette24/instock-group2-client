@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 // import InventoryList from "../../components/InventoryList/InventoryList";
 import InventoryDetails from "../../components/InventoryDetails/InventoryDetails";
-// import AddInventoryItem from "../../components/AddInventoryItem/AddInventoryItem";
-// import EditInventoryItem from "../../components/EditInventoryItem/EditInventoryItem";
+import AddInventoryItem from "../../components/AddInventoryItem/AddInventoryItem";
+import EditInventoryItem from "../../components/EditInventoryItem/EditInventoryItem";
 import InventoryItemRow from "../../components/InventoryItemRow/InventoryItemRow";
 import Sorter from '../../components/Sorter/Sorter';
 
@@ -18,6 +18,8 @@ const InventoryPage = () => {
   const [inventoryItems, setInventoryItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const location = useLocation();
+  const navigate = useNavigate();
+  const { id } = useParams();
 
   useEffect(() => {
     const getInventoryItems = async () => {
@@ -35,7 +37,15 @@ const InventoryPage = () => {
     getInventoryItems();
   }, []);
 
-  if (location.pathname.includes("inventories/")) return <InventoryDetails />;
+  const handleAddNav = () => {
+    navigate("/inventories/add");
+  }
+
+  if (location.pathname.endsWith(`add`)) return <AddInventoryItem />;
+
+  if (location.pathname.endsWith(`edit`)) return <EditInventoryItem />;
+
+  if (location.pathname.endsWith(`inventories/${id}`)) return <InventoryDetails />;
 
   if (location.pathname.endsWith("inventories")) return (
     <main className='content-wrapper'>
@@ -46,7 +56,7 @@ const InventoryPage = () => {
             <div className='search-container'>
               <input type="search" name="search" id="search" className="inventory-heading__item-container--search" placeholder='Search...' />
             </div>
-            <Link to='/inventories/add' className="inventory-heading__item-container--addItem">+ Add New Item</Link>
+            <div onClick={() => handleAddNav()} className="inventory-heading__item-container--addItem">+ Add New Item</div>
           </div>
         </div>
         <div className="inventory-list">

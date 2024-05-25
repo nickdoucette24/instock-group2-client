@@ -88,14 +88,15 @@
     }
 }
 
-.in-stock {
+.in-stock-tag {
     @include status;
     width: 3rem;
     background-color: $in-stock;
     color: $green;
+    text-wrap: nowrap
 }
 
-.out-of-stock {
+.out-of-stock-tag {
     @include status;
     width: 5rem;
     background-color: $out-of-stock;

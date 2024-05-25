@@ -11,26 +11,27 @@ const InventoryDetails = () => {
   const [stockStyle, setStockStyle] = useState('');
   const [stockText, setstockText] = useState('');
   const [loading, setLoading] = useState(true);
-  const { itemId } = useParams();
-  const defaultId = 1;
-  const id = defaultId || itemId;
+  const { id } = useParams();
 
   // Get the item
   useEffect(() => {
     setLoading(true);
     axios.get(`http://localhost:8080/api/inventories/${id}`)
     .then(response => {
-      setItem(response.data[0]);
-      if (item.quantity > 0) {
-        setStockStyle('in-stock');
+      const itemData = response.data[0];
+      setItem(itemData);
+
+      if (itemData.quantity > 0) {
+        setStockStyle('in-stock-tag');
         setstockText('IN STOCK');
       }
       else {
-        setStockStyle('out-of-stock');
+        setStockStyle('out-of-stock-tag');
         setstockText('OUT OF STOCK');
       }
       setLoading(false);
     })
+    // eslint-disable-next-line
   }, []);
 
   if (!loading) return <main>
