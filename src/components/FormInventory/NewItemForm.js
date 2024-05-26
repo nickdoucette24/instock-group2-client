@@ -1,6 +1,6 @@
 // import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
 import CancelButton from "../CancelButton/CancelButton";
@@ -20,6 +20,9 @@ const NewItemForm = ({ submitButton, url }) => {
         quantity: "",
         warehouse_name: "",
     });
+
+    const {id} = useParams();
+    const location = useLocation();
     const navigate = useNavigate();
 
     useEffect(()  => {
@@ -32,8 +35,17 @@ const NewItemForm = ({ submitButton, url }) => {
             }
         }
 
+        if (location.pathname.includes("/edit")) {
+            axios.get(`${url}/api/inventories/${id}`)
+            .then(response => {
+                console.log(response.data[0]);
+                setFormValues(response.data[0]);
+            })
+            .catch(err => console.error(err));
+        }
+
         getWarehouseData();
-    }, [url])
+    }, [url]);
 
     const handleChangeState = (event) => {
         const { name, value } = event.target;
@@ -95,14 +107,22 @@ const NewItemForm = ({ submitButton, url }) => {
             quantity: formValues.quantity,
             warehouse_id: warehouseId
         };
-        console.log(newItem)
+        console.log(newItem);
 
-        try {
+        if (location.pathname.includes("/add")) try {
             await axios.post(`${url}/api/inventories`, newItem)
             alert("New Inventory Item Added Successfully: " + formValues.item_name);
             navigate('/inventories');
         } catch (error) {
             console.error("Error adding new inventory item:", error);
+        }
+
+        if (location.pathname.includes("/edit")) try {
+            await axios.put(`${url}/api/inventories/${id}`, newItem)
+            alert("Inventory Item Updated Successfully: " + formValues.item_name);
+            navigate('/inventories');
+        } catch (error) {
+            console.error("Error editing new inventory item:", error);
         }
     }
 
