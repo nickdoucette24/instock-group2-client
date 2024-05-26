@@ -35,13 +35,13 @@ const InventoryPage = () => {
     }
 
     getInventoryItems();
-  }, []);
+  });
 
   const handleAddNav = () => {
     navigate("/inventories/add");
   }
 
-  if (location.pathname.endsWith(`add`)) return <AddInventoryItem />;
+  if (location.pathname.endsWith(`add`)) return <AddInventoryItem url={url} />;
 
   if (location.pathname.endsWith(`edit`)) return <EditInventoryItem />;
 

@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import CancelButton from "../CancelButton/CancelButton";
@@ -8,9 +8,10 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 import './NewItemForm.scss';
 
-const NewItemForm = ({ submitButton }) => {
+const NewItemForm = ({ submitButton, url }) => {
     const [errors, setErrors] = useState({});
     const [selected, setSelected] = useState('');
+    const [warehouses, setWarehouses] = useState([]);
     const [formValues, setFormValues] = useState({
         item_name: "",
         description: "",
@@ -19,40 +20,20 @@ const NewItemForm = ({ submitButton }) => {
         quantity: "",
         warehouse_name: "",
     });
+    const navigate = useNavigate();
 
-    let navigate = useNavigate();
-    const location = useLocation();
-    const { id } = useParams();
-
-    useEffect(() => {
-        if (location.pathname.includes("/edit")) {
-            axios.get(`http://localhost:8080/api/warehouses/${id}}`).then((response) => {
-                const {
-                    address, 
-                    city, 
-                    contact_email, 
-                    contact_name, 
-                    contact_phone, 
-                    contact_position, 
-                    country, 
-                    warehouse_name
-                } = response.data;
-
-                const warehouseData = {
-                    address, 
-                    city, 
-                    contact_email, 
-                    contact_name, 
-                    contact_phone, 
-                    contact_position, 
-                    country, 
-                    warehouse_name
-                };
-                setFormValues(warehouseData);
-            })
+    useEffect(()  => {
+        const getWarehouseData = async () => {
+            try {
+                const response = await axios.get(`${url}/api/warehouses`);
+                setWarehouses(response.data);
+            } catch (error) {
+                console.error("Error retrieving warehouse data:", error);
+            }
         }
-        // eslint-disable-next-line 
-    }, [])
+
+        getWarehouseData();
+    }, [url])
 
     const handleChangeState = (event) => {
         const { name, value } = event.target;
@@ -76,15 +57,15 @@ const NewItemForm = ({ submitButton }) => {
         });
     
         // Deselect the other radio button
-        if (name === 'in-stock' && value === 'In stock') {
+        if (name === 'in-stock' && value === 'In Stock') {
             setFormValues({
                 ...formValues,
-                status: "In stock"
+                status: "In Stock"
             });
-        } else if (name === 'out-of-stock' && value === 'Out of stock') {
+        } else if (name === 'out-of-stock' && value === 'Out of Stock') {
             setFormValues({
                 ...formValues,
-                status: 'Out of stock'
+                status: 'Out of Stock'
             });
         }
 
@@ -92,7 +73,7 @@ const NewItemForm = ({ submitButton }) => {
     }
     
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         let formErrors = {};
@@ -104,16 +85,35 @@ const NewItemForm = ({ submitButton }) => {
         if (!formValues.warehouse_name) formErrors.warehouse_name = true;
         setErrors(formErrors);
 
-        if (Object.keys(formErrors).length === 0 && location.pathname.includes("/add")) {
-        // No errors, form is valid
-            axios.post("http://localhost:8080/api/warehouses", formValues).then((response) => console.log(response.data)).catch((err) => console.log(err));
-            navigate("/");
+        // If there are errors, don't proceed with the form submission
+        if (Object.keys(formErrors).length > 0) {
+            return;
         }
 
-        if (Object.keys(formErrors).length === 0 && location.pathname.includes("/edit")) {
-        // No errors, form is valid
-            axios.put(`http://localhost:8080/api/warehouses/${id}`, formValues).then((response) => console.log(response.data)).catch((err) => console.log(err));
-            navigate("/");
+        const selectedWarehouse = warehouses.find(warehouse => warehouse.warehouse_name === formValues.warehouse_name)
+        const warehouseId = selectedWarehouse ? selectedWarehouse.id : null;
+
+        if (!warehouseId) {
+            console.error("Invalid warehouse selected");
+            return;
+        }
+
+        // Create the new item object from form data
+        const newItem = {
+            item_name: formValues.item_name,
+            description: formValues.description,
+            category: formValues.category,
+            status: formValues.status,
+            quantity: formValues.quantity,
+            warehouse_id: warehouseId
+        };
+
+        try {
+            await axios.post(`${url}/api/inventories`, newItem)
+            alert("New Inventory Item Added Successfully: " + formValues.item_name);
+            navigate('/inventories');
+        } catch (error) {
+            console.error("Error adding new inventory item:", error);
         }
     }
 
@@ -163,7 +163,7 @@ const NewItemForm = ({ submitButton }) => {
                                     onChange={handleChangeState}
                                     value={formValues.category}
                                 >
-                                    <option value="" className="placeholder" disabled selected>Please select</option>
+                                    <option value="" className="placeholder" disabled>Please select</option>
                                     <option value="Accessories">Accessories</option>
                                     <option value="Apparel">Apparel</option>
                                     <option value="Electronics">Electronics</option>
@@ -189,10 +189,10 @@ const NewItemForm = ({ submitButton }) => {
                                             className="radio"
                                             id="instock"
                                             type="radio" 
-                                            name="in-stock" 
+                                            name="status" 
                                             onChange={handleRadioChange}
-                                            checked={formValues.status === 'In stock'} // Check if this radio is selected
-                                            value="In stock"
+                                            checked={formValues.status === 'In Stock'} // Check if this radio is selected
+                                            value="In Stock"
                                         />
                                         <label htmlFor="instock" className={`p2 radio-text ${selected === 'in-stock' ? 'selected' : ''}`}>In stock</label>
                                     </div>
@@ -201,10 +201,10 @@ const NewItemForm = ({ submitButton }) => {
                                             className="radio"
                                             id="outofstock"
                                             type="radio" 
-                                            name="out-of-stock" 
+                                            name="status" 
                                             onChange={handleRadioChange}
-                                            checked={formValues.status === 'Out of stock'} // Check if this radio is selected
-                                            value="Out of stock"
+                                            checked={formValues.status === 'Out of Stock'} // Check if this radio is selected
+                                            value="Out of Stock"
                                         />
                                         <label htmlFor="outofstock" className={`p2 radio-text ${selected === 'out-of-stock' ? 'selected' : ''}`}>Out of stock</label>
                                     </div>
@@ -212,7 +212,7 @@ const NewItemForm = ({ submitButton }) => {
                                 {errors.status && <ErrorMessage />}
                             </label>
                         </div>
-                        {formValues.status === 'In stock' && (
+                        {formValues.status === 'In Stock' && (
                             <div className="contact-details__position">
                                 <label className="form-label">
                                     Quantity

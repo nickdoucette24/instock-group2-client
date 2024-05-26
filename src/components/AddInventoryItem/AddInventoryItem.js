@@ -4,7 +4,7 @@ import BackButton from "../BackButton/BackButton";
 import "./AddInventoryItem.scss";
 import NewItemForm from "../NewItemForm/NewItemForm";
 
-const AddInventoryItem = () => {
+const AddInventoryItem = ({ url }) => {
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -21,7 +21,7 @@ const AddInventoryItem = () => {
           <h1 className="newItem-heading__title">Add New Inventory Item</h1>
         </div>
         <hr className="newItem-heading__border"/>
-        <NewItemForm submitButton={"+ Add Item"}/>
+        <NewItemForm submitButton={"+ Add Item"} url={url} />
 			</section>
 		</main>
   );
