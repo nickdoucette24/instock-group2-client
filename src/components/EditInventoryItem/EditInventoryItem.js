@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 import BackButton from "../BackButton/BackButton";
 import "../EditInventoryItem/EditInventoryItem.scss";
-import NewItemForm from "../NewItemForm/NewItemForm";
+import NewItemForm from "../FormInventory/NewItemForm";
 
 const EditInventoryItem = ({ url }) => {
   const navigate = useNavigate();

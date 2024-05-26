@@ -1,14 +1,14 @@
 // import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
 import CancelButton from "../CancelButton/CancelButton";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
-import './EditItemForm.scss';
+import './FormInventory.scss';
 
-const EditItemForm = ({ submitButton, url }) => {
+const FormInventory = ({ submitButton, url }) => {
     const [errors, setErrors] = useState({});
     const [selected, setSelected] = useState('');
     const [warehouses, setWarehouses] = useState([]);
@@ -17,13 +17,14 @@ const EditItemForm = ({ submitButton, url }) => {
         description: "",
         category: "",
         status: "",
+        quantity: "",
         warehouse_name: "",
     });
 
     const {id} = useParams();
+    const location = useLocation();
     const navigate = useNavigate();
 
-    // Fetch data from backend
     useEffect(()  => {
         const getWarehouseData = async () => {
             try {
@@ -32,6 +33,15 @@ const EditItemForm = ({ submitButton, url }) => {
             } catch (error) {
                 console.error("Error retrieving warehouse data:", error);
             }
+        }
+
+        if (location.pathname.includes("/edit")) {
+            axios.get(`${url}/api/inventories/${id}`)
+            .then(response => {
+                console.log(response.data[0]);
+                setFormValues(response.data[0]);
+            })
+            .catch(err => console.error(err));
         }
 
         getWarehouseData();
@@ -55,8 +65,11 @@ const EditItemForm = ({ submitButton, url }) => {
         // Update the formValues with the selected status
         setFormValues({
             ...formValues,
-            status: value
+            status: value,
+            quantity: value === 'Out of Stock' ? "0" : formValues.quantity
         });
+
+        setSelected(value === 'In Stock' ? 'in-stock' : 'out-of-stock');
     }
     
 
@@ -68,6 +81,7 @@ const EditItemForm = ({ submitButton, url }) => {
         if (!formValues.description) formErrors.description = true;
         if (!formValues.category) formErrors.category = true;
         if (!formValues.status) formErrors.status = true;
+        if (!formValues.quantity || formValues.value === 'In Stock' && formValues.quantity <= 0) formErrors.quantity = true;
         if (!formValues.warehouse_name) formErrors.warehouse_name = true;
         setErrors(formErrors);
 
@@ -76,36 +90,39 @@ const EditItemForm = ({ submitButton, url }) => {
             return;
         }
 
-        const selectedWarehouse = warehouses.find(
-            warehouse => warehouse.warehouse_name === formValues.warehouse_name
-        );
-
-        const warehouseId = selectedWarehouse 
-            ? selectedWarehouse.id 
-            : null;
+        const selectedWarehouse = warehouses.find(warehouse => warehouse.warehouse_name === formValues.warehouse_name)
+        const warehouseId = selectedWarehouse ? selectedWarehouse.id : null;
 
         if (!warehouseId) {
-            console.error("Invalid warehouse selected: ", warehouseId);
+            console.error("Invalid warehouse selected");
             return;
         }
 
-        // Create the Edit item object from form data
-        const editedItem = {
+        // Create the new item object from form data
+        const newItem = {
             item_name: formValues.item_name,
             description: formValues.description,
             category: formValues.category,
             status: formValues.status,
+            quantity: formValues.quantity,
             warehouse_id: warehouseId
         };
+        console.log(newItem);
 
-        console.log(editedItem);
-
-        try {
-            await axios.put(`${url}/api/inventories/${id}`, editedItem)
-            alert("Inventory Item Edited Successfully: " + formValues.item_name);
+        if (location.pathname.includes("/add")) try {
+            await axios.post(`${url}/api/inventories`, newItem)
+            alert("New Inventory Item Added Successfully: " + formValues.item_name);
             navigate('/inventories');
         } catch (error) {
-            console.error("Error editing inventory item:", error);
+            console.error("Error adding new inventory item:", error);
+        }
+
+        if (location.pathname.includes("/edit")) try {
+            await axios.put(`${url}/api/inventories/${id}`, newItem)
+            alert("Inventory Item Updated Successfully: " + formValues.item_name);
+            navigate('/inventories');
+        } catch (error) {
+            console.error("Error editing new inventory item:", error);
         }
     }
 
@@ -204,6 +221,22 @@ const EditItemForm = ({ submitButton, url }) => {
                                 {errors.status && !formValues.status && <ErrorMessage />}
                             </label>
                         </div>
+                        {formValues.status === 'In Stock' && (
+                            <div className="contact-details__position">
+                                <label className="form-label">
+                                    Quantity
+                                    <input 
+                                        className={errors.quantity ? "quantity-input--error" : "quantity-input"}
+                                        type="text" 
+                                        name="quantity" 
+                                        placeholder="0" 
+                                        onChange={handleChangeState}
+                                        value={formValues.quantity}
+                                    />
+                                    {errors.quantity && <ErrorMessage />}
+                                </label>
+                            </div>
+                        )}
                         <div className="contact-details__phone">
                             <label className="form-label">
                                 Warehouse
@@ -239,4 +272,4 @@ const EditItemForm = ({ submitButton, url }) => {
     );
 };
     
-export default EditItemForm;
+export default FormInventory;
