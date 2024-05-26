@@ -43,7 +43,7 @@ const InventoryPage = () => {
 
   if (location.pathname.endsWith(`add`)) return <AddInventoryItem url={url} />;
 
-  if (location.pathname.endsWith(`edit`)) return <EditInventoryItem />;
+  if (location.pathname.endsWith(`edit`)) return <EditInventoryItem url={url} />;
 
   if (location.pathname.endsWith(`inventories/${id}`)) return <InventoryDetails inventoryItem={inventoryItems} />;
 
