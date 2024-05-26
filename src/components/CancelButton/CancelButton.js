@@ -1,11 +1,20 @@
+import { useNavigate, useLocation } from "react-router-dom";
+
 import "./CancelButton.scss";
-import { useNavigate } from "react-router-dom";
+
 
 const CancelButton = () => {
 	let navigate = useNavigate();
+	const location = useLocation();
+
 
 	const handleCancel = () => {
-		navigate("/");
+		window.scrollTo(0, 0);
+		if (location.pathname.includes('warehouses')) {
+			navigate('/');
+		} else if (location.pathname.includes('inventories')) {
+			navigate('/inventories');
+		}
 	}
 
 	return (
