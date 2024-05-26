@@ -23,7 +23,7 @@ const DeleteInventoryModal = forwardRef(({item, id, toggleModal}, ref) => {
           <img src={closeIcon} alt='close icon'/>
         </button>
         <div className='modal-content'>
-          <h1>Delete {item} inventory item</h1>
+          <h1>Delete {item} inventory item?</h1>
           <div className='delete-modal-message'>
             <p className='p1 modal-message'>Please confirm that you'd like to delete {item} from the inventory list.</p>
             <p className='p1 modal-message'>You won't be able to undo this action.</p>

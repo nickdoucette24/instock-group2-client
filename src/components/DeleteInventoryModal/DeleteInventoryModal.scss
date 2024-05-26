@@ -9,6 +9,19 @@
   &::backdrop {
     background-color: $white;
   }
+
+  @include tablet {
+    // height: 16.375rem;
+    height: fit-content;
+    width: 42rem;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
+
+    &::backdrop {
+      background-color: $instock-black;
+      opacity: 70%;
+    }  
+  }
 }
 
 .modal-content-wrapper {
@@ -31,6 +44,7 @@
   justify-content: center;
   background-color: inherit;
 	border: none;
+  padding-bottom: 1rem;
 	cursor: pointer;
 	transition: 0.1s;
 
@@ -41,6 +55,10 @@
 	&:active {
 		transform: scale(1);
 	}
+
+  @include tablet {
+    padding: 0;
+  }
 }
 
 .modal-message {
@@ -56,6 +74,11 @@
   display: flex;
   gap: 1rem;
   margin-top: 15rem;
+
+  @include tablet {
+    margin-top: 1rem;
+    justify-content: flex-end
+  }
 }
 
 .delete-button {
@@ -63,4 +86,8 @@
   background-color: $red;
   color: $white;
   width: 50%;
+
+  @include tablet {
+    width: fit-content;
+  }
 }
