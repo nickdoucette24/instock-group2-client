@@ -45,7 +45,7 @@ const InventoryPage = () => {
 
   if (location.pathname.endsWith(`edit`)) return <EditInventoryItem />;
 
-  if (location.pathname.endsWith(`inventories/${id}`)) return <InventoryDetails />;
+  if (location.pathname.endsWith(`inventories/${id}`)) return <InventoryDetails inventoryItem={inventoryItems} />;
 
   if (location.pathname.endsWith("inventories")) return (
     <main className='content-wrapper'>

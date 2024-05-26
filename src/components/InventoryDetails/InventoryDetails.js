@@ -5,6 +5,7 @@ import "./InventoryDetails.scss";
 import "../../pages/WarehousesPage/WarehousesPage.scss";
 import backArrow from "../../assets/Icons/arrow_back-24px.svg"
 import editIcon from "../../assets/Icons/edit-24px.svg"
+import StockTag from "../StockTag/StockTag";
 
 const InventoryDetails = () => {
   const [item, setItem] = useState({});
@@ -64,7 +65,7 @@ const InventoryDetails = () => {
         <div className="details__wall"></div>
         <article className="details__subsection">
           <span className="details__in-stock">
-            <div>
+            <div className="status-container">
               <h4>STATUS:</h4>
               <span className={stockStyle}>
                 <h4>{stockText}</h4>

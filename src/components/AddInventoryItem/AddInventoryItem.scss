@@ -7,6 +7,10 @@
     gap: 0.5rem;
     align-items: flex-start;
 
+    @include tablet {
+        padding: 0 2rem;
+    }
+
     &__back {
         @include flexCenter;
         margin-top: 40px;
@@ -14,11 +18,19 @@
 
     &__title {
         margin: 2rem 0 1.5rem 0;
+
+        @include tablet {
+            margin-bottom: 1.3125rem;
+        }
     }
 
     &__border {
         color: $cloud;
         border: none;
         border-bottom: 1px solid $cloud;
+
+        @include tablet {
+            margin: 0;
+        }
     }
 }

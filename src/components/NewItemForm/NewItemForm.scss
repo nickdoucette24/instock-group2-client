@@ -39,6 +39,11 @@ border: none;
     &:focus {
         border-color: $instock-indigo;
     }
+
+    &--error {
+        @extend .form-select;
+        border: 1px solid $red;
+    }
 }
 
 .radio-selectors {
@@ -65,3 +70,22 @@ border: none;
 .selected {
     color: $instock-black;
 }
+
+.quantity-input {
+    @include interactive-components;
+    border: 1px solid $cloud;
+
+    @include laptop {
+        width: 7.625rem;
+    }
+  
+    &:focus {
+      border: 1px solid $instock-indigo;
+      outline: none;
+    }
+  
+    &--error {
+      @extend .quantity-input;
+      border: 1px solid $red;
+    }
+  }

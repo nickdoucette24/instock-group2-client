@@ -48,28 +48,16 @@ const NewItemForm = ({ submitButton, url }) => {
     }
 
     const handleRadioChange = (event) => {
-        const { name, value } = event.target;
+        const { value } = event.target;
         
         // Update the formValues with the selected status
         setFormValues({
             ...formValues,
             status: value,
+            quantity: value === 'Out of Stock' ? "0" : formValues.quantity
         });
-    
-        // Deselect the other radio button
-        if (name === 'in-stock' && value === 'In Stock') {
-            setFormValues({
-                ...formValues,
-                status: "In Stock"
-            });
-        } else if (name === 'out-of-stock' && value === 'Out of Stock') {
-            setFormValues({
-                ...formValues,
-                status: 'Out of Stock'
-            });
-        }
 
-        setSelected(name);
+        setSelected(value === 'In Stock' ? 'in-stock' : 'out-of-stock');
     }
     
 
@@ -77,11 +65,11 @@ const NewItemForm = ({ submitButton, url }) => {
         event.preventDefault();
 
         let formErrors = {};
-        if (!formValues.item_name) formErrors.warehouse_name = true;
+        if (!formValues.item_name) formErrors.item_name = true;
         if (!formValues.description) formErrors.description = true;
         if (!formValues.category) formErrors.category = true;
         if (!formValues.status) formErrors.status = true;
-        if (!formValues.quantity) formErrors.quantity = true;
+        if (!formValues.quantity || formValues.value === 'In Stock' && formValues.quantity <= 0) formErrors.quantity = true;
         if (!formValues.warehouse_name) formErrors.warehouse_name = true;
         setErrors(formErrors);
 
@@ -107,6 +95,7 @@ const NewItemForm = ({ submitButton, url }) => {
             quantity: formValues.quantity,
             warehouse_id: warehouseId
         };
+        console.log(newItem)
 
         try {
             await axios.post(`${url}/api/inventories`, newItem)
@@ -209,7 +198,7 @@ const NewItemForm = ({ submitButton, url }) => {
                                         <label htmlFor="outofstock" className={`p2 radio-text ${selected === 'out-of-stock' ? 'selected' : ''}`}>Out of stock</label>
                                     </div>
                                 </div>
-                                {errors.status && <ErrorMessage />}
+                                {errors.status && !formValues.status && <ErrorMessage />}
                             </label>
                         </div>
                         {formValues.status === 'In Stock' && (
@@ -217,7 +206,7 @@ const NewItemForm = ({ submitButton, url }) => {
                                 <label className="form-label">
                                     Quantity
                                     <input 
-                                        className={errors.quantity ? "form-input--error" : "form-input"}
+                                        className={errors.quantity ? "quantity-input--error" : "quantity-input"}
                                         type="text" 
                                         name="quantity" 
                                         placeholder="0" 
