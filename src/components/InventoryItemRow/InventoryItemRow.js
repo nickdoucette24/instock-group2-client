@@ -1,9 +1,12 @@
+import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import StockTag from '../StockTag/StockTag';
 
 import deleteIcon from '../../assets/Icons/delete_outline-24px.svg';
 import editIcon from '../../assets/Icons/edit-24px.svg';
 import chevronIcon from '../../assets/Icons/chevron_right-24px.svg';
+import DeleteInventoryModal from '../../components/DeleteInventoryModal/DeleteInventoryModal';
+
 import './InventoryItemRow.scss';
 
 const InventoryItemRow = ({ inventoryItem, isFirst }) => {
@@ -26,9 +29,17 @@ const InventoryItemRow = ({ inventoryItem, isFirst }) => {
         navigate(`/inventories/${id}`);
     }
 
-    // const handleDeleteModal = () => {
-    //     // Handle delete modal
-    // }
+
+
+    const dialogRef = useRef(null);
+
+    const toggleModal = () => {
+        if (!dialogRef.current) return;
+        dialogRef.current.hasAttribute("open")
+        ? dialogRef.current.close()
+        : dialogRef.current.showModal();
+    }
+
 
   return (
     <div className={`item-container ${isFirst ? 'first-row' : ''}`}>
@@ -56,10 +67,11 @@ const InventoryItemRow = ({ inventoryItem, isFirst }) => {
             <p className='long-row spacing-mod'>{quantity}</p>
             <p className='long-row spacing-mod'>{warehouse}</p>
             <div className='icon-container'>
-                <img className='icon-container__delete' src={deleteIcon} alt='delete icon for deleting an item' />
+                <img className='icon-container__delete' src={deleteIcon} alt='delete icon for deleting an item' onClick={toggleModal}/>
                 <img className='icon-container__edit' src={editIcon} onClick={() => handleNavToEdit()} alt='pencil icon for editing an item' />
             </div>
         </div>
+        <DeleteInventoryModal item={item} id={id} toggleModal={toggleModal} ref={dialogRef}/>
     </div>
   )
 }
