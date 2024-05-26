@@ -1,0 +1,66 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.delete-modal {
+  border: none;
+  height: 100dvh;
+  width: 100dvh;
+  
+  &::backdrop {
+    background-color: $white;
+  }
+}
+
+.modal-content-wrapper {
+  display: flex;
+  flex-direction: column;
+
+  & * {
+    margin: 0;
+  }
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.close-icon {
+  align-self: flex-end;
+  justify-content: center;
+  background-color: inherit;
+	border: none;
+	cursor: pointer;
+	transition: 0.1s;
+
+	&:hover {
+		transform: scale(1.25);
+	}
+
+	&:active {
+		transform: scale(1);
+	}
+}
+
+.modal-message {
+  display: inline;
+  padding-right: 0.25rem;
+
+  @include tablet {
+    display: block;
+  }
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 15rem;
+}
+
+.delete-button {
+  @include btn;
+  background-color: $red;
+  color: $white;
+  width: 50%;
+}
