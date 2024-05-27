@@ -5,13 +5,12 @@ import closeIcon from "../../assets/Icons/close-24px.svg";
 
 import './DeleteWarehouse.scss';
 
-const DeleteWarehouse = forwardRef(({warehouse_name, id, toggleModal}, ref) => {
+const DeleteWarehouse = forwardRef(({warehouse_name, id, toggleModal, deleting, setDeleting}, ref) => {
 
     const handleDeleteItem = (id) => {
-        axios.delete(`http://localhost:8080/api/warehouses/${id}`)
-            .then(toggleModal())
-            .then(response => console.log(response.data))
-            .catch(err => console.error(err));
+      axios.delete(`http://localhost:8080/api/warehouses/${id}`)
+        .then(setDeleting(true))
+        .catch(err => console.error(err));
     }
 
     return<dialog 
@@ -21,7 +20,6 @@ const DeleteWarehouse = forwardRef(({warehouse_name, id, toggleModal}, ref) => {
             if (e.currentTarget === e.target) toggleModal();
         }
     }>
-        {console.log(warehouse_name)}
         <div className='modal-content-wrapper'>
         <button className='close-icon' type='button' onClick={toggleModal}>
           <img src={closeIcon} alt='close icon'/>

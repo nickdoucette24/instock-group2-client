@@ -10,8 +10,9 @@ import "./WarehouseList.scss";
 const WarehouseList = () => {
 	const [warehouses, setWarehouses] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [deleting, setDeleting] = useState(false);
 
-	useEffect(() => {
+	const rerender = () => {
 		setLoading(true);
 		axios
 			.get("http://localhost:8080/api/warehouses")
@@ -22,7 +23,12 @@ const WarehouseList = () => {
 			})
 			.catch((err) => console.error(err));
 		// eslint-disable-next-line
-	}, []);
+	}
+
+	useEffect(() => {
+		rerender();
+		setDeleting(false);
+	}, [deleting]);
 
 	// TODO: Add sorting functionality
 	const handleSort = () => {
@@ -69,6 +75,8 @@ const WarehouseList = () => {
 						<>
 							<WarehouseRow 
 								warehouse={warehouse}
+								deleting={deleting}
+								setDeleting={setDeleting}
 							/>
 							<span className="divider"></span>
 						</>

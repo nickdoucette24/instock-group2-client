@@ -6,7 +6,7 @@ import DeleteWarehouse from "../DeleteWarehouse/DeleteWarehouse";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 
-function WarehouseRow({warehouse}) {
+function WarehouseRow({warehouse, deleting, setDeleting}) {
 
 	const dialogRef = useRef(null);
 
@@ -49,6 +49,8 @@ function WarehouseRow({warehouse}) {
             id={warehouse.id} 
             toggleModal={toggleModal} 
             ref={dialogRef} 
+            deleting={deleting}
+            setDeleting={setDeleting}
         />
         <Link to={`/warehouses/${warehouse.id}/edit`}>
             <img src={edit} alt="Edit" />
