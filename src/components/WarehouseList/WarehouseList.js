@@ -2,9 +2,11 @@ import chevron from "../../assets/Icons/chevron_right-24px.svg";
 import edit from "../../assets/Icons/edit-24px.svg";
 import del from "../../assets/Icons/delete_outline-24px.svg";
 import sortBtn from "../../assets/Icons/sort-24px.svg";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
+import DeleteWarehouse from "../DeleteWarehouse/DeleteWarehouse";
 
 import "./WarehouseList.scss";
 
@@ -29,6 +31,15 @@ const WarehouseList = () => {
 	const handleSort = () => {
 		warehouses.sort();
 	};
+
+	const dialogRef = useRef(null);
+
+	const toggleModal = () => {
+		if (!dialogRef.current) return;
+		dialogRef.current.hasAttribute("open")
+		? dialogRef.current.close()
+		: dialogRef.current.showModal();
+	}
 
 	if (!loading)
 		return (
@@ -94,13 +105,17 @@ const WarehouseList = () => {
 									<p className="p2">{warehouse.contact_email}</p>
 								</div>
 								<div className="warehouse-container__item--col5">
-									<Link to="/warehouses/delete/:id">
-										<img src={del} alt="Delete" />
-									</Link>
+									<img src={del} alt="Delete" onClick={toggleModal} />
 									<Link to={`/warehouses/${warehouse.id}/edit`}>
 										<img src={edit} alt="Edit" />
 									</Link>
 								</div>
+								<DeleteWarehouse 
+									warehouse_name={warehouse.warehouse_name} 
+									id={warehouse.id} 
+									toggleModal={toggleModal} 
+									ref={dialogRef} 
+								/>
 							</section>
 							<span className="divider"></span>
 						</>
