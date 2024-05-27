@@ -1,13 +1,19 @@
-import { useNavigate } from 'react-router-dom';
+import { useRef, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import StockTag from '../StockTag/StockTag';
 
 import deleteIcon from '../../assets/Icons/delete_outline-24px.svg';
 import editIcon from '../../assets/Icons/edit-24px.svg';
 import chevronIcon from '../../assets/Icons/chevron_right-24px.svg';
+import DeleteInventoryModal from '../DeleteInventoryModal/DeleteInventoryModal';
+
 import './InventoryItemRow.scss';
 
 const InventoryItemRow = ({ inventoryItem, isFirst }) => {
+    const [isWarehouse, setisWarehouse] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
+
 
     const {
         id,
@@ -26,9 +32,21 @@ const InventoryItemRow = ({ inventoryItem, isFirst }) => {
         navigate(`/inventories/${id}`);
     }
 
-    // const handleDeleteModal = () => {
-    //     // Handle delete modal
-    // }
+
+
+    const dialogRef = useRef(null);
+
+    const toggleModal = () => {
+        if (!dialogRef.current) return;
+        dialogRef.current.hasAttribute("open")
+        ? dialogRef.current.close()
+        : dialogRef.current.showModal();
+    }
+
+    if (location.pathname.includes('warehouses')) {
+        setisWarehouse(true);
+    }
+
 
   return (
     <div className={`item-container ${isFirst ? 'first-row' : ''}`}>
@@ -50,16 +68,24 @@ const InventoryItemRow = ({ inventoryItem, isFirst }) => {
                 </div>
                 <h4 className='itemDetails-container__heading'>QUANTITY</h4>
                 <p className='itemDetails-container__quantity'>{quantity}</p>
-                <h4 className='itemDetails-container__location'>WAREHOUSE</h4>
-                <p className='itemDetails-container__warehouse'>{warehouse}</p>
+                {!isWarehouse ? (
+                    <>
+                        <h4 className='itemDetails-container__location'>WAREHOUSE</h4>
+                        <p className='itemDetails-container__warehouse'>{warehouse}</p>
+                    </>
+                ) : (
+                    null
+                )
+                }
             </div>
             <p className='long-row spacing-mod'>{quantity}</p>
             <p className='long-row spacing-mod'>{warehouse}</p>
             <div className='icon-container'>
-                <img className='icon-container__delete' src={deleteIcon} alt='delete icon for deleting an item' />
+                <img className='icon-container__delete' src={deleteIcon} alt='delete icon for deleting an item' onClick={toggleModal}/>
                 <img className='icon-container__edit' src={editIcon} onClick={() => handleNavToEdit()} alt='pencil icon for editing an item' />
             </div>
         </div>
+        <DeleteInventoryModal item={item} id={id} toggleModal={toggleModal} ref={dialogRef}/>
     </div>
   )
 }
