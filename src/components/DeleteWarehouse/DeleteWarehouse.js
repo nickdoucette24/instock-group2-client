@@ -14,11 +14,13 @@ const DeleteWarehouse = forwardRef(({warehouse_name, id, toggleModal}, ref) => {
     }
 
     return<dialog 
-    className="modal" 
-    ref={ref} 
-    onClick={(e) => {
-        if (e.currentTarget === e.target) toggleModal();
-    }}>
+        className="modal" 
+        ref={ref} 
+        onClick={(e) => {
+            if (e.currentTarget === e.target) toggleModal();
+        }
+    }>
+        {console.log(warehouse_name)}
         <div className='modal-content-wrapper'>
         <button className='close-icon' type='button' onClick={toggleModal}>
           <img src={closeIcon} alt='close icon'/>
