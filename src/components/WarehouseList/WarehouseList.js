@@ -36,10 +36,9 @@ const WarehouseList = () => {
 
 	const toggleModal = () => {
 		if (!dialogRef.current) return;
-		if (dialogRef.current.hasAttribute("open")) {
-			dialogRef.current.close()
-		}
-		dialogRef.current.showModal();
+		dialogRef.current.hasAttribute("open")
+		? dialogRef.current.close()
+		: dialogRef.current.showModal();
 	}
 
 	if (!loading)
