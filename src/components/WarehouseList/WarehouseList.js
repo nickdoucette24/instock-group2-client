@@ -75,7 +75,6 @@ const WarehouseList = () => {
 						<>
 							<WarehouseRow 
 								warehouse={warehouse}
-								deleting={deleting}
 								setDeleting={setDeleting}
 							/>
 							<span className="divider"></span>

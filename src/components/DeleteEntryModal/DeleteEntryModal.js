@@ -1,14 +1,32 @@
-import { useState, forwardRef } from "react";
+import { useEffect, forwardRef } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 
 import closeIcon from "../../assets/Icons/close-24px.svg";
 
-import './DeleteWarehouse.scss';
+import './DeleteEntryModal.scss';
 
-const DeleteWarehouse = forwardRef(({warehouse_name, id, toggleModal, deleting, setDeleting}, ref) => {
+const DeleteEntryModal = forwardRef(({warehouse_name, item, id, toggleModal, setDeleting}, ref) => {
+  const location = useLocation();
+  let route, entry, thing;
+
+  const routeDelete = (route, entry, thing) => {
+    if (location.pathname.includes('inventories')) {
+      route = 'inventories';
+      entry = item;
+      thing = 'inventory';
+    } else {
+      route = 'warehouses';
+      entry = warehouse_name;
+      thing = 'warehouse';
+    }
+    return (route, entry, thing);
+  }
+
+  routeDelete(route, entry, thing);
 
     const handleDeleteItem = (id) => {
-      axios.delete(`http://localhost:8080/api/warehouses/${id}`)
+      axios.delete(`http://localhost:8080/api/${route}/${id}`)
         .then(setDeleting(true))
         .catch(err => console.error(err));
     }
@@ -25,9 +43,9 @@ const DeleteWarehouse = forwardRef(({warehouse_name, id, toggleModal, deleting, 
           <img src={closeIcon} alt='close icon'/>
         </button>
         <div className='modal-content'>
-          <h1>Delete {warehouse_name} warehouse?</h1>
+          <h1>Delete {entry} {thing}?</h1>
           <div className='delete-modal-message'>
-            <p className='p1 modal-message'>Please confirm that you'd like to delete {warehouse_name} from the warehouse list.</p>
+            <p className='p1 modal-message'>Please confirm that you'd like to delete {entry} from the {thing} list.</p>
             <p className='p1 modal-message'>You won't be able to undo this action.</p>
           </div>
           <div className='modal-buttons'>
@@ -43,4 +61,4 @@ const DeleteWarehouse = forwardRef(({warehouse_name, id, toggleModal, deleting, 
     </dialog>
 });
 
-export default DeleteWarehouse;
+export default DeleteEntryModal;
