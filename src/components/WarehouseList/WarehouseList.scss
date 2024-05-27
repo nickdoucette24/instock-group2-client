@@ -30,6 +30,10 @@
 	}
 }
 
+.delete-btn {
+	cursor: pointer;
+}
+
 // Make the Actions column small
 @mixin col5 {
 	display: flex;
