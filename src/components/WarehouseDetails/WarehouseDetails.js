@@ -38,7 +38,7 @@ const WarehouseDetails = () => {
 	
 		getWarehouse();
 		getInventoryList();
-	  })
+	  }, [])
 
 
 	return (

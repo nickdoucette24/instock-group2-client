@@ -25,6 +25,7 @@
 	@include tablet {
 		height: 38px;
 		width: 81px;
+		gap: .5rem;
 	}
 
 	&__icon {
@@ -33,7 +34,6 @@
 
 	&__content {
 		@include labels-links-buttons;
-		padding-left: 10px;
 		display: none;
 
 		@include tablet {

@@ -30,12 +30,45 @@
     align-items: center;
     background-color: $instock-indigo;
     border-radius: 50%;
-    height: 2rem;
-    width: 2rem;
+    height: 2.25rem;
+    width: 2.25rem;
     margin-top: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 
-    & img {
-        filter: saturate(0%) brightness(200%);
+    @include tablet {
+        width: auto;
+        border-radius: 1.25rem;
+        padding: 0.5rem 1rem;
+        height: auto;
+    }
+
+    &:hover {
+        background-color: darken($instock-indigo, 10%);
+    }
+
+    &:active {
+        background-color: darken($instock-indigo, 30%);
+        transform: translateY(2px);
+    }
+
+    &__img {
+        filter: brightness(0) invert(1);
+
+        @include tablet {
+            width: 1.25rem;
+        }
+    }
+
+    &__text {
+        display: none;
+
+        @include tablet {
+            display: block;
+            margin: 0;
+            padding-left: 0.25rem;
+            color: $white;
+        }
     }
 }
 
@@ -58,7 +91,7 @@
     
     &__main {
         @include tablet { display: flex; }
-        padding: 2rem;
+        padding: 2rem 2rem 0 2rem;
         margin-bottom: .5rem;
     }
 
@@ -91,19 +124,32 @@
 .in-stock-tag {
     @include status;
     width: 3rem;
-    background-color: $in-stock;
+    background-color: rgba($green, 7%);
+    text-wrap: nowrap;
+    z-index: 0;
+    padding: 0.25rem 0.5rem;
+}
+
+.in-stock-text {
     color: $green;
-    text-wrap: nowrap
+}
+
+.out-of-stock-text {
+    color: $red;
 }
 
 .out-of-stock-tag {
     @include status;
     width: 5rem;
-    background-color: $out-of-stock;
-    color: $red;
+    background-color: rgba($red, 7%);
+    padding: 0.25rem 0.5rem;
 }
 
 .status-container {
     display: flex;
     flex-direction: column;
+}
+
+.item-name {
+    margin-left: 0.5rem;
 }

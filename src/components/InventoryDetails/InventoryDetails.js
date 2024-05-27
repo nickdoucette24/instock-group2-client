@@ -42,11 +42,12 @@ const InventoryDetails = () => {
           <Link to="/inventories">
             <img src={backArrow} alt="Go back" />
           </Link>
-          <h1>{item.item_name}</h1>
+          <h1 className="item-name">{item.item_name}</h1>
         </div>
         <Link to={`/inventories/${id}/edit`}>
           <div className="btn-container">
-            <img src={editIcon} alt="" />
+            <img className="btn-container__img" src={editIcon} alt="edit icon for editing an inventory item" />
+            <p className="btn-container__text">Edit</p>
           </div>
         </Link>
       </section>
@@ -68,7 +69,7 @@ const InventoryDetails = () => {
             <div className="status-container">
               <h4>STATUS:</h4>
               <span className={stockStyle}>
-                <h4>{stockText}</h4>
+                <h4 className={stockText === "IN STOCK" ? 'in-stock-text' : 'out-of-stock-text'}>{stockText}</h4>
               </span>
             </div>
             <div className="details__div">

@@ -1,16 +1,16 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import StockTag from '../StockTag/StockTag';
 
 import deleteIcon from '../../assets/Icons/delete_outline-24px.svg';
 import editIcon from '../../assets/Icons/edit-24px.svg';
 import chevronIcon from '../../assets/Icons/chevron_right-24px.svg';
-import DeleteInventoryModal from '../DeleteInventoryModal/DeleteInventoryModal';
+import DeleteInventoryModal from '../../components/DeleteInventoryModal/DeleteInventoryModal';
 
 import './InventoryItemRow.scss';
 
 const InventoryItemRow = ({ inventoryItem, isFirst }) => {
-    const [isWarehouse, setisWarehouse] = useState(false);
+    const [isWarehouse, setIsWarehouse] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -43,9 +43,11 @@ const InventoryItemRow = ({ inventoryItem, isFirst }) => {
         : dialogRef.current.showModal();
     }
 
-    if (location.pathname.includes('warehouses')) {
-        setisWarehouse(true);
-    }
+    useEffect(() => {
+        if (location.pathname.includes('warehouses')) {
+            setIsWarehouse(true);
+        }
+    }, [location.pathname]);
 
 
   return (
@@ -79,7 +81,11 @@ const InventoryItemRow = ({ inventoryItem, isFirst }) => {
                 }
             </div>
             <p className='long-row spacing-mod'>{quantity}</p>
-            <p className='long-row spacing-mod'>{warehouse}</p>
+            {isWarehouse ? (
+                null
+            ) : (
+                <p className='long-row spacing-mod'>{warehouse}</p>
+            )}
             <div className='icon-container'>
                 <img className='icon-container__delete' src={deleteIcon} alt='delete icon for deleting an item' onClick={toggleModal}/>
                 <img className='icon-container__edit' src={editIcon} onClick={() => handleNavToEdit()} alt='pencil icon for editing an item' />
