@@ -67,6 +67,9 @@
             border: 1px solid $cloud;
             transition: border-color 0.3s ease;
             color: $slate;
+            background-image: url("../../assets/Icons/search-24px.svg");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
             @include body-medium;
 
             @include tablet {
@@ -96,12 +99,11 @@
 
             &:hover {
                 background-color: darken($instock-indigo, 10%);
-                transition: 0.2s ease;
             }
 
             &:active {
+                transform: translateY(2px);
                 background-color: darken($instock-indigo, 30%);
-                transition: 0.2s ease;
             }
         }
     }
