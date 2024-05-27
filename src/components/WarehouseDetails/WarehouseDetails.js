@@ -7,28 +7,39 @@ import axios from "axios";
 import EditButton from "../EditButton/EditButton";
 import BackButton from "../BackButton/BackButton";
 import sortButton from "../../assets/Icons/sort-24px.svg";
+import InventoryItemRow from "../InventoryItemRow/InventoryItemRow";
 
 const WarehouseDetails = () => {
 	const [warehouseDetails, setwarehouseDetails] = useState({});
-	const [warehouseInventory, setWarehouseInventory] = useState([]);
+	const [inventoryItems, setInventoryItems] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	const { id } = useParams();
 
 	useEffect(() => {
-		axios
-			.get(`http://localhost:8080/api/warehouses/${id}`)
-			.then((response) => {
-				setwarehouseDetails(response.data);
-			})
-			.then(() => {
-				axios
-					.get(`http://localhost:8080/api/warehouses/${id}/inventories`)
-					.then((response) => setWarehouseInventory(response.data));
-			})
-			.catch((err) => console.error(err));
-	}, []);
+		const getWarehouse = async () => {
+		  try {
+			const response = await axios.get(`http://localhost:8080/api/warehouses/${id}`);
+			setwarehouseDetails(response.data);
+		  } catch (error) {
+			console.error("Error getting data:", error);
+		  }
+		}
+	
+		const getInventoryList = async () => {
+		  try {
+			const response = await axios.get(`http://localhost:8080/api/warehouses/${id}/inventories`);
+			setInventoryItems(response.data);
+			setLoading(false);
+		  } catch (error) {
+			console.error("Error getting data:", error);
+		  }
+		}
+	
+		getWarehouse();
+		getInventoryList();
+	  }, [])
 
-	console.log(warehouseInventory);
 
 	return (
 		<>
@@ -117,7 +128,16 @@ const WarehouseDetails = () => {
 			) : (
 				"Loading..."
 			)}
-			{/* inventory list */}
+			{loading ? (
+            <p className='list-loading'>Loading...</p>
+          ) : (
+            inventoryItems.map((inventoryItem, index) => (
+              <InventoryItemRow key={inventoryItem.id} inventoryItem={inventoryItem} isFirst={index === 0} />
+            ))
+          )
+        }
+
+
 		</>
 	);
 };
