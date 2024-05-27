@@ -1,47 +1,93 @@
-@use '../../styles/partials/mixins' as *;
 @use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
 
 .modal {
-    position: absolute;
-    z-index: 2;
-    object-position: center;
-    width: 100%;
-    height: 100%;
-    padding: 1rem;
+  border: none;
+  height: 100dvh;
+  width: 100dvh;
+  
+  &::backdrop {
+    background-color: $white;
+  }
 
-    @include tablet {
-        width: 90%;
-        height: 16.5rem;
-        top: 12.5rem;
-        padding: 4rem;
-    }
+  @include tablet {
+    // height: 16.375rem;
+    height: fit-content;
+    width: 42rem;
+    padding: 2.5rem 4rem;
+    box-sizing: border-box;
 
-    &__options {
-        display: flex;
-        justify-content: space-around;
-        width: 100%;
-    }
+    &::backdrop {
+      background-color: $instock-black;
+      opacity: 70%;
+    }  
+  }
+}
 
-    @mixin modal-btns {
-        @include btn;
-        width: calc(100% - .5rem);
-    }
+.modal-content-wrapper {
+  display: flex;
+  flex-direction: column;
 
-    &__btn-cancel {
-        @include modal-btns;
-        background-color: $white;
-        color: $cloud;
-    }
+  & * {
+    margin: 0;
+  }
+}
 
-    &__btn-delete {
-        @include modal-btns;
-        background-color: $red;
-        color: $white;
-    }
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
-    &__x {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-    }
+.close-icon {
+  align-self: flex-end;
+  justify-content: center;
+  background-color: inherit;
+	border: none;
+  padding-bottom: 1rem;
+	cursor: pointer;
+	transition: 0.1s;
+
+	&:hover {
+		transform: scale(1.25);
+	}
+
+	&:active {
+		transform: scale(1);
+	}
+
+  @include tablet {
+    padding: 0;
+  }
+}
+
+.modal-message {
+  display: inline;
+  padding-right: 0.25rem;
+
+  @include tablet {
+    display: block;
+  }
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 15rem;
+
+  @include tablet {
+    margin-top: 1rem;
+    justify-content: flex-end
+  }
+}
+
+.delete-button {
+  @include btn;
+  background-color: $red;
+  color: $white;
+  width: 50%;
+
+  @include tablet {
+    width: fit-content;
+  }
 }
