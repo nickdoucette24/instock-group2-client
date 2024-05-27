@@ -35,7 +35,7 @@ const InventoryPage = () => {
     }
 
     getInventoryItems();
-  });
+  }, []);
 
   const handleAddNav = () => {
     navigate("/inventories/add");
