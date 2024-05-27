@@ -1,0 +1,43 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.edit-button {
+	cursor: pointer;
+	border: none;
+	background-color: $instock-indigo;
+	color: $white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	height: 36px;
+	width: 36px;
+	transition: background-color 0.1s;
+
+	&:hover {
+		background-color: $graphite;
+	}
+
+	&:active {
+		transform: translateY(2px);
+	}
+
+	@include tablet {
+		height: 38px;
+		width: 81px;
+		gap: .5rem;
+	}
+
+	&__icon {
+		filter: brightness(0) invert(100%);
+	}
+
+	&__content {
+		@include labels-links-buttons;
+		display: none;
+
+		@include tablet {
+			display: inline;
+		}
+	}
+}

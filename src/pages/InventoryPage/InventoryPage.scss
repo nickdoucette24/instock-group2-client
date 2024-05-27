@@ -1,0 +1,118 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.content-wrapper {
+    padding: 0 1rem;
+
+    @include tablet {
+        padding: 0 2rem;
+    }
+}
+
+.content-container {
+    background-color: $white;
+    margin-top: -4rem;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+
+    @include tablet {
+        margin-top: -5.86rem;
+        max-width: 63.75rem;
+    }
+}
+
+.inventory-heading {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: 0 1.5rem;
+
+    @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        padding: 0 2rem;
+    }
+
+    @include laptop {
+        padding: 0 2.5rem;
+    }
+
+    &__title {
+        @include page-header;
+        margin: 2rem 0 1rem 0;
+
+        @include tablet {
+            margin-bottom: 1.375rem;
+        }
+    }
+
+    &__item-container {
+        @include flexCenter;
+        flex-direction: column;
+
+        @include tablet {
+            flex-direction: row;
+            width: 50%;
+            margin: 2rem 0 1.5rem 0;
+        }
+
+        &--search {
+            width: 100%;
+            height: 2.25rem;
+            padding: 0 1rem;
+            border-radius: 20px;
+            border: 1px solid $cloud;
+            transition: border-color 0.3s ease;
+            color: $slate;
+            background-image: url("../../assets/Icons/search-24px.svg");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            @include body-medium;
+
+            @include tablet {
+                height: 2.375rem;
+            }
+
+            &:focus {
+                border-color: $instock-indigo;
+                outline: none;
+                color: $instock-black;
+            }
+        }
+
+        &--addItem {
+            @include addButton;
+            margin: 1rem 0 1.5rem 0;
+            padding: 0;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+
+            @include tablet {
+                padding: 0 1rem;
+                width: auto;
+                text-wrap: nowrap;
+                margin: 0;
+            }
+
+            &:hover {
+                background-color: darken($instock-indigo, 10%);
+            }
+
+            &:active {
+                transform: translateY(2px);
+                background-color: darken($instock-indigo, 30%);
+            }
+        }
+    }
+}
+
+.search-container {
+    width: 100%;
+
+    @include tablet {
+        margin-right: 1rem;
+    }
+}

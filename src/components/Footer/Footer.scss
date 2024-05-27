@@ -1,0 +1,32 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/fonts" as *;
+
+.footer {
+    background-color: $light-grey;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.copyright-wrapper {
+    @include flexCenter;
+    padding: 2.5rem 0;
+
+    @include tablet {
+        padding-top: 5rem;
+    }
+
+    &__details {
+        color: $slate;
+        font-size: 0.6875rem;
+        line-height: 1rem;
+        margin: 0;
+        text-align: center;
+
+        @include tablet {
+            font-size: 0.75rem;
+            line-height: 1.125rem;
+        }
+    }
+}

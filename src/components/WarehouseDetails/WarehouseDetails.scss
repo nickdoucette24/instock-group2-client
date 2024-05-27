@@ -1,0 +1,121 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.main-header {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 2rem 1.5rem 1.5rem;
+	border-bottom: 1px solid $cloud;
+
+	@include tablet {
+		padding: 2rem;
+	}
+
+	@include laptop {
+		padding: 2rem 2.5rem;
+	}
+}
+
+.back-button-container {
+	display: flex;
+	align-items: center;
+}
+
+.warehouse-name {
+	@include page-header;
+	flex-grow: 1;
+	margin: 0;
+}
+
+.warehouse-info {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem 1.5rem;
+	gap: 2.25rem;
+	border-bottom: 1px solid $cloud;
+
+	@include tablet {
+		flex-direction: row;
+		padding: 1.5rem 2rem;
+		border-bottom: none;
+	}
+
+	@include laptop {
+		padding: 1.5rem 2.5rem;
+	}
+
+	& * {
+		margin: 0;
+		padding: 0;
+	}
+
+	&__address {
+		@include tablet {
+			width: 40%;
+			border-right: 1px solid $cloud;
+		}
+	}
+
+	&__address-content {
+		@include body-medium;
+		display: flex;
+		gap: 0.5ch;
+
+		@include tablet {
+			flex-direction: column;
+			gap: 0;
+		}
+	}
+
+	&__contact {
+		@include body-medium;
+		display: flex;
+		justify-content: space-between;
+
+		@include tablet {
+			gap: 1.5rem;
+			width: 50%;
+			justify-content: flex-start;
+			flex-grow: 1;
+		}
+
+		.contact-name {
+			@include tablet {
+				width: 40%;
+				max-width: 13.5625rem;
+			}
+		}
+
+		.contact-info {
+			padding-right: 1rem;
+		}
+	}
+}
+
+.info-header {
+	@include table-header;
+	padding-bottom: 0.25rem;
+}
+
+.table-header {
+	@include table-header;
+	margin: 0;
+}
+
+.warehouse-sort-bar {
+	display: none;
+	background-color: $light-grey;
+
+	@include tablet {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0.6875rem 2rem;
+	}
+
+	&__column {
+		display: flex;
+		align-items: center;
+	}
+}

@@ -1,0 +1,237 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.item-container {
+    border-top: 1px solid $cloud;
+    padding: 0 2rem;
+    @include flexCenter;
+
+    @include tablet {
+        height: 3.75rem;
+
+        &.first-row {
+            border-top: none;
+        }
+
+        &:hover {
+            background-color: rgba($instock-indigo, 7%);
+        }
+    }
+
+    @include laptop {
+        padding: 0 2.5rem;
+    }
+}
+
+.details-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 1rem 0 1.5rem 0;
+
+    @include tablet {
+        flex-wrap: nowrap;
+        gap: 2rem;
+        align-items: flex-end;
+        padding: 1.125rem 0;
+    }
+}
+
+.itemInfo-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    @include tablet {
+        flex-direction: row;
+        align-items: center;
+        flex: 0;
+        width: 7rem;
+    }
+
+    &__label {
+        margin: 0;
+        @include table-header;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__heading {
+        margin: 1rem 0 0.25rem 0;
+        @include table-header;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__category {
+        color: $instock-black;
+        margin: 0;
+        @include body-medium;
+
+
+        @include tablet {
+            display: none;
+        }
+    }
+}
+
+.itemDetails-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    @include tablet {
+        flex-direction: row;
+        align-items: center;
+        flex: 0;
+    }
+
+    &__status {
+        margin: 0;
+        @include table-header;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__stock {
+        @include flexCenter;
+        justify-content: flex-start;
+    }
+
+    &__heading {
+        margin: 1rem 0 0.25rem 0;
+        @include table-header;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__quantity {
+        margin: 0;
+        color: $instock-black;
+        @include body-medium;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__location {
+        margin: 1rem 0 0.25rem 0;
+        @include table-header;
+
+        @include tablet {
+            display: none;
+        }
+    }
+
+    &__warehouse {
+        color: $instock-black;
+        margin: 0;
+        @include body-medium;
+
+        @include tablet {
+            display: none;            
+        }
+    }
+}
+
+.long-row {
+    display: none;
+
+    @include tablet {
+        display: block;
+        color: $instock-black;
+        margin: 0;
+        @include body-medium;
+    }
+}
+
+.spacing-mod {
+    width: 5.723125rem;
+}
+
+.item-links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    cursor: pointer;
+
+    @include tablet {
+        width: 7.32875rem;
+    }
+
+    &__name {
+        text-decoration: none;
+        color: $instock-indigo;
+        margin: 0.25rem 0;
+        @include labels-links-buttons;
+
+        @include tablet {
+            margin: 0;
+            text-wrap: nowrap;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__chevron {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+}
+
+.icon-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    @include tablet {
+        width: auto;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    &__delete {
+        transition: 0.4s ease;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.2);
+        }
+
+        &:active {
+            transform: scale(1);
+            transition: 0.1s ease;
+        }
+    }
+
+    &__edit {
+        transition: 0.4s ease;
+        cursor: pointer;
+
+        @include tablet {
+            align-self: flex-end;
+        }
+
+        &:hover {
+            transform: scale(1.2);
+        }
+
+        &:active {
+            transform: scale(1);
+            transition: 0.1s ease;
+        }
+    }
+}

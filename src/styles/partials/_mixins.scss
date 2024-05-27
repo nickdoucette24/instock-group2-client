@@ -1,0 +1,192 @@
+@use "./variables" as *;
+@use "./fonts" as *;
+
+// Media Query Mixins
+@mixin tablet {
+	@media (min-width: $tablet-breakpoint) {
+		@content;
+	}
+}
+
+@mixin laptop {
+	@media (min-width: $pc-breakpoint) {
+		@content;
+	}
+}
+
+// Font Mixins
+@mixin regular {
+	font-family: "Titillium";
+	font-weight: 400;
+}
+
+@mixin semiBold {
+	font-family: "Titillium";
+	font-weight: 600;
+}
+
+// General shape of buttons and search bars
+@mixin interactive-components {
+	height: 2.25rem;
+	padding: 0 1rem;
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+}
+
+// Button Mixin
+@mixin btn {
+	@include interactive-components;
+	justify-content: center;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.1s;
+
+	&:hover {
+		background-color: $graphite;
+	}
+
+	&:active {
+		transform: translateY(2px);
+	}
+}
+
+@mixin addButton {
+	height: 2.25rem;
+	width: 100%;
+	padding: 0 1rem;
+	border-radius: 20px;
+	display: flex;
+	justify-content: center;
+	gap: 0.25rem;
+	align-items: center;
+	border: none;
+	background-color: $instock-indigo;
+	color: $white;
+	@include labels-links-buttons();
+
+	@include tablet() {
+		height: 2.375rem;
+	}
+}
+
+// Flexbox Mixins
+@mixin flexCenter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+// Type Kit
+@mixin page-header {
+	// h1
+	font-size: 28px;
+	line-height: 36px;
+	font-weight: 600;
+
+	@include tablet() {
+		font-size: 32px;
+		line-height: 40px;
+	}
+}
+
+@mixin subheader {
+	// h2
+	font-size: 20px;
+	line-height: 28px;
+	font-weight: 600;
+
+	@include tablet() {
+		font-size: 24px;
+		line-height: 32px;
+	}
+}
+
+
+@mixin labels-links-buttons {
+	// h3
+	@include semiBold();
+	font-size: 13px;
+	line-height: 20px;
+	font-weight: 600;
+
+	@include tablet() {
+		font-size: 14px;
+		line-height: 22px;
+	}
+}
+
+@mixin table-header {
+	// h4
+	text-transform: uppercase;
+	color: $slate;
+	font-size: 11px;
+	line-height: 16px;
+	font-weight: 600;
+
+	@include tablet() {
+		font-size: 12px;
+		line-height: 18px;
+	}
+}
+
+@mixin body-large {
+	// .p1
+	font-size: 15px;
+	line-height: 26px;
+	font-weight: 400;
+
+	@include tablet() {
+		font-size: 16px;
+		line-height: 28px;
+	}
+}
+
+@mixin body-medium {
+	// .p2
+	font-size: 13px;
+	line-height: 20px;
+	font-weight: 400;
+
+	@include tablet() {
+		font-size: 14px;
+		line-height: 22px;
+	}
+}
+
+@mixin body-small {
+	// .p3
+	font-size: 11px;
+	line-height: 16px;
+	font-weight: 400;
+
+	@include tablet() {
+		font-size: 12px;
+		line-height: 18px;
+	}
+}
+
+// Set fonts
+h1 {
+	@include page-header;
+}
+h2 {
+	@include subheader;
+}
+h3 {
+	@include labels-links-buttons;
+}
+h4 {
+	@include table-header;
+}
+
+// Paragraph classes
+.p1 {
+	@include body-large;
+}
+.p2 {
+	@include body-medium;
+}
+.p3 {
+	@include body-small;
+}
