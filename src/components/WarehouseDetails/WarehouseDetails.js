@@ -9,7 +9,7 @@ import BackButton from "../BackButton/BackButton";
 import sortButton from "../../assets/Icons/sort-24px.svg";
 import InventoryItemRow from "../InventoryItemRow/InventoryItemRow";
 
-const WarehouseDetails = () => {
+const WarehouseDetails = ({ updating, setUpdating }) => {
 	const [warehouseDetails, setwarehouseDetails] = useState({});
 	const [inventoryItems, setInventoryItems] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -31,6 +31,7 @@ const WarehouseDetails = () => {
 			const response = await axios.get(`http://localhost:8080/api/warehouses/${id}/inventories`);
 			setInventoryItems(response.data);
 			setLoading(false);
+			setUpdating(false);
 		  } catch (error) {
 			console.error("Error getting data:", error);
 		  }
@@ -38,8 +39,7 @@ const WarehouseDetails = () => {
 	
 		getWarehouse();
 		getInventoryList();
-	  }, [])
-
+	  }, [updating])
 
 	return (
 		<>
@@ -132,7 +132,12 @@ const WarehouseDetails = () => {
             <p className='list-loading'>Loading...</p>
           ) : (
             inventoryItems.map((inventoryItem, index) => (
-              <InventoryItemRow key={inventoryItem.id} inventoryItem={inventoryItem} isFirst={index === 0} />
+              <InventoryItemRow 
+			  	key={inventoryItem.id} 
+			  	inventoryItem={inventoryItem} 
+			  	isFirst={index === 0} 
+				setUpdating={setUpdating}
+			  />
             ))
           )
         }

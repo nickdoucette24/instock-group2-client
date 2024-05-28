@@ -7,7 +7,7 @@ import WarehouseRow from "../WarehouseRow/WarehouseRow";
 
 import "./WarehouseList.scss";
 
-const WarehouseList = () => {
+const WarehouseList = ({ updating, setUpdating }) => {
 	const [warehouses, setWarehouses] = useState([]);
 	const [loading, setLoading] = useState(true);
 
@@ -18,11 +18,12 @@ const WarehouseList = () => {
 			.then((response) => {
 				setWarehouses(response.data);
 				setLoading(false);
+				setUpdating(false);
 				return warehouses;
 			})
 			.catch((err) => console.error(err));
 		// eslint-disable-next-line
-	}, []);
+	}, [updating]);
 
 	// TODO: Add sorting functionality
 	const handleSort = () => {
@@ -36,7 +37,7 @@ const WarehouseList = () => {
 					<h1>Warehouses</h1>
 					<span className="floaty-container__top--controls">
 						<input className="search" type="text" placeholder="Search..." />
-						<Link to="/warehouses/add">
+						<Link to="/warehouses/add" setUpdating={setUpdating}>
 							{" "}
 							{/* Add new warehouse */}
 							<button className="btn__add">+ Add New Warehouse</button>
@@ -69,6 +70,7 @@ const WarehouseList = () => {
 						<>
 							<WarehouseRow 
 								warehouse={warehouse}
+								setUpdating={setUpdating}
 							/>
 							<span className="divider"></span>
 						</>

@@ -8,7 +8,7 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 import './FormInventory.scss';
 
-const FormInventory = ({ submitButton, url }) => {
+const FormInventory = ({ submitButton, url, setUpdating }) => {
     const [errors, setErrors] = useState({});
     const [selected, setSelected] = useState('');
     const [warehouses, setWarehouses] = useState([]);
@@ -112,6 +112,7 @@ const FormInventory = ({ submitButton, url }) => {
         if (location.pathname.includes("/add")) try {
             await axios.post(`${url}/api/inventories`, newItem)
             alert("New Inventory Item Added Successfully: " + formValues.item_name);
+            setUpdating(true);
             navigate('/inventories');
         } catch (error) {
             console.error("Error adding new inventory item:", error);
@@ -120,6 +121,7 @@ const FormInventory = ({ submitButton, url }) => {
         if (location.pathname.includes("/edit")) try {
             await axios.put(`${url}/api/inventories/${id}`, newItem)
             alert("Inventory Item Updated Successfully: " + formValues.item_name);
+            setUpdating(true);
             navigate('/inventories');
         } catch (error) {
             console.error("Error editing new inventory item:", error);
@@ -249,14 +251,13 @@ const FormInventory = ({ submitButton, url }) => {
                                     value={formValues.warehouse_name}
                                 >
                                     <option value="" className="placeholder" disabled>Please select</option>
-                                    <option value="Boston">Boston</option>
-                                    <option value="Jersey">Jersey</option>
-                                    <option value="Manhattan">Manhattan</option>
-                                    <option value="Miami">Miami</option>
-                                    <option value="Santa Monica">Santa Monica</option>
-                                    <option value="Seattle">Seattle</option>
-                                    <option value="SF">SF</option>
-                                    <option value="Washington">Washington</option>
+                                    {warehouses.map(warehouse => {
+                                        const {warehouse_id: id, warehouse_name: name} = warehouse;
+                                        return (
+                                        <option key={id} value={name}>
+                                            {name}
+                                        </option>
+                                    )})}
                                 </select>
                                 {errors.warehouse_name && <ErrorMessage />}
                             </label>

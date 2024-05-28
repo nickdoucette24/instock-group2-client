@@ -9,7 +9,7 @@ import DeleteInventoryModal from '../../components/DeleteInventoryModal/DeleteIn
 
 import './InventoryItemRow.scss';
 
-const InventoryItemRow = ({ inventoryItem, isFirst }) => {
+const InventoryItemRow = ({ inventoryItem, isFirst, setUpdating }) => {
     const [isWarehouse, setIsWarehouse] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -91,7 +91,13 @@ const InventoryItemRow = ({ inventoryItem, isFirst }) => {
                 <img className='icon-container__edit' src={editIcon} onClick={() => handleNavToEdit()} alt='pencil icon for editing an item' />
             </div>
         </div>
-        <DeleteInventoryModal item={item} id={id} toggleModal={toggleModal} ref={dialogRef}/>
+        <DeleteInventoryModal 
+            item={item} 
+            id={id} 
+            toggleModal={toggleModal} 
+            ref={dialogRef}
+            setUpdating={setUpdating}
+        />
     </div>
   )
 }

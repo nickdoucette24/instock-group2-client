@@ -5,12 +5,12 @@ import closeIcon from "../../assets/Icons/close-24px.svg";
 
 import './DeleteWarehouse.scss';
 
-const DeleteWarehouse = forwardRef(({warehouse_name, id, toggleModal}, ref) => {
+const DeleteWarehouse = forwardRef(({warehouse_name, id, toggleModal, setUpdating}, ref) => {
 
     const handleDeleteItem = (id) => {
         axios.delete(`http://localhost:8080/api/warehouses/${id}`)
             .then(toggleModal())
-            .then(response => console.log(response.data))
+            .then(setUpdating(true))
             .catch(err => console.error(err));
     }
 

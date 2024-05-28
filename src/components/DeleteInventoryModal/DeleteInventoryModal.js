@@ -4,10 +4,13 @@ import closeIcon from "../../assets/Icons/close-24px.svg";
 import { forwardRef } from 'react';
 import axios from "axios";
 
-const DeleteInventoryModal = forwardRef(({item, id, toggleModal}, ref) => {
+const DeleteInventoryModal = forwardRef(({item, id, toggleModal, setUpdating}, ref) => {
 
   const handleDeleteItem = (id) => {
-    axios.delete(`http://localhost:8080/api/inventories/${id}`).then((response) => console.log(response.data));
+    axios.delete(`http://localhost:8080/api/inventories/${id}`)
+      .then(toggleModal())
+      .then(setUpdating(true))
+      .catch(err => console.error(err));
   }
 
   return (

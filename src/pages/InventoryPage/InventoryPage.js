@@ -17,6 +17,7 @@ const url = "http://localhost:8080"
 const InventoryPage = () => {
   const [inventoryItems, setInventoryItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [updating, setUpdating] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -27,6 +28,7 @@ const InventoryPage = () => {
         const response = await axios.get(`${url}/api/inventories`);
         setInventoryItems(response.data);
         setLoading(false);
+        setUpdating(false);
       } catch (error) {
         console.error("Error retrieving inventory items:", error);
         console.log(error);
@@ -35,16 +37,14 @@ const InventoryPage = () => {
     }
 
     getInventoryItems();
-  }, []);
+  }, [updating]);
 
   const handleAddNav = () => {
     navigate("/inventories/add");
   }
 
-  if (location.pathname.endsWith(`add`)) return <AddInventoryItem url={url} />;
-
-  if (location.pathname.endsWith(`edit`)) return <EditInventoryItem url={url} />;
-
+  if (location.pathname.endsWith(`add`)) return <AddInventoryItem url={url} setUpdating={setUpdating} />;
+  if (location.pathname.endsWith(`edit`)) return <EditInventoryItem url={url} setUpdating={setUpdating} />;
   if (location.pathname.endsWith(`inventories/${id}`)) return <InventoryDetails inventoryItem={inventoryItems} />;
 
   if (location.pathname.endsWith("inventories")) return (
@@ -65,7 +65,12 @@ const InventoryPage = () => {
             <p className='list-loading'>Loading...</p>
           ) : (
             inventoryItems.map((inventoryItem, index) => (
-              <InventoryItemRow key={inventoryItem.id} inventoryItem={inventoryItem} isFirst={index === 0} />
+              <InventoryItemRow 
+                key={inventoryItem.id} 
+                inventoryItem={inventoryItem} 
+                isFirst={index === 0} 
+                setUpdating={setUpdating}
+              />
             ))
           )
         }
