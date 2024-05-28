@@ -1,33 +1,34 @@
 import sortIcon from '../../assets/Icons/sort-24px.svg';
 
 import './Sorter.scss';
+import '../WarehouseList/WarehouseList.scss';
 
 const Sorter = () => {
   return (
     <div className="sorter-container">
-      <div className='sorter-info'>
-        <div className='sorter-info__field'>
-          <p className='sorter-info__header'>INVENTORY ITEM</p>
-          <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
+      <div className='sorty-selectors'>
+        <div className='sorty-selectors__item'>
+          <h4>INVENTORY ITEM</h4>
+          <img src={sortIcon} alt='sort directory icon' />
         </div>
-        <div className='sorter-info__field'>
-          <p className='sorter-info__header'>CATEGORY</p>
-          <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
+        <div className='sorty-selectors__item'>
+          <h4>CATEGORY</h4>
+          <img src={sortIcon} alt='sort directory icon' />
         </div>
-        <div className='sorter-info__field'>
-          <p className='sorter-info__header'>STATUS</p>
-          <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
+        <div className='sorty-selectors__item'>
+          <h4>STATUS</h4>
+          <img src={sortIcon} alt='sort directory icon' />
         </div>
-        <div className='sorter-info__field'>
-          <p className='sorter-info__header'>QTY</p>
-          <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
+        <div className='sorty-selectors__item'>
+          <h4>QTY</h4>
+          <img src={sortIcon} alt='sort directory icon' />
         </div>
-        <div className='sorter-info__field'>
-          <p className='sorter-info__header'>WAREHOUSE</p>
-          <img className='sort-icon' src={sortIcon} alt='sort directory icon' />
+        <div className='sorty-selectors__item'>
+          <h4>WAREHOUSE</h4>
+          <img src={sortIcon} alt='sort directory icon' />
         </div>
-        <div className='sorter-info__field actions'>
-          <p className='sorter-info__header'>ACTIONS</p>
+        <div className='sorty-selectors__item actions'>
+          <h4>ACTIONS</h4>
         </div>
       </div>
     </div>
