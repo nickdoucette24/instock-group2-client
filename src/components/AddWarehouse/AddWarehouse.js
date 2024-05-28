@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import BackButton from "../BackButton/BackButton";
 import FormWarehouse from "../FormWarehouse/FormWarehouse";
 
-const AddWarehouse = () => {
+const AddWarehouse = ({ setUpdating }) => {
 
 	return (
 		<>
@@ -15,7 +15,7 @@ const AddWarehouse = () => {
 				</Link>
 				<h1>Add New Warehouse</h1>
 			</section>
-			<FormWarehouse submitButton={"+ Add Warehouse"}/>
+			<FormWarehouse submitButton={"+ Add Warehouse"} setUpdating={setUpdating} />
 		</>
 	);
 };

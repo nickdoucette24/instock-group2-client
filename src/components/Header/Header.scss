@@ -3,7 +3,7 @@
 @use "../../styles/partials/fonts" as *;
 
 .header {
-    @include flexCenter;
+    @include flex-center;
     align-items: flex-start;
     background-color: $graphite;
     padding: 0 1rem;
@@ -20,7 +20,7 @@
     }
 
     &__wrapper {
-        @include flexCenter;
+        @include flex-center;
         width: 100%;
         flex-direction: column;
         padding: 1.5rem 0;
@@ -51,7 +51,7 @@
     }
 
     &__nav {
-        @include flexCenter;
+        @include flex-center;
         gap: 1rem;
         width: 100%;
         justify-content: space-between;
@@ -85,7 +85,7 @@
         }
 
         &:hover {
-            background-color: $instock-black;
+            text-decoration: underline;
         }
     }
 }

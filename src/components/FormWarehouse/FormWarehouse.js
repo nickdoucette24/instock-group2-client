@@ -9,7 +9,7 @@ import CancelButton from "../CancelButton/CancelButton";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import InvalidErrorMessage from "../InvalidErrorMessage/InvalidErrorMessage";
 
-const FormWarehouse = ({ submitButton }) => {
+const FormWarehouse = ({ submitButton, setUpdating }) => {
 	const [errors, setErrors] = useState({});
 	const [formValues, setFormValues] = useState({
 		warehouse_name: "",
@@ -85,20 +85,19 @@ const FormWarehouse = ({ submitButton }) => {
 		if (!emailRegex.test(formValues.contact_email)) formErrors.invalid_email = true;
 		setErrors(formErrors);
 
-
-
-
 		if (Object.keys(formErrors).length === 0 && location.pathname.includes("/add")) {
-      // No errors, form is valid
+      	// No errors, form is valid
 			axios.post("http://localhost:8080/api/warehouses", formValues).then((response) => console.log(response.data)).catch((err) => console.log(err));
+			setUpdating(true);
 			navigate("/");
-    }
+    	}
 
 		if (Object.keys(formErrors).length === 0 && location.pathname.includes("/edit")) {
-      // No errors, form is valid
+      	// No errors, form is valid
 			axios.put(`http://localhost:8080/api/warehouses/${id}`, formValues).then((response) => console.log(response.data)).catch((err) => console.log(err));
+			setUpdating(true);
 			navigate("/");
-    }
+    	}
 	}
 
   return (

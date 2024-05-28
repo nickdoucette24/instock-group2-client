@@ -19,6 +19,7 @@ const InventoryDetails = () => {
     setLoading(true);
     axios.get(`http://localhost:8080/api/inventories/${id}`)
     .then(response => {
+      console.log(response.data);
       const itemData = response.data[0];
       setItem(itemData);
 
