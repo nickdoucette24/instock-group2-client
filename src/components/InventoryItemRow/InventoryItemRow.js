@@ -5,11 +5,11 @@ import StockTag from '../StockTag/StockTag';
 import deleteIcon from '../../assets/Icons/delete_outline-24px.svg';
 import editIcon from '../../assets/Icons/edit-24px.svg';
 import chevronIcon from '../../assets/Icons/chevron_right-24px.svg';
-import DeleteInventoryModal from '../../components/DeleteInventoryModal/DeleteInventoryModal';
+import DeleteEntryModal from '../../components/DeleteEntryModal/DeleteEntryModal';
 
 import './InventoryItemRow.scss';
 
-const InventoryItemRow = ({ inventoryItem, isFirst }) => {
+const InventoryItemRow = ({ inventoryItem, isFirst, setDeleting }) => {
     const [isWarehouse, setIsWarehouse] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -91,7 +91,7 @@ const InventoryItemRow = ({ inventoryItem, isFirst }) => {
                 <img className='icon-container__edit' src={editIcon} onClick={() => handleNavToEdit()} alt='pencil icon for editing an item' />
             </div>
         </div>
-        <DeleteInventoryModal item={item} id={id} toggleModal={toggleModal} ref={dialogRef}/>
+        <DeleteEntryModal item={item} id={id} toggleModal={toggleModal} ref={dialogRef} setDeleting={setDeleting} />
     </div>
   )
 }

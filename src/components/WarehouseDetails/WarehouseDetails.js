@@ -13,14 +13,18 @@ const WarehouseDetails = () => {
 	const [warehouseDetails, setwarehouseDetails] = useState({});
 	const [inventoryItems, setInventoryItems] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [deleting, setDeleting] = useState(false);
 
 	const { id } = useParams();
 
 	useEffect(() => {
+		setLoading(true);
 		const getWarehouse = async () => {
 		  try {
 			const response = await axios.get(`http://localhost:8080/api/warehouses/${id}`);
 			setwarehouseDetails(response.data);
+			setLoading(false);
+			setDeleting(false);
 		  } catch (error) {
 			console.error("Error getting data:", error);
 		  }
@@ -31,6 +35,7 @@ const WarehouseDetails = () => {
 			const response = await axios.get(`http://localhost:8080/api/warehouses/${id}/inventories`);
 			setInventoryItems(response.data);
 			setLoading(false);
+			setDeleting(false);
 		  } catch (error) {
 			console.error("Error getting data:", error);
 		  }
@@ -38,7 +43,7 @@ const WarehouseDetails = () => {
 	
 		getWarehouse();
 		getInventoryList();
-	  }, [])
+	  }, [deleting])
 
 
 	return (
@@ -132,12 +137,15 @@ const WarehouseDetails = () => {
             <p className='list-loading'>Loading...</p>
           ) : (
             inventoryItems.map((inventoryItem, index) => (
-              <InventoryItemRow key={inventoryItem.id} inventoryItem={inventoryItem} isFirst={index === 0} />
+              <InventoryItemRow 
+			  	key={inventoryItem.id} 
+			  	inventoryItem={inventoryItem} 
+			  	isFirst={index === 0} 
+			  	setDeleting={setDeleting} 
+			  />
             ))
           )
         }
-
-
 		</>
 	);
 };

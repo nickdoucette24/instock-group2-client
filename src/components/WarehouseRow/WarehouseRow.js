@@ -1,12 +1,12 @@
 import chevron from "../../assets/Icons/chevron_right-24px.svg";
 import edit from "../../assets/Icons/edit-24px.svg";
 import del from "../../assets/Icons/delete_outline-24px.svg";
-import DeleteWarehouse from "../DeleteWarehouse/DeleteWarehouse";
+import DeleteEntryModal from "../DeleteEntryModal/DeleteEntryModal";
 
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 
-function WarehouseRow({warehouse}) {
+function WarehouseRow({warehouse, setDeleting}) {
 
 	const dialogRef = useRef(null);
 
@@ -44,11 +44,12 @@ function WarehouseRow({warehouse}) {
     </div>
     <div className="warehouse-container__item--col5">
         <img src={del} className="delete-btn" alt="Delete" onClick={toggleModal} />
-        <DeleteWarehouse 
+        <DeleteEntryModal 
             warehouse_name={warehouse.warehouse_name} 
             id={warehouse.id} 
             toggleModal={toggleModal} 
             ref={dialogRef} 
+            setDeleting={setDeleting}
         />
         <Link to={`/warehouses/${warehouse.id}/edit`}>
             <img src={edit} alt="Edit" />

@@ -10,6 +10,7 @@ import "./WarehouseList.scss";
 const WarehouseList = () => {
 	const [warehouses, setWarehouses] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [deleting, setDeleting] = useState(false);
 
 	useEffect(() => {
 		setLoading(true);
@@ -18,11 +19,12 @@ const WarehouseList = () => {
 			.then((response) => {
 				setWarehouses(response.data);
 				setLoading(false);
+				setDeleting(false);
 				return warehouses;
 			})
 			.catch((err) => console.error(err));
 		// eslint-disable-next-line
-	}, []);
+	}, [deleting]);
 
 	// TODO: Add sorting functionality
 	const handleSort = () => {
@@ -69,6 +71,7 @@ const WarehouseList = () => {
 						<>
 							<WarehouseRow 
 								warehouse={warehouse}
+								setDeleting={setDeleting}
 							/>
 							<span className="divider"></span>
 						</>
