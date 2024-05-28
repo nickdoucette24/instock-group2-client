@@ -19,7 +19,9 @@ const WarehousesPage = () => {
 		if (location.pathname === "/") return <WarehouseList updating={updating} setUpdating={setUpdating} />;
 	};
 
-	return renderComponents();
+	return <main>
+		<div className="floaty-container">{renderComponents()}</div>
+	</main>
 };
 
 export default WarehousesPage;

@@ -32,7 +32,7 @@ const WarehouseList = ({ updating, setUpdating }) => {
 
 	if (!loading)
 		return (
-			<main className="floaty-container">
+			<>
 				<div className="floaty-container__top">
 					<h1>Warehouses</h1>
 					<span className="floaty-container__top--controls">
@@ -76,7 +76,7 @@ const WarehouseList = ({ updating, setUpdating }) => {
 						</>
 					);
 				})}
-			</main>
+			</>
 		);
 };
 
