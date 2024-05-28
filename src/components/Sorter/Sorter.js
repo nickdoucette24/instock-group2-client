@@ -2,6 +2,7 @@ import sortIcon from '../../assets/Icons/sort-24px.svg';
 
 import './Sorter.scss';
 import '../WarehouseList/WarehouseList.scss';
+import '../InventoryItemRow/InventoryItemRow.scss'
 
 const Sorter = () => {
   return (

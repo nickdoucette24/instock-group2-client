@@ -117,9 +117,5 @@
 }
 
 .btn__add {
-	@include btn;
-	width: 100%;
-	background-color: $instock-indigo;
-	color: $white;
-	margin-bottom: 16px;
+	@include btn-add;
 }

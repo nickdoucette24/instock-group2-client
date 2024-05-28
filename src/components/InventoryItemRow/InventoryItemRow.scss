@@ -4,7 +4,7 @@
 .item-container {
     border-top: 1px solid $cloud;
     padding: 0 2rem;
-    @include flexCenter;
+    @include flex-center;
 
     @include tablet {
         height: 3.75rem;
@@ -17,35 +17,15 @@
             background-color: rgba($instock-indigo, 7%);
         }
     }
-
-    @include laptop {
-        padding: 0 2.5rem;
-    }
-}
-
-// Make the Actions column small
-@mixin col5 {
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-
-	@media (min-width: $tablet-breakpoint) {
-		width: 3rem;
-		justify-content: flex-start;
-	}
-
-	& img {
-		width: 25px;
-	}
 }
 
 .details-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
+    flex: 1;
     width: 100%;
     padding: 1rem 0 1.5rem 0;
-    &:nth-child(6) { @include col5(); }
 
     @include tablet {
         flex-wrap: nowrap;
@@ -118,7 +98,7 @@
     }
 
     &__stock {
-        @include flexCenter;
+        @include flex-center;
         justify-content: flex-start;
     }
 

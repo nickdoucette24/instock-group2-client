@@ -27,8 +27,16 @@ const Header = () => {
       <div className='header__wrapper'>
         <img to="/" className='header__logo' src={logo} alt='instock logo' onClick={() => handleLogoClick()} ></img>
         <nav className='header__nav'>
-          <button className={`header__nav-btn ${isWarehousePage ? 'selected-button' : ''}`} onClick={() => handleNav('warehouses')}>Warehouses</button>
-          <button className={`header__nav-btn ${isInventoryPage ? 'selected-button' : ''}`} onClick={() => handleNav('inventory')}>Inventory</button>
+          <button className={
+            `header__nav-btn ${isWarehousePage ? 'selected-button' : ''}`
+          } onClick={() => handleNav('warehouses')}>
+            Warehouses
+          </button>
+          <button className={
+            `header__nav-btn ${isInventoryPage ? 'selected-button' : ''}`
+          } onClick={() => handleNav('inventory')}>
+            Inventory
+          </button>
         </nav>
       </div>
     </header>

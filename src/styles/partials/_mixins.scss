@@ -51,16 +51,10 @@
 	}
 }
 
-@mixin addButton {
-	height: 2.25rem;
-	width: 100%;
-	padding: 0 1rem;
-	border-radius: 20px;
-	display: flex;
-	justify-content: center;
+@mixin btn-add {
+	@include btn;
 	gap: 0.25rem;
 	align-items: center;
-	border: none;
 	background-color: $instock-indigo;
 	color: $white;
 	@include labels-links-buttons();
@@ -71,7 +65,7 @@
 }
 
 // Flexbox Mixins
-@mixin flexCenter {
+@mixin flex-center {
 	display: flex;
 	justify-content: center;
 	align-items: center;

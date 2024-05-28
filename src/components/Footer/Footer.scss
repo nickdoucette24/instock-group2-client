@@ -10,7 +10,7 @@
 }
 
 .copyright-wrapper {
-    @include flexCenter;
+    @include flex-center;
     padding: 2.5rem 0;
 
     @include tablet {

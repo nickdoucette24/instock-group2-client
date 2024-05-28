@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 
 import BackButton from "../BackButton/BackButton";
 import "./AddInventoryItem.scss";
-import NewItemForm from "../FormInventory/NewItemForm";
 import FormInventory from "../FormInventory/FormInventory";
 
 const AddInventoryItem = ({ url, setUpdating }) => {
