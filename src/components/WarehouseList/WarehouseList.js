@@ -50,11 +50,11 @@ const WarehouseList = ({ updating, setUpdating }) => {
 						<img src={sortBtn} onClick={handleSort()} alt="sort" />
 					</span>
 					<span className="sorty-selectors__item">
-						<h4>CONTACT NAME</h4>
+						<h4>ADDRESS</h4>
 						<img src={sortBtn} onClick={handleSort()} alt="sort" />
 					</span>
 					<span className="sorty-selectors__item">
-						<h4>ADDRESS</h4>
+						<h4>CONTACT NAME</h4>
 						<img src={sortBtn} onClick={handleSort()} alt="sort" />
 					</span>
 					<span className="sorty-selectors__item">

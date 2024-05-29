@@ -75,7 +75,7 @@ border: none;
     @include interactive-components;
     border: 1px solid $cloud;
 
-    @include laptop {
+    @include pc {
         width: 7.625rem;
     }
   

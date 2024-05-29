@@ -28,14 +28,14 @@ function WarehouseRow({ warehouse, setUpdating }) {
             </span>
         </div>
         <div className="list-container__item">
-            <h4 className="mobile">CONTACT NAME</h4>
-            <p className="p2">{warehouse.contact_name}</p>
-        </div>
-        <div className="list-container__item">
             <h4 className="mobile">ADDRESS</h4>
             <p className="p2">
                 {warehouse.address}, {warehouse.city}, {warehouse.country}
             </p>
+        </div>
+        <div className="list-container__item">
+            <h4 className="mobile">CONTACT NAME</h4>
+            <p className="p2">{warehouse.contact_name}</p>
         </div>
         <div className="list-container__item">
             <h4 className="mobile">CONTACT INFORMATION</h4>
