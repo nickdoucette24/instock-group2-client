@@ -11,7 +11,7 @@
         background-color: $light-grey;
     }
 
-    @include laptop {
+    @include pc {
         padding: 0 2.5rem;
     }
 }

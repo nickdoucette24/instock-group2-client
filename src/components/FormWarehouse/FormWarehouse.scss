@@ -13,7 +13,7 @@
     padding: 1.5rem 2rem 2rem;
   }
 
-  @include laptop {
+  @include pc {
     padding: 1.5rem 2.5rem 2rem;
   }
 }
@@ -27,7 +27,7 @@
     padding-left: 2rem;
   }
 
-  @include laptop {
+  @include pc {
     padding-left: 2.5rem;
   }
 
@@ -41,7 +41,7 @@
       padding-left: 0;
     }
 
-    @include laptop {
+    @include pc {
       padding-right: 2.5rem;
       padding-left: 0;
     }
