@@ -43,7 +43,7 @@ function WarehouseRow({ warehouse, setUpdating }) {
             <p className="p2">{warehouse.contact_email}</p>
         </div>
         <div className="list-container__item--col5">
-            <img src={del} className="delete-btn" alt="Delete" onClick={toggleModal} />
+            <img src={del} className="btn-delete" alt="Delete" onClick={toggleModal} />
             <DeleteWarehouse 
                 warehouse_name={warehouse.warehouse_name} 
                 id={warehouse.id} 
