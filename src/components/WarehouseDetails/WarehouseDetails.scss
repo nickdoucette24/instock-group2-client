@@ -109,13 +109,15 @@
 
 	@include tablet {
 		display: flex;
-		justify-content: space-between;
+		justify-content: space-around;
 		align-items: center;
-		padding: 0.6875rem 2rem;
+		padding: 0.6875rem 1rem;
 	}
 
 	&__column {
 		display: flex;
 		align-items: center;
+		justify-content: center;
+		width: 20%;
 	}
 }
